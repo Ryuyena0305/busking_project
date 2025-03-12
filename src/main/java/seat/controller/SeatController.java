@@ -13,10 +13,16 @@ public class SeatController {
     @Autowired
     private SeatService seatService;
 
-    @GetMapping("")
-    public List<SeatDto> onPost(@RequestParam("biid") int biid, SeatDto seatDto){
+    @PostMapping("")
+    public int onPost(@RequestParam("biid") int biid, @ModelAttribute SeatDto seatDto) {
         System.out.println("SeatController.onPost");
-        return seatService.onPost(biid,seatDto);
+        return seatService.onPost(biid, seatDto);
+    }
+
+    @GetMapping("")
+    public List<SeatDto> onGet(@RequestParam("biid") int biid, SeatDto seatDto){
+        System.out.println("SeatController.onGet");
+        return seatService.onGet(biid,seatDto);
     }
 
     @PutMapping("")

@@ -2,9 +2,7 @@ package seat.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import seat.model.dto.SeatDto;
 import seat.model.mapper.SeatMapper;
 
@@ -15,11 +13,15 @@ public class SeatService {
     @Autowired
     private SeatMapper seatMapper;
 
+    public int onPost(int biid, SeatDto seatDto) {
+        System.out.println("SeatService.onPost");
+        return seatMapper.onPost(biid, seatDto);
+    }
 
-    public List<SeatDto> onPost(int biid, SeatDto seatDto){
-        System.out.println("SeatController.onPost");
+    public List<SeatDto> onGet(int biid, SeatDto seatDto){
+        System.out.println("SeatController.onGet");
         System.out.println("seatDto = " + seatDto);
-        return seatMapper.onPost(biid,seatDto);
+        return seatMapper.onGet(biid,seatDto);
     }
 
 
