@@ -18,7 +18,7 @@ public class SeatDto {
     private int btseat;
 
     private int bsid;
-    private int busnum;
+    private int bsnum;
     private int bsstate;
     private int x;
     private int y;
