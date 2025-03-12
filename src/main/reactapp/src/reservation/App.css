@@ -1,0 +1,71 @@
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Nanum Gothic', sans-serif; 
+    box-sizing: border-box;
+}
+
+.container {
+    width: 50%;           /* 부모 요소가 화면의 50% 너비를 차지 */
+    height: 100%;         /* 부모 요소가 화면의 100% 높이를 차지 */
+    margin: 0 auto;       /* 화면 가운데 정렬 */
+    display: flex;        /* flexbox로 자식 요소를 정렬 */
+    justify-content: center; /* 가로로 중앙 정렬 */
+    align-items: center;  /* 세로로 중앙 정렬 */
+    background-color: #f0f0f0; /* 예시 배경 색 */
+    border: 3px solid #000000; 
+  }
+  
+.content {
+    width: 85%;           /* 콘텐츠 너비는 부모 요소의 85% */
+    height: 100%;         /* 콘텐츠 높이는 부모 요소의 100% */
+    display: flex;        /* 내부 콘텐츠 정렬 */
+    justify-content: center; /* 가로로 정렬 */
+    align-items: center;  /* 세로로 정렬 */
+    text-align: center;   /* 텍스트 중앙 정렬 */
+  }
+  
+.auto {
+    margin: 20px;
+    padding: 35px 45px;
+    background-color:#ff914d;/* 버튼 배경 색 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    font-size: 27px;
+    font-weight: bold;
+  }
+
+  .nomal {
+    margin: 20px;
+    padding: 35px 45px;
+    background-color: #004aad; /* 버튼 배경 색 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    font-size: 27px;
+    font-weight: bold;
+  }
+  .mainbtn{
+    display: flex;
+    margin-bottom:20%;
+    margin-top: 60%;
+  }
+  .auto:hover {
+    background-color: #fc8941; /* 버튼 호버 시 색상 변경 */
+  }
+  .nomal:hover {
+    background-color: #023f8f; /* 버튼 호버 시 색상 변경 */
+  }
+h1{
+    font-size: 70px;
+    margin-top: 220px;
+}
+  
