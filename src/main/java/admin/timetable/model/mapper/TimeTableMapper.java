@@ -4,6 +4,8 @@ import admin.timetable.model.dto.TimeTableDto;
 import org.apache.ibatis.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Mapper
 public interface TimeTableMapper {
 
@@ -24,7 +26,15 @@ public interface TimeTableMapper {
     public boolean delete(String timeid);
 
     // (도착지별)스케줄 조회
+    @Select("select * from timetable where locid = #{locid}")
+    public List<TimeTableDto> locView(int locid);
+
     // (버스별)스케줄 조회
+    @Select("select * from timetable where biid = #{biid}")
+    public List<TimeTableDto> busView(int biid);
+
     // (일자별)스케줄 조회
+    @Select("select * from timetable where startdate = #{startdate}")
+    public List<TimeTableDto> dateView(String startdate);
 
 }
