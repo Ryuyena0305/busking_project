@@ -68,8 +68,9 @@ INSERT INTO busseat (bsnum, x, y, biid) VALUES
 (41, 8, 0, 1), (42, 8, 1, 1), (43, 8, 2, 1), (44, 8, 3, 1), (45, 8, 4, 1), (46, 9, 0, 1), (47, 9, 1, 1), (48, 9, 2, 1), (49, 9, 3, 1), (50, 9, 4, 1),
 (51, 10, 0, 1), (52, 10, 1, 1), (53, 10, 2, 1), (54, 10, 3, 1), (55, 10, 4, 1);
 
-select * from busseat;
 
+
+select * from busseat;
 
 # 터미널
 create table location(
