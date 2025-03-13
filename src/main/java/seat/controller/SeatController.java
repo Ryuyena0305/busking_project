@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/busseat")
+@CrossOrigin("http://localhost:5173")
 public class SeatController {
     @Autowired
     private SeatService seatService;
