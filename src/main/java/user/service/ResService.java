@@ -51,9 +51,9 @@ public class ResService {
             int resvid = resDto.getResvid();
 
             for (Integer bsnum : resDto.getBsnum()) {
-                int bsid = bsnum;
-                resMapper.ResDetail(bsid, resvid);
+                resMapper.ResDetail(bsnum, resvid, resDto.getStartdate(), resDto.getStarttime(), resDto.getDest());
             }
+
             System.out.println(resDto);
             return resvid;
         } catch (Exception e) {
