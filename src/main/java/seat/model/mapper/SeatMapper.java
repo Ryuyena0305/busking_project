@@ -16,7 +16,7 @@ public interface SeatMapper {
 
 
 
-    @Select("select * from busseat where biid = #{biid}")
+    @Select("SELECT bs.*, bi.binum FROM busseat bs JOIN businfo bi ON bs.biid = bi.biid WHERE bs.biid = #{biid}")
     public List<SeatDto> onGet(int biid, SeatDto seatDto);
 
     @Update("update busseat set bsstate = #{bsstate} where biid = #{biid} and bsnum = #{bsnum}")
