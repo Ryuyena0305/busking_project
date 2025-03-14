@@ -1,10 +1,8 @@
 package user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import user.model.dto.ResDto;
 import user.service.ResService;
 
 import java.util.List;
@@ -34,5 +32,15 @@ public class ResController {
     public List<String> getSeat(@RequestParam("startdate") String startdate, @RequestParam("dest") String dest, @RequestParam("starttime") String starttime) {
         return resService.getSeat(startdate, dest, starttime);
     }
-
+    @PostMapping("")
+    public int Reservation(@RequestBody ResDto resDto) {
+        try {
+            System.out.println("resDto = " + resDto);
+            return resService.Reservation(resDto);
+        } catch (Exception e) {
+            System.out.println(e);
+            return 0;
+        }
+    }
 }
+
