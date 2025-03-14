@@ -1,0 +1,38 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+/* 전체 선택자 */
+*{
+    box-sizing: border-box; /* 각 구역의 사이즈를 테두리까지 한다.*/
+    margin: 0; padding: 0; /* 기본값 여백 제거 */
+}
+li{ list-style-type: none;} /* 글머리 제거 */
+/* 링크 마크업의 색상과 밑줄 제거*/
+a{ color: black; text-decoration: none;}
+
+/* 전체 구역 */
+#wrap{
+    display: flex; /* 하위 요소 가로 배치 */
+}
+
+#container{ /*관리자 페이지 본문 꼭 모두 컴포넌트 시작할때 사용.*/
+    padding: 100px 50px;
+}
+
+#wrap > .MuiBox-root{ /* 헤더  css */
+    position: fixed;     top: 0px;
+    width: 100%;
+}
+#wrap > .MuiList-root{ /* 사이드바 css */
+    background-color: #1976d2;
+    color: white;
+    margin-top: 64px;
+    height: 100vh;
+}
+#wrap .MuiListItemText-root > .MuiTypography-root{
+    font-size: 30px;
+}
