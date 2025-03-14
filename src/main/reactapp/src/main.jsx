@@ -6,12 +6,12 @@ import { BrowserRouter } from 'react-router-dom';
 
 const root = createRoot(document.querySelector('#root'));  
 
-root.render(
-  <StrictMode>
-    <BrowserRouter>
-      {/*<App />*/}<Seat/>
-    </BrowserRouter>
-  </StrictMode>
-);
-// import App from './admin/App.jsx';
-// root.render(<App />);
+// root.render(
+//   <StrictMode>
+//     <BrowserRouter>
+//       {/*<App />*/}<Seat/>
+//     </BrowserRouter>
+//   </StrictMode>
+// );
+import App from './admin/App.jsx';
+root.render(<App />);

@@ -1,3 +1,6 @@
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+*{margin: 0; padding: 0; font-family: 'Nanum Gothic', sans-serif; box-sizing: border-box;}
+li{list-style-type: none;}
 
 html, body {
     margin: 0;
@@ -26,13 +29,50 @@ a{ color: black; text-decoration: none;}
 #wrap > .MuiBox-root{ /* 헤더  css */
     position: fixed;     top: 0px;
     width: 100%;
+    
+   
 }
 #wrap > .MuiList-root{ /* 사이드바 css */
-    background-color: #1976d2;
+    background-color: #004aad;
     color: white;
     margin-top: 64px;
     height: 100vh;
 }
 #wrap .MuiListItemText-root > .MuiTypography-root{
+    font-size: 25px;
+}
+
+#wrap .MuiToolbar-root > .MuiTypography-root > a{
     font-size: 30px;
+    color: white;
+}
+#wrap .MuiToolbar-root > .MuiButtonBase-root > a{
+    font-size: 30px;
+    color: white;
+} 
+
+#wrap > .MuiBox-root > .MuiPaper-root{
+    background-color: #004aad !important;
+}
+
+#wrap .test{
+    background-color: #f1f1f1;
+    color: #3d3d3d;
+    font-size: 10px !important;
+}
+
+#wrap .MuiListItemText-root > .MuiTypography-root > .test2 > span{
+    font-size: 10px !important;
+}
+
+#wrap .logo{
+    width: 200px;
+    height: 200px;
+    position: fixed;   /* 고정 위치 설정 */
+    bottom: 0px;
+    left: 40px;        /* 화면 왼쪽에서 20px */
+    z-index: 1000;     /* 드롭다운보다 위에 위치하도록 z-index 설정 */
+    
+  
+   
 }

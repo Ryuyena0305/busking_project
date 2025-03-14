@@ -12,7 +12,7 @@ export default function AppBar2( props ){
             <AppBar position="static">
                 <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    <Link to={"/"}>로고/이미지</Link>
+                    <Link to={"/"} >BUSKING</Link>
                 </Typography>
                     <Button color="inherit"><Link>로그아웃</Link></Button>
                 </Toolbar>
