@@ -15,5 +15,5 @@ root.render(
     </BrowserRouter>
   </StrictMode>
 );
-// import App from './admin/App.jsx';
-// root.render(<App />);
+import App from './admin/App.jsx';
+root.render(<App />);

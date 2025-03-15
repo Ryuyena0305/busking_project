@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/timetable")
-@CrossOrigin("http://192.168.40.10:5173")
+@CrossOrigin("http://localhost:5173")
 public class TimeTableController {
     @Autowired
     private TimeTableService timeTableService;
