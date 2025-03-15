@@ -32,7 +32,18 @@ a{color: black; text-decoration: none;}
   padding: 20px 150px;
   background-color: #004aad;
 }
-
+.left{
+  display: flex;
+  align-items: center;
+}
+.admin{
+  font-size: 30px;
+  color: yellow;
+}
+.home{
+  color: #ffff;
+  font-size: 30px;
+}
 .left > div{
   font-size:30px;
   font-weight: bold;
@@ -53,7 +64,11 @@ a{color: black; text-decoration: none;}
 .mainbtn{
   text-align: center;
   margin: 300px 0px;
+  padding: 0px 150px;
+  display: flex;
+  justify-content: space-evenly;
 }
+
 .nomal, .auto{
   color: #ffff;
   width: 300px;
@@ -67,14 +82,12 @@ a{color: black; text-decoration: none;}
 
 .nomal{
   background-color: #004aad;
-  margin-right: 30px;
 }
 .nomal:hover {
   background-color: #023f8f; 
 }
 .auto{
   background-color: #ff914d;
-  margin-left: 30px;
 }
 .auto:hover {
   background-color: #fc8941; 
