@@ -9,20 +9,49 @@ import './App.css';
 export default function App(props) {
     const location = useLocation();
 
+
+    const getDate = new Date();
+    const year = getDate.getFullYear();
+    const month = getDate.getMonth() + 1;
+    const day = getDate.getDate();
+    const hours = getDate.getHours();
+    const minutes = getDate.getMinutes();
+    const seconds = getDate.getSeconds();
+
+    const today = `${year}년 ${month < 10 ? '0' + month : month}월 ${day < 10 ? '0' + day : day}일`;
+    const time = `${hours < 10 ? '0' + hours : hours}시 ${minutes < 10 ? '0' + minutes : minutes}분`;
+
+
+
     return (
         <div className="container">
             <div className="content">
                 {location.pathname !== '/Res' && location.pathname !== '/AutoRes' && (
                     <div className='realcontent'>
-                        <h1>버스 예매</h1>
+                        <div className='tit'>[ 버스 승차권 발매기 ]</div>
+                        <div className='subTit'>
+                            <div className='left'>
+                                <div>&#128681; 인천</div>
+                            </div>
+                            <div className='right'>
+                                <div className='date'>{today}</div>
+                                <div className='time'>{time}</div>
+                            </div>
+                        </div>
                         <div className='mainbtn'>
-                        <Link to="/Res">
-                            <button className='nomal'>일반예매</button>
-                        </Link>
-                        <Link to="/AutoRes">
-                            <button className='auto'>자동예매</button>
-                        </Link>
-                    </div>
+                            <Link to="/Res">
+                                <button className='nomal'>일반예매</button>
+                            </Link>
+                            <Link to="/AutoRes">
+                                <button className='auto'>자동예매</button>
+                            </Link>
+                        </div>
+                        <div className='lang'>
+                            <button>한국어</button>
+                            <button>English</button>
+                            <button>中國語</button>
+                            <button>日本語</button>
+                        </div>
                     </div>
                 )}
             </div>
