@@ -4,14 +4,6 @@ import Res from './Res.jsx';
 import AutoRes from './AutoRes.jsx';
 import './App.css';
 
-// admin\timetable 관리자\스케줄
-import Create from '../admin/timetable/Create.jsx';
-import Delete from '../admin/timetable/Delete.jsx';
-import Update from '../admin/timetable/Update.jsx';
-import View from '../admin/timetable/View.jsx';
-import ViewBus from '../admin/timetable/ViewBus.jsx';
-import ViewDate from '../admin/timetable/ViewDate.jsx';
-import ViewLoc from '../admin/timetable/ViewLoc.jsx';
 
 
 export default function App(props) {
