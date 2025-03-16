@@ -9,6 +9,7 @@ export default function Update(props) {
     driver: '',
     binum: '',
     btid: 1,
+    biid: biid,
   });
   const onValueChange = (e) => {
     const value =
@@ -18,8 +19,10 @@ export default function Update(props) {
 
   const navigate = useNavigate();
   const onUpdate = async () => {
+    console.log(biid);
+    console.log(busForm);
     const response = await axios.put(
-      `http://localhost:8080/bus/businfo?bno=${biid}`,
+      `http://localhost:8080/bus/businfo`,
       busForm
     );
     if (response.data == true) {
