@@ -43,3 +43,16 @@ img{
         height: 50px;
         margin-bottom: 10px;
 }
+.bus{
+        width: 300px;
+        margin: 0px auto;
+        border : 1px solid #0b6bcb;
+        border-radius: 5px;
+        padding : 10px
+}
+.nextPageBtn{
+        margin: 0px auto !important;
+        width: 200px;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+}

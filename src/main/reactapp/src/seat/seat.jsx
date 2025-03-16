@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import './seat.css';
 
 import Button from '@mui/joy/Button';
@@ -8,8 +9,8 @@ import Button from '@mui/joy/Button';
 export default function Seat() {
     const [seats, setSeats] = useState([]);
     const [binum, setBinum] = useState();
-
     const { biid } = useParams();
+    const  navigate  = useNavigate();
 
     useEffect(() => {
         onGet();
@@ -35,6 +36,13 @@ export default function Seat() {
             rows[x][y] = { bsnum, bsstate };
         });
         return rows;
+    };
+
+    const onPage = () => {
+        alert('좌석 수정이 완료되었습니다.');
+        navigate('./');
+
+        
     };
 
     const groupedSeats = groupSeats();
@@ -68,6 +76,9 @@ export default function Seat() {
                         ))}
                     </div>
                 </div>
+                <div className="bus2">
+            <Button className="nextPageBtn" onClick={()=>onPage()}>좌석수정</Button>
+            </div>
             </div>
         </>
     );

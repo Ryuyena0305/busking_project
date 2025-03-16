@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
 import {  useNavigate } from 'react-router-dom';
-import './resvseat.css';
+import './resvseat2.css';
 
 import Button from '@mui/joy/Button';
 
@@ -59,7 +59,7 @@ export default function Seat() {
 
     return (
         <div className="buswrap">
-            <h5></h5>
+            <h5>좌석 출력</h5>
         {/* 좌석 상단 */}
             <div className="bus">
                 <div className="buswidth">
