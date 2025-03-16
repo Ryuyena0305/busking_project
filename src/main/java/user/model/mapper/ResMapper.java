@@ -22,12 +22,15 @@ public interface ResMapper {
             "AND l.dest = #{dest}")
     List<String> getStartTime(@Param("startdate") String startdate, @Param("dest") String dest);
 
-    @Select("SELECT DISTINCT b.bsnum FROM busseat b " +
+    @Select("SELECT DISTINCT b.bsnum " +
+            "FROM busseat b " +
             "JOIN timetable t ON b.biid = t.biid " +
             "JOIN location l ON t.locid = l.locid " +
+            "LEFT JOIN resvdetail rd ON b.bsid = rd.bsid " +
             "WHERE t.startdate = #{startdate} " +
             "AND l.dest = #{dest} " +
-            "AND t.starttime = #{starttime}")
+            "AND t.starttime = #{starttime} " +
+            "AND rd.bsid IS NULL")
     List<String> getSeat(@Param("startdate") String startdate, @Param("dest") String dest, @Param("starttime") String starttime);
 
     @Insert("INSERT INTO resv (phone, rprice, timeid) VALUES (#{phone}, #{rprice}, #{timeid})")
