@@ -49,7 +49,7 @@ export default function SideBar(props) {
           </List>
 
           <List component="div" disablePadding className="test">
-            <ListItemButton component={Link} to="/update" sx={{ pl: 4 }}>
+            <ListItemButton component={Link} to="/typeread" sx={{ pl: 4 }}>
               <ListItemText primary="등급 조회" className="test2" />
             </ListItemButton>
           </List>

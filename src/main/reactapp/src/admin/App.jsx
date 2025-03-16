@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'; // 'npm i react
 import Home from './Home.jsx';
 import Create from './Create.jsx';
 import Read from './Read.jsx';
+import TypeRead from './TypeRead.jsx';
 import Update from './Update.jsx';
 import BusView from './BusView.jsx';
 import SideBar from './SideBar.jsx';
@@ -42,6 +43,7 @@ export default function App(props) {
             <Route path="/update" element={<Update />} />{' '}
             {/* 각 가상의 URL 정의한다. 컴포넌트 연결 */}
             <Route path="/bus/view" element={<BusView />} />
+            <Route path="/typeread" element={<TypeRead />} />
             <Route path="/createt" elememt={<CreateT />} />
             <Route path="/deletet" elememt={<DeleteT />} />
             <Route path="/updatet" elememt={<UpdateT />} />
