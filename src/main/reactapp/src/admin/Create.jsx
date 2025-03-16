@@ -1,33 +1,93 @@
-import axios from "axios";
-import { useState } from "react"
-import {  useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function Create( props ){
+export default function Create(props) {
+  const [busForm, setBusForm] = useState({ driver: '', binum: '', btid: 1 }); // 기본값 1(일반)
 
-    // [1] form 에서 입력받은 데이터들을 저장하는 상태 변수 , 초기값 설정 
-    const [ productForm , setProductForm ] = useState({ name : '' , price : '' , comment : ''} )
-    // [2] 입력 이벤트 만들기 , e.target.속성명 : 현재 이벤트가 발생한 DOM 의 속성값 반환
-    const onValueChange = ( e ) => { // e : event 약어 : onChange 실행 결과 정보를 매개변수로 받는다.
-        // 스레레드연산자 , { ...기존객체 , 새로운속성명 : 새로운값 }
-        setProductForm( { ...productForm , [e.target.name] : e.target.value }); 
+  const onValueChange = (e) => {
+    const value =
+      e.target.name === 'btid' ? parseInt(e.target.value) : e.target.value;
+    setBusForm({ ...busForm, [e.target.name]: value });
+  };
+
+  const navigate = useNavigate();
+
+  const onCreate = async () => {
+    const response = await axios.post(
+      'http://localhost:8080/bus/businfo',
+      busForm
+    );
+    if (response.data === true) {
+      alert('등록 성공');
+      navigate('/read');
+    } else {
+      alert('등록 실패');
     }
-    // [3] 제품등록 버튼을 클릭했을때. , axios 이용하여 서버와 통신하고 , navigate 이용하여 가상URL 페이지 전환한다.
-    const  navigate  = useNavigate();
-    const onCreate = async () => {
-        const response = await axios.post('http://localhost:8080/day08/products' , productForm )
-        if( response.data == true ){ alert('제품등록 성공'); navigate('/read'); } 
-        else{ alert('제품등록실패'); }
-    } // f end 
+  };
 
-    return(<> 
-        <div id="container"> 
-            <h3> Create 페이지 </h3> 
-            <form>
-                제품명 : <input name='name' value={ productForm.name } onChange={ onValueChange } /> <br/>
-                제품가격 : <input name="price" value={ productForm.price } onChange={ onValueChange } /> <br/>
-                제품설명 : <textarea name="comment" value={ productForm.comment} onChange={ onValueChange }></textarea> <br/>
-                <button type="button" onClick={ onCreate }> 제품등록 </button>
-            </form>
-        </div> 
-    </>)
+  return (
+    <>
+      <div id="container">
+        <h3>BUS 등록 페이지</h3>
+        <form>
+          <label>
+            버스기사 :{' '}
+            <input
+              type="text"
+              name="driver"
+              value={busForm.driver}
+              onChange={onValueChange}
+            />
+          </label>{' '}
+          <br />
+          <label>
+            버스차량번호 :{' '}
+            <input
+              type="text"
+              name="binum"
+              value={busForm.binum}
+              onChange={onValueChange}
+            />
+          </label>{' '}
+          <br />
+          <label>버스등급 :</label> <br />
+          <label>
+            <input
+              type="radio"
+              name="btid"
+              value="1"
+              checked={busForm.btid === 1}
+              onChange={onValueChange}
+            />{' '}
+            일반
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="btid"
+              value="2"
+              checked={busForm.btid === 2}
+              onChange={onValueChange}
+            />{' '}
+            우등
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="btid"
+              value="3"
+              checked={busForm.btid === 3}
+              onChange={onValueChange}
+            />{' '}
+            프리미엄
+          </label>
+          <br />
+          <button type="button" onClick={onCreate}>
+            등록
+          </button>
+        </form>
+      </div>
+    </>
+  );
 }

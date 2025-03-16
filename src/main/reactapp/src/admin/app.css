@@ -1,78 +1,91 @@
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
-*{margin: 0; padding: 0; font-family: 'Nanum Gothic', sans-serif; box-sizing: border-box;}
-li{list-style-type: none;}
-
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-  }
-/* 전체 선택자 */
-*{
-    box-sizing: border-box; /* 각 구역의 사이즈를 테두리까지 한다.*/
-    margin: 0; padding: 0; /* 기본값 여백 제거 */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nanum Gothic', sans-serif;
+  box-sizing: border-box;
 }
-li{ list-style-type: none;} /* 글머리 제거 */
+li {
+  list-style-type: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+/* 전체 선택자 */
+* {
+  box-sizing: border-box; /* 각 구역의 사이즈를 테두리까지 한다.*/
+  margin: 0;
+  padding: 0; /* 기본값 여백 제거 */
+}
+li {
+  list-style-type: none;
+} /* 글머리 제거 */
 /* 링크 마크업의 색상과 밑줄 제거*/
-a{ color: black; text-decoration: none;}
+a {
+  color: black;
+  text-decoration: none;
+}
 
 /* 전체 구역 */
-#wrap{
-    display: flex; /* 하위 요소 가로 배치 */
+#wrap {
+  display: flex; /* 하위 요소 가로 배치 */
 }
 
-#container{ /*관리자 페이지 본문 꼭 모두 컴포넌트 시작할때 사용.*/
-    padding: 100px 50px;
+#container {
+  /*관리자 페이지 본문 꼭 모두 컴포넌트 시작할때 사용.*/
+  padding: 100px 50px;
 }
 
-#wrap > .MuiBox-root{ /* 헤더  css */
-    position: fixed;     top: 0px;
-    width: 100%;
-    
-   
+#wrap > .MuiBox-root {
+  /* 헤더  css */
+  position: fixed;
+  top: 0px;
+  width: 100%;
 }
-#wrap > .MuiList-root{ /* 사이드바 css */
-    background-color: #004aad;
-    color: white;
-    margin-top: 64px;
-    height: 100vh;
+#wrap > .MuiList-root {
+  /* 사이드바 css */
+  background-color: #004aad;
+  color: white;
+  margin-top: 64px;
+  height: 100vh;
 }
-#wrap .MuiListItemText-root > .MuiTypography-root{
-    font-size: 25px;
-}
-
-#wrap .MuiToolbar-root > .MuiTypography-root > a{
-    font-size: 30px;
-    color: white;
-}
-#wrap .MuiToolbar-root > .MuiButtonBase-root > a{
-    font-size: 30px;
-    color: white;
-} 
-
-#wrap > .MuiBox-root > .MuiPaper-root{
-    background-color: #004aad !important;
+#wrap .MuiListItemText-root > .MuiTypography-root {
+  font-size: 25px;
 }
 
-#wrap .test{
-    background-color: #f1f1f1;
-    color: #3d3d3d;
-    font-size: 10px !important;
+#wrap .MuiToolbar-root > .MuiTypography-root > a {
+  font-size: 30px;
+  color: white;
+}
+#wrap .MuiToolbar-root > .MuiButtonBase-root > a {
+  font-size: 20px;
+  color: white;
 }
 
-#wrap .MuiListItemText-root > .MuiTypography-root > .test2 > span{
-    font-size: 10px !important;
+#wrap > .MuiBox-root > .MuiPaper-root {
+  background-color: #004aad !important;
 }
 
-#wrap .logo{
-    width: 200px;
-    height: 200px;
-    position: fixed;   /* 고정 위치 설정 */
-    bottom: 0px;
-    left: 40px;        /* 화면 왼쪽에서 20px */
-    z-index: 1000;     /* 드롭다운보다 위에 위치하도록 z-index 설정 */
-    
-  
-   
+#wrap .test {
+  background-color: #f1f1f1;
+  color: #3d3d3d;
+  font-size: 10px !important;
+}
+
+#wrap .MuiListItemText-root > .MuiTypography-root > .test2 > span {
+  font-size: 10px !important;
+}
+
+#wrap .logo {
+  width: 200px;
+  height: 200px;
+  position: fixed; /* 고정 위치 설정 */
+  bottom: 0px;
+  left: 40px; /* 화면 왼쪽에서 20px */
+  z-index: 1000; /* 드롭다운보다 위에 위치하도록 z-index 설정 */
 }

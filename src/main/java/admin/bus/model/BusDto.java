@@ -13,5 +13,6 @@ public class BusDto {
     private String driver;
     private String binum;
     private int btid;
+    private String btname;
 
 }

@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/businfo")
+@RequestMapping("/bus/businfo")
+@CrossOrigin("http://localhost:5173")
 public class BusController {
     @Autowired
     private BusService busService;
