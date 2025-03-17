@@ -13,6 +13,7 @@ export default function Seat() {
     const [count, setCount] = useState(0);
     const { biid } = useParams();
     const  navigate  = useNavigate();
+    const groupedSeats = groupSeats();
     
     useEffect(() => {
         onGet();
@@ -58,7 +59,7 @@ export default function Seat() {
         return rows;
     };
 
-    const groupedSeats = groupSeats();
+  
 
     useEffect(() => {
         console.log(seatId);
