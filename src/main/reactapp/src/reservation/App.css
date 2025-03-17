@@ -16,6 +16,8 @@ a{color: black; text-decoration: none;}
 }
 .realcontent{
   padding-bottom: 50px;
+  height: 1020px;
+  max-height: 1020px;
 }
 .tit{
   padding: 30px 0px;
@@ -63,7 +65,7 @@ a{color: black; text-decoration: none;}
 
 .mainbtn{
   text-align: center;
-  margin: 300px 0px;
+  margin: 100px 0px;
   padding: 0px 150px;
   display: flex;
   justify-content: space-evenly;
