@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import './timetable/timetable.css';
 export default function TypeRead(props) {
   useEffect(() => {
     onRead();
@@ -14,7 +14,9 @@ export default function TypeRead(props) {
   return (
     <>
       <div id="container">
-        <h3>BUS TYPE</h3>
+      <h1>BUS TYPE</h1>
+        <div className='pickContent'>
+        
         <table>
           <thead>
             <tr>
@@ -25,7 +27,7 @@ export default function TypeRead(props) {
           <tbody>
             {types.map((type, index) => {
               return (
-                <tr>
+                <tr className='bodyTr'>
                   <td>{type.btid}</td>
                   <td>{type.btname}</td>
                   <td>+{type.btprice}</td>
@@ -34,6 +36,7 @@ export default function TypeRead(props) {
             })}
           </tbody>
         </table>
+        </div>
       </div>
     </>
   );

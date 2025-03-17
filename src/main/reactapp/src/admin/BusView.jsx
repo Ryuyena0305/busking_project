@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
+import './timetable/timetable.css';
 export default function BusView(props) {
   const [searchParams] = useSearchParams();
   const biid = searchParams.get('biid');
@@ -35,12 +36,18 @@ export default function BusView(props) {
     <>
       {buses && (
         <div id="container">
-          <h3>BUS 상세정보</h3>
-          <p>버스기사 : {buses.driver}</p>
-          <p>버스번호 : {buses.binum}</p>
-          <p>버스등급 : {buses.btname}</p>
-          <button onClick={() => handleEditClick(buses.biid)}>수정</button>
+          <h1>BUS 상세정보</h1>
+          <div className="vContent">
+          <div className='subTit'>버스기사 </div> 
+          <input type="text" className='subCont' value={buses.driver} disabled/>
+          <div className='subTit'>버스차량번호 </div> 
+          <input type="text" className='subCont' value={buses.binum} disabled/>
+          <div className='subTit'>버스등급 </div> 
+          <input type="text" className='subCont' value={buses.btname} disabled/> <br />
+          <hr />
+          <button onClick={() => handleEditClick(buses.biid)}>수정</button> <br />
           <button onClick={onDelete}>삭제</button>
+          </div>
         </div>
       )}
     </>

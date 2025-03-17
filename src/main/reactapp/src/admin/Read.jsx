@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './timetable/timetable.css';
+import {Page} from './timetable/TviewBus'
 export default function Read(props) {
   useEffect(() => {
     onRead();
@@ -13,7 +15,8 @@ export default function Read(props) {
   return (
     <>
       <div id="container">
-        <h3>BUS Infomation</h3>
+        <h1>BUS Infomation</h1>
+        <div className='pickContent'>
         <table>
           <thead>
             <tr>
@@ -28,18 +31,18 @@ export default function Read(props) {
           <tbody>
             {buses.map((bus, index) => {
               return (
-                <tr>
+                <tr className='bodyTr'>
                   <td>{bus.biid}</td>
                   <td>{bus.driver}</td>
                   <td>{bus.binum}</td>
                   <td>{bus.btname}</td>
                   <td>
-                    <Link>
+                    <Link className='link'>
                       <button>좌석보기</button>
                     </Link>
                   </td>
                   <td>
-                    <Link to={`/bus/view?biid=${bus.biid}`}>
+                    <Link to={`/bus/view?biid=${bus.biid}`} className='link'>
                       <button>상세정보</button>
                     </Link>
                   </td>
@@ -48,6 +51,8 @@ export default function Read(props) {
             })}
           </tbody>
         </table>
+        <Page />
+        </div>
       </div>
     </>
   );

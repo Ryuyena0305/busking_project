@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-
+import './timetable/timetable.css'
 export default function Update(props) {
   const [searchParams] = useSearchParams();
   const biid = searchParams.get('biid');
@@ -35,41 +35,46 @@ export default function Update(props) {
   return (
     <>
       <div id="container">
-        <h3>BUS 수정 페이지</h3>
-        <form>
-          <label>
-            버스기사 :{' '}
+        <h1>BUS 수정 페이지</h1>
+        <form className='vContent createBox'>
+        <div className='subTit'>버스기사 {' '}</div>
             <input
+              className='subCont'
               type="text"
               name="driver"
               value={busForm.driver}
               onChange={onValueChange}
             />
-          </label>{' '}
+          {' '}
           <br />
-          <label>
-            버스차량번호 :{' '}
+          <div className='subTit'>
+            버스차량번호 {' '} </div>
             <input
+            className='subCont'
               type="text"
               name="binum"
               value={busForm.binum}
               onChange={onValueChange}
             />
-          </label>{' '}
+          {' '}
           <br />
-          <label>버스등급 :</label> <br />
-          <label>
-            <input
-              type="radio"
-              name="btid"
-              value="1"
-              checked={busForm.btid === 1}
-              onChange={onValueChange}
-            />{' '}
-            일반
-          </label>
-          <label>
-            <input
+          <div className='subTit'>
+            버스등급 </div> 
+          <div className='radioBox'>
+            <div>
+              <input className='radio'
+                type="radio"
+                name="btid"
+                value="1"
+                checked={busForm.btid === 1}
+                onChange={onValueChange}
+              />{' '}
+              일반
+            </div>
+          
+          
+          <div>
+            <input className='radio'
               type="radio"
               name="btid"
               value="2"
@@ -77,9 +82,11 @@ export default function Update(props) {
               onChange={onValueChange}
             />{' '}
             우등
-          </label>
-          <label>
-            <input
+          </div>
+          
+          
+          <div>
+            <input className='radio'
               type="radio"
               name="btid"
               value="3"
@@ -87,9 +94,11 @@ export default function Update(props) {
               onChange={onValueChange}
             />{' '}
             프리미엄
-          </label>
+            </div>
+          </div>
           <br />
-          <button type="button" onClick={onUpdate}>
+          <hr />
+          <button type="button" onClick={onUpdate} className='createBtn'>
             수정
           </button>
         </form>

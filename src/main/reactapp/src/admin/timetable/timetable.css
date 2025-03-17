@@ -35,6 +35,8 @@ h1{
 .subTit{
     width: 45%;
     margin: 0 auto;
+    margin-bottom: 10px;
+    font-size: 25px;
     text-align: start;
     font-weight: bold;
 }
@@ -73,6 +75,7 @@ hr{
     border-radius: 20px;
     margin: 0 auto;
     padding: 50px 30px;
+    height: 730px;
 }
 
 .vContent > button:nth-last-child(1){
@@ -82,6 +85,33 @@ hr{
 
 
 
+/* 버스 등록*/
+.radioBox{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.radio{
+    font-size:20pt; 
+    width:20px;
+    height:20px;
+    
+}
+.radioBox > div{
+    font-size: 20px;
+}
+
+.createBox{
+    padding-top: 150px;
+}
+.createBtn{
+    margin-top: 40px !important;
+    background-color: #ff914d !important;
+    font-size: 20px;
+}
 /* mui */
 .css-10o2lyd-MuiStack-root{
     justify-content: center;
@@ -126,7 +156,7 @@ tbody > tr > td{
     border-bottom: 1px solid #d4d4d4;
 }
 
-.bodyTr:hover td, .bodyTr:hover td > button{
+.bodyTr:hover td, .bodyTr:hover td >.link > button{
     font-weight: bold;
 }
 .css-1c5o7vy-MuiPagination-ul{
@@ -140,7 +170,7 @@ tbody > tr > td{
     top: 90%;
     left: 50%;
 }
-tbody > tr > td > button{
+tbody > tr > td > .link > button{
     background-color: #ff914d;
     color: #ffff;
     border: none;
