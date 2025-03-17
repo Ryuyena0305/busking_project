@@ -1,8 +1,8 @@
 import * as React from 'react';
 import axios from 'axios';
 import './timetable.css';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
+// import { useNavigate, useSearchParams } from 'react-router-dom';
+// import { useState } from 'react';
 
 
 export default function Tview(props){

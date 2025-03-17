@@ -1,10 +1,10 @@
 import * as React from 'react';
 import axios from 'axios';
 import './timetable.css';
-import Table from '@mui/joy/Table';
+// import Table from '@mui/joy/Table';
 
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+// import Pagination from '@mui/material/Pagination';
+// import Stack from '@mui/material/Stack';
 
 {/*function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };

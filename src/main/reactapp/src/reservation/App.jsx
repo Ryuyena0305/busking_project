@@ -5,7 +5,7 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { Route, Routes, Link, useLocation } from 'react-router-dom';
 import Res from './Res.jsx';
 import AutoRes from './AutoRes.jsx';
-import admin from '../admin/App.jsx';
+//import admin from '../admin/App.jsx';
 
 import './App.css';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import axios from 'axios';
 import './timetable.css';
-import {MyTable, Page} from './ViewBus'
+//import {MyTable, Page} from './ViewBus'
 
 
 export default function TviewDate(props){
