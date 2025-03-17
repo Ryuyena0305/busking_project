@@ -10,6 +10,7 @@ export default function Seat() {
     const [seats, setSeats] = useState([]);
     const [binum, setBinum] = useState();
     const [seatId, setSeatId] = useState([]);
+    const [count, setCount] = useState(0);
     const { biid } = useParams();
     const  navigate  = useNavigate();
     
@@ -35,6 +36,12 @@ export default function Seat() {
             }
         });
     };
+
+    const onCount = () => {
+        setCount(count + 1); // 상태를 올바르게 갱신
+    };
+    console.log(count);
+    
     const onPage = (seatId) => {
         alert('{예매정보 지역,시간 좌석 2매 }예매 완료되었습니다.');
         navigate('./');
@@ -69,7 +76,8 @@ export default function Seat() {
                 </div>
         {/* 좌석 버튼 */}
                 <div className="btncontain">
-                    {groupedSeats.map((x, y) => (
+                    {groupedSeats.map((x, y) => {
+                        return(
                         <div key={y} className="seatrow" style={{ display: 'flex', justifyContent: 'space-evenly', marginBottom: '3px' }}>
                             {x && x.map((seat, y) => (
                                 
@@ -77,20 +85,21 @@ export default function Seat() {
                                     className="seatbtn"
                                     key={y}
                                     style={{
-                                        visibility: seat.bsstate == 1 ? 'visible' : 'hidden',
+                                        visibility: seat.bsstate == 1 ? 'visible' : 'hidden' ,
                                         backgroundColor: seatId.includes(seat.bsnum) ? '#69a9f973' : '', // 선택된 좌석에 색을 추가
                                         borderRadius:'5px'
                                     }}
                                 >
                                     {seat.bsstate == 1 ? (
-                                        <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="outlined">{seat.bsnum}</Button>
+                                        <Button className="statebtn" onClick={() => onChoice(seat.bsnum)  } variant="outlined">{seat.bsnum-count}</Button>
+                                    
                                     ) : (
-                                        <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="soft">X</Button>
+                                        <Button className="statebtn"  variant="soft">X</Button>
                                     )}
                                 </div>
                             ))}
-                        </div>
-                    ))}
+                        </div>)}
+                    )}
                 </div>
             </div>
             <div className="bus2">
