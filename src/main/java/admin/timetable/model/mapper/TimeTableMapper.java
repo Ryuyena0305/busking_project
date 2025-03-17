@@ -14,7 +14,11 @@ public interface TimeTableMapper {
     public boolean create(TimeTableDto timeTableDto);
 
     // 스케줄 상세 조회(겸용)
-    @Select("select * from timetable where timeid = #{timeid}")
+    @Select("select time.timeid, time.startdate, time.starttime, info.binum, info.driver, loc.dest, info.biid, loc.locid\n" +
+            "from timetable time\n" +
+            "join businfo info on time.biid = info.biid\n" +
+            "join location loc on time.locid = loc.locid\n" +
+            "where time.timeid = #{timeid}")
     public TimeTableDto view(String timeid);
 
     // 스케줄 수정
@@ -26,15 +30,27 @@ public interface TimeTableMapper {
     public boolean delete(String timeid);
 
     // (도착지별)스케줄 조회
-    @Select("select * from timetable time join businfo info on time.biid = info.biid join location loc on time.locid = loc.locid where loc.locid = #{locid}")
+    @Select("select time.timeid, time.startdate, time.starttime, info.binum, info.driver, loc.dest, info.biid, loc.locid\n" +
+            "from timetable time\n" +
+            "join businfo info on time.biid = info.biid\n" +
+            "join location loc on time.locid = loc.locid\n" +
+            "where time.locid = #{locid}")
     public List<TimeTableDto> locView(int locid);
 
     // (버스별)스케줄 조회
-    @Select("select * from timetable time join businfo info on time.biid = info.biid join location loc on time.locid = loc.locid where info.biid = #{biid}")
+    @Select("select time.timeid, time.startdate, time.starttime, info.binum, info.driver, loc.dest, info.biid, loc.locid\n" +
+            "from timetable time\n" +
+            "join businfo info on time.biid = info.biid\n" +
+            "join location loc on time.locid = loc.locid\n" +
+            "where time.biid = #{biid}")
     public List<TimeTableDto> busView(int biid);
 
     // (일자별)스케줄 조회
-    @Select("select * from timetable time join businfo info on time.biid = info.biid join location loc on time.locid = loc.locid where startdate = #{startdate}")
+    @Select("select time.timeid, time.startdate, time.starttime, info.binum, info.driver, loc.dest, info.biid, loc.locid\n" +
+            "from timetable time\n" +
+            "join businfo info on time.biid = info.biid\n" +
+            "join location loc on time.locid = loc.locid\n" +
+            "where startdate = #{startdate}")
     public List<TimeTableDto> dateView(String startdate);
 
 }

@@ -14,4 +14,7 @@ public class TimeTableDto {
     private String startdate;
     private int biid;
     private int locid;
+    private String binum;
+    private String driver;
+    private String dest;
 }
