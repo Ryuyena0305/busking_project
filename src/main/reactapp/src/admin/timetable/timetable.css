@@ -3,6 +3,8 @@
 /* *{border: 1px solid black;}*/
 li{list-style-type: none;}
 a{color: black; text-decoration: none;}
+button, input{cursor: pointer;}
+
 
 #container{ 
     padding: 100px 50px;   
@@ -16,25 +18,20 @@ h1{
 .content{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #f1f1f1;
     border-radius: 20px;
     height: 730px;
     padding: 30px;
 }
 
-.left, .right, .vContent{
-    width: 50%;
-    text-align: center;
-    padding: 50px;
-}
 
-.right{
-    margin-top: 15px;    
-}
+
 
 .subTit{
     width: 45%;
     margin: 0 auto;
+    margin-top: 10px;
     margin-bottom: 10px;
     font-size: 25px;
     text-align: start;
@@ -56,7 +53,7 @@ hr{
     margin: 0 auto;
 }
 
-.right > button, .vContent > button{
+.vContent > button{
     background-color: #ff914d;
     width: 50%;
     height: 50px;
@@ -69,16 +66,18 @@ hr{
 
 
 /* view 상세 조회 / 수정 */
+
 .vContent{
     background-color: #f1f1f1;
     width: 50%;
+    text-align: center;
     border-radius: 20px;
     margin: 0 auto;
     padding: 50px 30px;
     height: 730px;
 }
 
-.vContent > button:nth-last-child(1){
+.vContent > .vDeleteBtn{
     background-color: #004aad;
     margin-top: 10px;
 }
@@ -108,14 +107,28 @@ hr{
     padding-top: 150px;
 }
 .createBtn{
-    margin-top: 40px !important;
-    background-color: #ff914d !important;
+    margin-top: 40px;
+    background-color: #ff914d;
     font-size: 20px;
 }
+
+
 /* mui */
 .css-10o2lyd-MuiStack-root{
     justify-content: center;
 }
+/* 캘린더 배경 */
+.MuiDateCalendar-root{
+    background-color: #ffff !important;
+    border-radius: 10px !important;
+    margin-bottom: 30px !important;
+    border: 1px solid #d4d4d4;
+}
+.MuiFormControl-root{
+    width: 310px;
+    background-color: #ffff;
+}
+
 
 
 /* ㅇㅇ별 조회 */
