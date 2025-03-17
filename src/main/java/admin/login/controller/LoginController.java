@@ -1,27 +1,38 @@
 package admin.login.controller;
 
+import admin.login.model.LoginDto;
 import admin.login.service.LoginService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
-@RequestMapping("/admin/login")
+@RequestMapping("/admin")
+@RequiredArgsConstructor
 public class LoginController {
-    @Autowired
-    private LoginService loginService;
+    private final LoginService loginService;
 
-    @PostMapping("")
-    public ResponseEntity<Map<String, Boolean>> login(@RequestBody Map<String, String> request) {
-        String adpwd = request.get("adpwd");
-
-        boolean isAuthenticated = loginService.login(adpwd);
-
-        return ResponseEntity.ok(Map.of("success", isAuthenticated));
+    @PostMapping("/login")
+    public boolean login(@RequestBody LoginDto loginDto , HttpServletRequest req){
+        System.out.println("loginDto = " + loginDto + ", req = " + req);
+        LoginDto result = loginService.login(loginDto);
+        if(result == null){return false;}
+        else{
+            HttpSession session = req.getSession();
+            session.setAttribute("loginDto", result);
+            session.setMaxInactiveInterval(60 * 60);
+            return true;
+        }
+    }
+    @GetMapping("logout")
+    public boolean logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        if(session == null){return false;}
+        session.removeAttribute("loginDto");
+        return true;
     }
 }

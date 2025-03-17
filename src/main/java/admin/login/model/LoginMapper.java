@@ -5,6 +5,6 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface LoginMapper {
-    @Select("select adpwd from admin LIMIT 1")
-    String getAdminPassword();
+    @Select("select adno from admin where adpwd = #{adpwd}")
+    public LoginDto login(LoginDto loginDto);
 }
