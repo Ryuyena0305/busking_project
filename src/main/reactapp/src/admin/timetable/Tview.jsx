@@ -6,7 +6,7 @@ import './timetable.css';
 
 
 export default function Tview(props){
-/*
+
     const [ searchParams ] = useSearchParams();
     const timeid = searchParams.get('timeid');
 
@@ -98,5 +98,5 @@ export default function Tview(props){
                 </div>
         </div>
     </>)
-*/
+
 }

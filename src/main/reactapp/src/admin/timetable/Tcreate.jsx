@@ -2,16 +2,15 @@ import * as React from 'react';
 import axios from 'axios';
 import './timetable.css';
 
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
-// import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-// import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-// import { useState } from 'react';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { useState } from 'react';
 
 export default function Tcreate(props){
-    /*
     const [starttime, setStarttime] = useState('');
     const [startdate, setStartdate] = useState('');
     const [biid, setBiid] = useState('');
@@ -63,10 +62,10 @@ export default function Tcreate(props){
 
                 <div className='right'>
                     <div className='subTit'>출발일자</div>
-                    <input type="text" className='subCont' value={starttime} onChange={(e) => setStarttime(e.target.value)}/>
+                    <input type="text" className='subCont' value={startdate} onChange={(e) => setStartdate(e.target.value)}/>
 
                     <div className='subTit'>출발시간</div>
-                    <input type="text" className='subCont' value={startdate} onChange={(e) => setStartdate(e.target.value)}/>
+                    <input type="text" className='subCont' value={starttime} onChange={(e) => setStarttime(e.target.value)}/>
 
                     <div className='subTit'>차량 정보</div>
                     <input type="text" className='subCont' value={biid} onChange={(e) => setBiid(e.target.value)}/>
@@ -80,11 +79,12 @@ export default function Tcreate(props){
 
                 </div>
 
+
             </div>
 
         </div> 
     </>)
-    */
+
 }
                     {/*}
                     <div className='subTit'>차량정보</div>

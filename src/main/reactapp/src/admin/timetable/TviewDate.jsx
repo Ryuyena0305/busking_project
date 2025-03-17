@@ -1,11 +1,11 @@
 import * as React from 'react';
 import axios from 'axios';
 import './timetable.css';
-//import {MyTable, Page} from './ViewBus'
+import {MyTable, Page} from './TviewBus.jsx'
 
 
 export default function TviewDate(props){
-/*
+
     return(<>
                 <div id="container"> 
                     <h1> 일자별 조회 </h1>
@@ -22,5 +22,5 @@ export default function TviewDate(props){
                 </div>
 
     </>)
-*/
+
 }

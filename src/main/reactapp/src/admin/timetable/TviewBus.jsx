@@ -1,10 +1,10 @@
 import * as React from 'react';
 import axios from 'axios';
 import './timetable.css';
-// import Table from '@mui/joy/Table';
+import Table from '@mui/joy/Table';
 
-// import Pagination from '@mui/material/Pagination';
-// import Stack from '@mui/material/Stack';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 {/*function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
@@ -19,7 +19,7 @@ const rows = [
 ];
 */}
 
-/*
+
 function MyTable(props){
     return(<>
         <table>
@@ -79,16 +79,14 @@ function Page(props){
     return(<>
         <Stack spacing={2} className='page'>
             <Pagination count={10} shape="rounded" />
-        </Stack> https://i-ten.tistory.com/253
+        </Stack> 
     </>)
 }
 export { Page };
-*/
+
 
 
 export default function TviewBus(props){
-/*
-      
 
     return(<>
             <div id="container"> 
@@ -112,7 +110,7 @@ export default function TviewBus(props){
             </div>
     
     </>)
-*/
+
 }
 
 {/*
