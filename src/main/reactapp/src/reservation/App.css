@@ -123,7 +123,12 @@ a{color: black; text-decoration: none;}
   background-color: #ffff;
 }
 
-
+.MuiDialogActions-root{
+  display: none !important;
+}
+.css-13cnpq9-MuiPickersLayout-root{
+  background-color: none !important;
+}
 
 
 /* 기존 코드
