@@ -29,7 +29,7 @@ h1{
 }
 
 .right{
-    margin-top: 70px;    
+    margin-top: 15px;    
 }
 
 .subTit{
@@ -146,7 +146,7 @@ thead > tr > th:first-child{
     width: 10%;
 }
 thead > tr > th{
-    width: 18%;
+    width: 15%;
     height: 50px;
     background-color: #d4d4d4;
     border-bottom: 1px solid #d4d4d4;
