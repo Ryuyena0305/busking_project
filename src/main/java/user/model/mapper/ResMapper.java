@@ -12,7 +12,7 @@ public interface ResMapper {
 
     @Select("SELECT DISTINCT l.dest FROM timetable t " +
             "JOIN location l ON t.locid = l.locid " +
-            "JOIN resv r ON t.timeid = r.timeid " +
+            "Left JOIN resv r ON t.timeid = r.timeid " +
             "WHERE t.startdate = #{startdate}")
     List<String> getLocation(@Param("startdate") String startdate);
 
