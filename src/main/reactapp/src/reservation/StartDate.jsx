@@ -5,9 +5,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { Button } from '@mui/material';
-import { useNavigate, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
-
 
 export default function StartDate(props) {
     const [saveDates, setSaveDates] = useState([]);  
@@ -29,9 +28,10 @@ export default function StartDate(props) {
         return saveDates.includes(formattedDate);
     };
 
-    const handleDateSelection = () => {
+    const handleDate = () => {
         if (selectedDate) {
-            navigate('/Dest', { state: { selectedDate: selectedDate } });
+            const formattedDate = dayjs(selectedDate).format('YYYY-MM-DD');
+            navigate(`/dest?startdate=${formattedDate}`);
         } else {
             alert('날짜를 선택해주세요!');
         }
@@ -42,7 +42,7 @@ export default function StartDate(props) {
             <h1>예매 페이지</h1>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <StaticDatePicker
-                    minDate={dayjs()}
+                    minDate={dayjs()} 
                     value={selectedDate}
                     onChange={(newDate) => setSelectedDate(newDate)}  
                     shouldDisableDate={(date) => !isDateAvailable(date)} 
@@ -53,7 +53,7 @@ export default function StartDate(props) {
             <Button 
                 variant="contained" 
                 color="primary" 
-                onClick={handleDateSelection}
+                onClick={handleDate}
             >
                 다음
             </Button>
