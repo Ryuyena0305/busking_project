@@ -12,6 +12,15 @@ public class TimeTableService {
     @Autowired
     private TimeTableMapper timeTableMapper;
 
+    // 버스 정보 가져오기
+    public List<TimeTableDto> getBusInfo(){
+        return timeTableMapper.getBusInfo();
+    }
+
+    // 터미널 정보 가져오기
+    public List<TimeTableDto> getLoc(){
+        return timeTableMapper.getLoc();
+    }
 
     // 스케줄 등록
     public boolean create(TimeTableDto timeTableDto){

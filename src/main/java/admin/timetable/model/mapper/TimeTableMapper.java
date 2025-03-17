@@ -9,6 +9,15 @@ import java.util.List;
 @Mapper
 public interface TimeTableMapper {
 
+    // 버스 정보 가져오기
+    @Select("select biid, binum from businfo")
+    public List<TimeTableDto> getBusInfo();
+
+    // 터미널 정보 가져오기
+    @Select("select locid, dest from location")
+    public List<TimeTableDto> getLoc();
+
+
     // 스케줄 등록
     @Insert("insert into timetable (starttime,startdate,biid,locid) values(#{starttime},#{startdate},#{biid},#{locid})")
     public boolean create(TimeTableDto timeTableDto);

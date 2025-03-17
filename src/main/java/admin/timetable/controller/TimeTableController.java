@@ -14,6 +14,23 @@ public class TimeTableController {
     @Autowired
     private TimeTableService timeTableService;
 
+
+
+    // 버스정보 가져오기
+    @GetMapping("getbus")
+    public List<TimeTableDto> getBusInfo() {
+        System.out.println("TimeTableController.getBusInfo");
+        return timeTableService.getBusInfo();
+    }
+
+    // 터미널 정보 가져오기
+    @GetMapping("getloc")
+    public List<TimeTableDto> getLoc() {
+        System.out.println("TimeTableController.getTerminalInfo");
+        return timeTableService.getLoc();
+    }
+
+
     // 스케줄 등록
     @PostMapping
     public boolean create(@RequestBody TimeTableDto timeTableDto){
