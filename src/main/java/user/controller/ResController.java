@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/resv")
+@CrossOrigin("http://localhost:5173")
 public class ResController {
 
     @Autowired

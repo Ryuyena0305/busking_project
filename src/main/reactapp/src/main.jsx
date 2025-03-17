@@ -5,7 +5,7 @@ import Seat from './seat/seat.jsx';
 import ResvSeat from './seat/resvseat.jsx';
 import { BrowserRouter } from 'react-router-dom';
 
-const root = createRoot(document.querySelector('#root'));
+const root = createRoot(document.querySelector('#root'));  
 
 // root.render(
 //   <StrictMode>
