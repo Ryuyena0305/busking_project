@@ -1,8 +1,8 @@
 import * as React from 'react';
 import axios from 'axios';
 import './timetable.css';
-// import { useNavigate, useSearchParams } from 'react-router-dom';
-// import { useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
 
 
 export default function Tview(props){
@@ -17,9 +17,9 @@ export default function Tview(props){
     const [biid, setBiid] = useState('');
     const [locid, setLocid] = useState('');
 
-    useEffect(() => {
-        onView();
-    }, [timeid]);  
+    // useEffect(() => {
+    //     onView();
+    // }, [timeid]);  
 
     //
     const onView = async () => {
