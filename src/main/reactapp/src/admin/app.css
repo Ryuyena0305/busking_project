@@ -39,6 +39,7 @@ a {
 #container {
   /*관리자 페이지 본문 꼭 모두 컴포넌트 시작할때 사용.*/
   padding: 100px 50px;
+  width: 100%;
 }
 
 #wrap > .MuiBox-root {

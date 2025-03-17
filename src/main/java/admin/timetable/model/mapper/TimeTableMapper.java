@@ -26,15 +26,15 @@ public interface TimeTableMapper {
     public boolean delete(String timeid);
 
     // (도착지별)스케줄 조회
-    @Select("select * from timetable where locid = #{locid}")
+    @Select("select * from timetable time join businfo info on time.biid = info.biid join location loc on time.locid = loc.locid where loc.locid = #{locid}")
     public List<TimeTableDto> locView(int locid);
 
     // (버스별)스케줄 조회
-    @Select("select * from timetable where biid = #{biid}")
+    @Select("select * from timetable time join businfo info on time.biid = info.biid join location loc on time.locid = loc.locid where info.biid = #{biid}")
     public List<TimeTableDto> busView(int biid);
 
     // (일자별)스케줄 조회
-    @Select("select * from timetable where startdate = #{startdate}")
+    @Select("select * from timetable time join businfo info on time.biid = info.biid join location loc on time.locid = loc.locid where startdate = #{startdate}")
     public List<TimeTableDto> dateView(String startdate);
 
 }

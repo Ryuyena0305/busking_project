@@ -64,25 +64,25 @@ export default function SideBar(props) {
         <Collapse in={open2} timeout="auto" unmountOnExit>
           {/* 하위메뉴 1개 */}
           <List component="div" disablePadding className="test">
-            <ListItemButton sx={{ pl: 4 }}>
+            <ListItemButton component={Link} to="/tcreate" sx={{ pl: 4 }}>
               <ListItemText primary="스케줄 등록" className="test2" />
             </ListItemButton>
           </List>
 
           <List component="div" disablePadding className="test">
-            <ListItemButton sx={{ pl: 4 }}>
+            <ListItemButton component={Link} to="/tview/loc" sx={{ pl: 4 }}>
               <ListItemText primary="지역별 조회" className="test2" />
             </ListItemButton>
           </List>
 
           <List component="div" disablePadding className="test">
-            <ListItemButton sx={{ pl: 4 }}>
+            <ListItemButton  component={Link} to="/tview/bus" sx={{ pl: 4 }}>
               <ListItemText primary="버스별 조회" className="test2" />
             </ListItemButton>
           </List>
 
           <List component="div" disablePadding className="test">
-            <ListItemButton sx={{ pl: 4 }}>
+            <ListItemButton component={Link} to="/tview/date" sx={{ pl: 4 }}>
               <ListItemText primary="날짜별 조회" className="test2" />
             </ListItemButton>
           </List>
