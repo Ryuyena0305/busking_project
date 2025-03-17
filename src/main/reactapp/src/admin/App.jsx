@@ -4,6 +4,8 @@ import Home from './Home.jsx'
 import Create from './Create.jsx';
 import Read from './Read.jsx';
 import Update from './Update.jsx';
+import BusView from './BusView.jsx'
+import TypeRead from './TypeRead.jsx'
 //import Delete from './Delete.jsx';
 import SideBar from './SideBar.jsx';
 import AppBar2 from './AppBar2.jsx';
@@ -30,7 +32,8 @@ export default function App( props ){ // 컴포넌트
                     <Route path="/create" element={ <Create /> } /> {/* 각 가상의 URL 정의한다. 컴포넌트 연결 */}
                     <Route path="/read" element={ <Read /> } /> {/* 각 가상의 URL 정의한다. 컴포넌트 연결 */}
                     <Route path="/update" element={ <Update /> } /> {/* 각 가상의 URL 정의한다. 컴포넌트 연결 */}
-
+                    <Route path="/bus/view" element={<BusView />} /> 
+                    <Route path="/typeread" element={<TypeRead />} />
                     {/* timetable 스케줄 관리 */}
                     <Route path="/tcreate" element={<Tcreate/>} />
                     <Route path="/tview" element={<Tview/>} />
