@@ -71,7 +71,7 @@ public class TimeTableController {
 
 
     // (도착지별)스케줄 조회
-    @GetMapping("/loc")
+    @GetMapping("/view/loc")
     public List<TimeTableDto> locView(@RequestParam int locid){
         System.out.println("TimeTableController.locView");
         System.out.println("locid = " + locid);
@@ -80,7 +80,7 @@ public class TimeTableController {
 
 
     // (버스별)스케줄 조회
-    @GetMapping("/bus")
+    @GetMapping("/view/bus")
     public List<TimeTableDto> busView(@RequestParam int biid){
         System.out.println("TimeTableController.busView");
         System.out.println("biid = " + biid);
@@ -89,7 +89,7 @@ public class TimeTableController {
 
 
     // (일자별)스케줄 조회
-    @GetMapping("/date")
+    @GetMapping("/view/date")
     public List<TimeTableDto> dateView(@RequestParam String startdate){
         System.out.println("TimeTableController.dateView");
         System.out.println("date = " + startdate);
