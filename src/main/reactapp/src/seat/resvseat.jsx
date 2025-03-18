@@ -12,6 +12,7 @@ export default function Seat() {
     const [seatId, setSeatId] = useState([]);
     const { biid } = useParams();
     const  navigate  = useNavigate();
+  
     
     useEffect(() => {
         onGet();
@@ -44,9 +45,22 @@ export default function Seat() {
     // 좌석을 x, y 2차원 배열형태로 변환
     const groupSeats = () => {
         const rows = [];
+        let count = 0;
+        let viewbsnum=0;
+        
         seats.forEach(({ x, y, bsnum, bsstate }) => {
-            if (!rows[x]) rows[x] = [];
-            rows[x][y] = { bsnum, bsstate };
+            viewbsnum++
+            if (!rows[x]) rows[x] = []; // 행변경 
+            rows[x][y] = {viewbsnum,bsnum, bsstate }; // 좌석상태 
+
+            if( rows[x][y].bsstate == 0  ){
+                count++;
+                
+            }else{
+                rows[x][y].viewbsnum = rows[x][y].viewbsnum-count;
+                console.log(viewbsnum)
+            }
+
         });
         return rows;
     };
@@ -83,7 +97,7 @@ export default function Seat() {
                                     }}
                                 >
                                     {seat.bsstate == 1 ? (
-                                        <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="outlined">{seat.bsnum}</Button>
+                                        <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="outlined">{seat.viewbsnum}</Button>
                                     ) : (
                                         <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="soft">X</Button>
                                     )}

@@ -29,10 +29,11 @@ a{color: black; text-decoration: none;}
 }
 .subTit{
   display: flex;
-  justify-content: space-between;
+  justify-content:center;
   align-items: center;
   padding: 20px 150px;
   background-color: #004aad;
+  gap: 30px;
 }
 .left{
   display: flex;
@@ -66,9 +67,11 @@ a{color: black; text-decoration: none;}
 .mainbtn{
   text-align: center;
   margin: 100px 0px;
-  padding: 0px 150px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap:20px;
+  width: 100%;
+ 
 }
 
 .nomal, .auto{
@@ -99,8 +102,8 @@ a{color: black; text-decoration: none;}
 .lang{
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  padding: 0px 300px;
+  justify-content: center;
+  gap: 20px;
 }
 
 .lang > button:first-child{ /* 선택한 언어 표시 (추후 변경 필요) */
