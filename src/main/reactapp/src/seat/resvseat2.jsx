@@ -39,7 +39,7 @@ export default function Seat() {
             }
         });
     };
-    console.log(count);
+    
     
     const onPage = (seatId) => {
         alert('{예매정보 지역,시간 좌석 2매 }예매 완료되었습니다.');
@@ -57,6 +57,8 @@ export default function Seat() {
             if(bsstate==0 ){
                 
                //setCount( count+1);
+               //setCount(prevCount => prevCount + 1);
+
             }else{
                 viewbsnum = bsnum-count;
             }
@@ -65,6 +67,7 @@ export default function Seat() {
         return rows;
     };
     const groupedSeats = groupSeats();
+    
   
 
     useEffect(() => {
