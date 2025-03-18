@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 
 
 
-function MyTable(props){
+export function MyTable(props){
     return(<>
         <table>
             <thead>
@@ -21,22 +21,19 @@ function MyTable(props){
                     <td>1</td><td>2020.02.20</td><td>06:00</td><td>39서2934</td><td>전은서</td><td>부산</td>
                     <td><Link className='link'><button type='button'>상세조회</button></Link></td>
                 </tr>
-
-                
             </tbody>
         </table>
     </>)
 }
-export { MyTable };
 
-function Page(props){
+export function Page(props){
     return(<>
         <Stack spacing={2} className='page'>
             <Pagination count={10} shape="rounded" />
         </Stack> 
     </>)
 }
-export { Page };
+
 
 
 

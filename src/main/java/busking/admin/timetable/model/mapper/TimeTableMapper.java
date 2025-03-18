@@ -9,11 +9,11 @@ import java.util.List;
 public interface TimeTableMapper {
 
     // 버스 정보 가져오기
-    @Select("select biid, binum from businfo")
+    @Select("select biid, binum from businfo order by binum")
     public List<TimeTableDto> getBusInfo();
 
     // 터미널 정보 가져오기
-    @Select("select locid, dest from location")
+    @Select("select locid, dest from location order by dest")
     public List<TimeTableDto> getLoc();
 
 

@@ -11,21 +11,21 @@ export default function Tview(props){
     const timeid = searchParams.get('timeid');
 
     const navigate = useNavigate(); 
-    const [time, setTime] = useState('');
+    const [times, setTimes] = useState('');
     const [starttime, setStarttime] = useState('');
     const [startdate, setStartdate] = useState('');
     const [biid, setBiid] = useState('');
     const [locid, setLocid] = useState('');
 
-    // useEffect(() => {
-    //     onView();
-    // }, [timeid]);  
+    useEffect(() => {
+        onView();
+    }, [timeid]);  
 
-    //
+
     const onView = async () => {
         try{
             const response = await axios.get(`http://localhost:8080/timetable/view?timeid=${timeid}`);
-            setTime(response.data);
+            setTimes(response.data);
         }catch(error){
             console.log(error);
         }
@@ -79,6 +79,7 @@ export default function Tview(props){
         <div id="container">
                 <h1>스케줄 상세 조회</h1>
                 <div className="vContent">
+
                     <div className='subTit'>출발일자</div>
                     <input type="text" className='subCont'  value={startdate} onChange={(e) => setStartdate(e.target.value)}/>
 

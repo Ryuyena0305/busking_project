@@ -37,6 +37,7 @@ export default function Tcreate(props){
             console.log(error);
         }
     } // getData end
+    
 
 
     // select에서 사용할 터미널 정보 가져오기
@@ -65,7 +66,10 @@ export default function Tcreate(props){
             console.log(response.data);
             if(response.data == true){
                 alert('스케줄 등록 성공')
-                console.log('dd');
+                setStarttime('');
+                setStartdate('');
+                setBiid('');
+                setLocid('');
             }else{
                 alert('스케줄 등록 실패');
             }
