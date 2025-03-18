@@ -6,6 +6,7 @@ import StartDate from './StartDate.jsx';
 import AutoRes from './AutoRes.jsx';
 import Dest from './Dest.jsx'
 import Main from './Main.jsx';
+import Time from "./Time.jsx";
 
 import './App.css';
 
@@ -45,8 +46,9 @@ export default function App(props) {
             <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/AutoRes" element={<AutoRes />} />
-                <Route path="/Dest" element={<Dest />} />
-                <Route path="/StartDate/*" element={<StartDate />} /> 
+                <Route path="/StartDate/*" element={<StartDate />} />
+                <Route path="/dest" element={<Dest />} />
+                <Route path="/time" element={<Time />} /> 
             </Routes>
         </div>
     );

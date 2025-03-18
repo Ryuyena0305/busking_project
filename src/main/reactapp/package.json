@@ -24,6 +24,7 @@
     "@mui/x-date-pickers": "^7.27.3",
     "axios": "^1.8.3",
     "dayjs": "^1.11.13",
+    "query-string": "^9.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.3.0",
