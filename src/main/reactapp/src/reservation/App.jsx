@@ -7,7 +7,7 @@ import AutoRes from './AutoRes.jsx';
 import Dest from './Dest.jsx'
 import Main from './Main.jsx';
 import Time from "./Time.jsx";
-
+import Person from "./Person.jsx";
 import './App.css';
 
 export default function App(props) {
@@ -49,6 +49,7 @@ export default function App(props) {
                 <Route path="/StartDate/*" element={<StartDate />} />
                 <Route path="/dest" element={<Dest />} />
                 <Route path="/time" element={<Time />} /> 
+                <Route path="/person" element={<Person />} />  
             </Routes>
         </div>
     );

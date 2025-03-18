@@ -29,7 +29,7 @@ public class ResController {
     public List<String> getStartTime(@RequestParam("startdate") String startdate, @RequestParam("dest") String dest) {
         return resService.getStartTime(startdate, dest);
     }
-    @GetMapping("/busking/seat")
+    @GetMapping("/seat")
     public List<String> getSeat(@RequestParam("startdate") String startdate, @RequestParam("dest") String dest, @RequestParam("starttime") String starttime) {
         return resService.getSeat(startdate, dest, starttime);
     }
