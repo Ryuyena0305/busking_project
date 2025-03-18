@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
+import GetBusData from './Timetable';
+
 
 
 export function MyTable(props){
@@ -48,14 +50,7 @@ export default function TviewBus(props){
                 <h1> 버스별 조회 </h1>
                 <div className='pickContent'>
                     <div className='pickTop'>
-                        <div className='pickTit'>차량정보</div>
-                        <select className='pickList'>
-                            <option>선택</option>
-                            <option value="">00아 0000</option>
-                            <option value="">00서 0000</option>
-                            <option value="">00아 0000</option>
-                            <option value="">00서 0000</option>
-                        </select>
+                    <GetBusData />
                     </div>
                     <MyTable/>
                     <Page/>
