@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/busking/admin")
+@CrossOrigin("http://localhost:5173")
 @RequiredArgsConstructor
 public class LoginController {
     private final LoginService loginService;
@@ -25,11 +26,18 @@ public class LoginController {
             return true;
         }
     }
-    @GetMapping("logout")
+    @GetMapping("/logout")
     public boolean logout(HttpServletRequest request){
         HttpSession session = request.getSession();
         if(session == null){return false;}
         session.removeAttribute("loginDto");
         return true;
+    }
+    @GetMapping("/info")
+    public boolean info( HttpServletRequest request ){
+        HttpSession session = request.getSession();// 1. 세션호출
+        Object object = session.getAttribute("loginDto"); // 3. 로그인 성공시 저장한 loginDto 의 로그인정보를 꺼낸다.
+        if( object == null){return false;} // 2. 만약에 세션이 존재하지 않으면 null 반환
+        return true; // 5. 로그인된 정보 반환
     }
 }
