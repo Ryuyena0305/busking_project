@@ -95,7 +95,7 @@ export default function Seat() {
                                         backgroundColor: seatId.includes(seat.bsnum) ? '#69a9f973' : '', // 선택된 좌석에 색을 추가
                                         borderRadius:'5px'
                                     }}
-                                >
+                                    >
                                     {seat.bsstate == 1 ? (
                                         <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="outlined">{seat.viewbsnum}</Button>
                                     ) : (
