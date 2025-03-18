@@ -7,8 +7,7 @@ import { useEffect } from 'react';
 
 import dayjs from 'dayjs';
 
-import GetBusData from './Timetable';
-import GetLocData from './Timetable';
+import GetBusData, { GetLocData } from './Timetable';
 
 
 
