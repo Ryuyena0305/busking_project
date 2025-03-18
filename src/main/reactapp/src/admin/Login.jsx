@@ -1,32 +1,47 @@
 import { useState } from "react";
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import './timetable/timetable.css';
-import './app.css';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./login.css";
+
 export default function Login() {
     // 입력받은 값들을 저장하는 state 변수 선언
     const [loginInfo, setLoginInfo] = useState({ adpwd: "" });
+    const [capsLockOn, setCapsLockOn] = useState(false); // Caps Lock 감지 상태
+    const [showPassword, setShowPassword] = useState(false); // 비밀번호 표시 상태
+
+    const navigate = useNavigate();
 
     // 입력값 변경 시 state 업데이트
     const onInputChange = (event) => {
         setLoginInfo({ ...loginInfo, [event.target.name]: event.target.value });
     };
 
-    const navigate = useNavigate();
+    // Caps Lock 감지 함수
+    const checkCapsLock = (event) => {
+        if (event.getModifierState("CapsLock")) {
+            setCapsLockOn(true);
+        } else {
+            setCapsLockOn(false);
+        }
+    };
+
+    // 로그인 처리 함수
     const onLogin = async () => {
         try {
-            
             const requestData = {
-                adpwd: loginInfo.adpwd
+                adpwd: loginInfo.adpwd,
             };
-            const response = await axios.post("http://localhost:8080/busking/admin/login", requestData, {withCredentials: true});
+            const response = await axios.post(
+                "http://localhost:8080/busking/admin/login",
+                requestData,
+                { withCredentials: true }
+            );
             const result = response.data;
-            if (result) { 
-                alert('로그인 성공');
-                // navigate('/home');
-                location.href = '/' 
+            if (result) {
+                alert("로그인 성공");
+                location.href = "/";
             } else {
-                alert('로그인 실패: 비밀번호를 확인하세요.');
+                alert("로그인 실패: 비밀번호를 확인하세요.");
             }
         } catch (error) {
             console.error("로그인 요청 중 오류 발생", error);
@@ -35,12 +50,34 @@ export default function Login() {
     };
 
     return (
-        <div id="container"> 
-            <form className='vContent createBox'>
-            <h1> 로그인 페이지 </h1>
-            <div className='subTit'>비밀번호</div> <input type="password" className='subCont' name="adpwd" value={loginInfo.adpwd} onChange={onInputChange} /> 
-                <br/>
-                <button type="button" onClick={onLogin} className='createBtn'> 로그인 </button>
+        <div className="content2">
+            <form className="loginBox">
+                <h2 className="title"> Admin </h2>
+                <div className="pwd">비밀번호</div>
+                <input
+                    type={showPassword ? "text" : "password"}
+                    className="pwdBox"
+                    name="adpwd"
+                    value={loginInfo.adpwd}
+                    onChange={onInputChange}
+                    onKeyDown={checkCapsLock} // Caps Lock 감지 이벤트 추가
+                />
+                {capsLockOn && <div className="caps-warning">⚠ Caps Lock이 켜져 있습니다.</div>}
+                
+                {/* 비밀번호 표시 기능 */}
+                <div className="show-password">
+                    <input
+                        type="checkbox"
+                        id="showPassword"
+                        checked={showPassword}
+                        onChange={() => setShowPassword(!showPassword)}
+                    />
+                    <label htmlFor="showPassword">비밀번호 표시</label>
+                </div>
+
+                <button type="button" onClick={onLogin} className="loginBtn">
+                    로그인
+                </button>
             </form>
         </div>
     );

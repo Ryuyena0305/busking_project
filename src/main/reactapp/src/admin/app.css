@@ -90,3 +90,14 @@ a {
   left: 40px; /* 화면 왼쪽에서 20px */
   z-index: 1000; /* 드롭다운보다 위에 위치하도록 z-index 설정 */
 }
+.logoutBtn{
+    width: 100%;
+    padding: 12px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}

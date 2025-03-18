@@ -1,0 +1,51 @@
+.content2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f1f1f1;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+.title {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.pwd {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #666;
+    text-align: left;
+}
+
+.pwdBox {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.loginBtn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.loginBtn:hover {
+    background-color: #0056b3;
+}
+.caps-warning, .show-password{
+    margin-top: 10px;
+}
