@@ -5,7 +5,6 @@ li{list-style-type: none;}
 a{color: black; text-decoration: none;}
 button, input{cursor: pointer;}
 
-
 #container{ 
     padding: 100px 50px;   
 }
@@ -25,9 +24,6 @@ h1{
     padding: 30px;
 }
 
-
-
-
 .subTit{
     width: 45%;
     margin: 0 auto;
@@ -38,6 +34,14 @@ h1{
     font-weight: bold;
 }
 
+.viewTit{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px 20px;
+    padding-top:15px;
+    
+}
+
 .subCont{
     width: 50%;
     height: 40px;
@@ -45,6 +49,17 @@ h1{
     padding: 10px;
     border: 1px solid gray;
     border-radius: 5px;
+    font-size: 16px;
+}
+.timeSubCont{
+    margin-bottom: 30px;
+}
+.viewSelect{
+    width: 10%;
+    font-size: 17px;
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+    border-radius: 7px;
 }
 
 hr{
@@ -117,17 +132,6 @@ hr{
 .css-10o2lyd-MuiStack-root{
     justify-content: center;
 }
-/* 캘린더 배경 */
-.MuiDateCalendar-root{
-    background-color: #ffff !important;
-    border-radius: 10px !important;
-    margin-bottom: 30px !important;
-    border: 1px solid #d4d4d4;
-}
-.MuiFormControl-root{
-    width: 310px;
-    background-color: #ffff;
-}
 
 
 
@@ -138,11 +142,18 @@ hr{
     height: 730px;
     padding: 30px;
 }
-.pickTop{
+.pickTop, .viewTop{
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
 }
+.viewFind{
+    margin: 0px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
 .pickTit{
     font-weight: bold;
     font-size: 20px;
@@ -151,9 +162,15 @@ hr{
 table{
     text-align: center;
     width: 100%;
+    /*height: 550px;*/
+    /*min-height: 550px;*/
     border-radius: 20px;
     background-color: #ffff;
     padding: 30px;
+}
+thead{
+    width: 100%;
+    position: sticky;
 }
 thead > tr > th:first-child{
     width: 10%;
@@ -164,8 +181,13 @@ thead > tr > th{
     background-color: #d4d4d4;
     border-bottom: 1px solid #d4d4d4;
 }
+.bodyTr{
+    max-height: 45px;
+    width: 100%;
+}
+
 tbody > tr > td{
-    height: 45px;
+    height: 45px !important;
     border-bottom: 1px solid #d4d4d4;
 }
 
