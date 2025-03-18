@@ -83,7 +83,7 @@ export default function SideBar(props) {
 
           <List component="div" disablePadding className="test">
             <ListItemButton component={Link} to="/tview/date" sx={{ pl: 4 }}>
-              <ListItemText primary="날짜별 조회" className="test2" />
+              <ListItemText primary="일자별 조회" className="test2" />
             </ListItemButton>
           </List>
         </Collapse>
