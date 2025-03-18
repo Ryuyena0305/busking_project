@@ -7,14 +7,18 @@ import { useEffect } from 'react';
 
 import dayjs from 'dayjs';
 
+import GetBusData from './Timetable';
+
+
+
 export default function Tcreate(props){
     const [starttime, setStarttime] = useState('');
     const [startdate, setStartdate] = useState('');
     const [biid, setBiid] = useState('');
     const [locid, setLocid] = useState('');
 
+
     const [selectLocs, setSelectLocs] = useState([]);
-    const [selectBuss, setSelectBuss] = useState([]);
 
     // 지난 날짜, 지난 시간(수정 필요)
     const today = dayjs().format("YYYY-MM-DD");
@@ -22,21 +26,13 @@ export default function Tcreate(props){
     const minTime  = startdate === today ? nowTime : "";
 
     useEffect(() => {
-        getBus();
+        //getBus();
         getLoc();
     }, [])
 
 
     // select에서 사용할 차량정보 가져오기
-    const getBus = async () => {
-        try{
-            const response = await axios.get(`http://localhost:8080/timetable/getbus`)
-            console.log(response.data);
-            setSelectBuss(response.data);
-        }catch(error) {
-            console.log(error);
-        }
-    } // getData end
+
     
 
 
@@ -94,17 +90,7 @@ export default function Tcreate(props){
                     <input type="time" min={minTime} className='subCont' value={starttime} onChange={(e) => setStarttime(e.target.value)}/>
 
                     
-                    <div className='subTit'>차량 정보</div>
-                    <select className='subCont' value={biid} onChange={(e) => setBiid(e.target.value)}>
-                        <option>선택</option>
-                    {
-                        selectBuss.map((selectBus, index) => {
-                            return(
-                                    <option key={index} value={`${selectBus.biid}`}>{selectBus.binum}</option>
-                            )
-                        })
-                    }
-                    </select>
+                    <GetBusData />
                     <div className='subTit'>터미널 정보</div>
                     <select className='subCont' value={locid} onChange={(e) => setLocid(e.target.value)}>
                         <option>선택</option>
