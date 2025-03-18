@@ -4,7 +4,7 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { Route, Routes, Link, useLocation } from 'react-router-dom';
 import StartDate from './StartDate.jsx';
 import AutoRes from './AutoRes.jsx';
-import Dest from './Dest.jsx'
+import Dest from './Dest.jsx';
 import Main from './Main.jsx';
 import Time from "./Time.jsx";
 import Person from "./Person.jsx";
