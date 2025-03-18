@@ -88,10 +88,7 @@ insert into location (dest,locprice) values('강릉','36000');
 insert into location (dest,locprice) values('대구','41000');
 insert into location (dest,locprice) values('대전','18000');
 insert into location (dest,locprice) values('전주','24100');
-insert into location (dest,locprice) values('수원','6100');
-insert into location (dest,locprice) values('당진','5000');
-insert into location (dest,locprice) values('포항','37800');
-insert into location (dest,locprice) values('용인','6200');
+
 
 select * from location;
 
