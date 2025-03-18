@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
-import GetBusData from './Timetable';
+import GetBusData, { GetLocData } from './Timetable';
 
 
 
@@ -51,6 +51,7 @@ export default function TviewBus(props){
                 <div className='pickContent'>
                     <div className='pickTop'>
                     <GetBusData />
+                    <GetLocData />
                     </div>
                     <MyTable/>
                     <Page/>

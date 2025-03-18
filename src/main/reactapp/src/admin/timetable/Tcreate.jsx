@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import dayjs from 'dayjs';
 
 import GetBusData from './Timetable';
+import GetLocData from './Timetable';
 
 
 
@@ -18,36 +19,12 @@ export default function Tcreate(props){
     const [locid, setLocid] = useState('');
 
 
-    const [selectLocs, setSelectLocs] = useState([]);
-
     // 지난 날짜, 지난 시간(수정 필요)
     const today = dayjs().format("YYYY-MM-DD");
     const nowTime = dayjs().format("HH:mm");
     const minTime  = startdate === today ? nowTime : "";
 
-    useEffect(() => {
-        //getBus();
-        getLoc();
-    }, [])
 
-
-    // select에서 사용할 차량정보 가져오기
-
-    
-
-
-    // select에서 사용할 터미널 정보 가져오기
-    const getLoc = async () => {
-        try{
-            const response = await axios.get(`http://localhost:8080/timetable/getloc`)
-            console.log(response.data);
-            setSelectLocs(response.data);
-        }catch(error){
-            console.log(error);
-        }
-    } // getLoc end
-
-    
 
     // 등록버튼 클릭시 실행
     const handleCreate = async () => {
@@ -74,9 +51,6 @@ export default function Tcreate(props){
         }
     } // handleCreate end
 
-    
-        
-
 
 
     return(<> 
@@ -89,19 +63,9 @@ export default function Tcreate(props){
                     <div className='subTit'>출발시간</div>
                     <input type="time" min={minTime} className='subCont' value={starttime} onChange={(e) => setStarttime(e.target.value)}/>
 
-                    
                     <GetBusData />
-                    <div className='subTit'>터미널 정보</div>
-                    <select className='subCont' value={locid} onChange={(e) => setLocid(e.target.value)}>
-                        <option>선택</option>
-                    {
-                        selectLocs.map((selectLoc, index) => {
-                            return(
-                                    <option key={index} value={`${selectLoc.locid}`}>{selectLoc.dest}</option>
-                            )
-                        })
-                    }
-                    </select>
+                    <GetLocData />
+
                     <hr/>
                     <button type='button' onClick={handleCreate} className='createBtn'>등록</button>
 

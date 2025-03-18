@@ -22,7 +22,7 @@ import { useEffect } from 'react';
 //     }
 // } // getData end
 
-
+// select에서 사용할 차량정보 가져오기
 export default function GetBusData(props){
     const [biid, setBiid] = useState('');
     const [selectBuss, setSelectBuss] = useState([]);
@@ -52,5 +52,40 @@ export default function GetBusData(props){
             })
         }
         </select>
+    </>)
+}
+
+
+// select에서 사용할 터미널 정보 가져오기
+export function GetLocData(props){
+    const [locid, setLocid] = useState('');
+    const [selectLocs, setSelectLocs] = useState([]);
+
+    const getLoc = async () => {
+        try{
+            const response = await axios.get(`http://localhost:8080/timetable/getloc`)
+            console.log(response.data);
+            setSelectLocs(response.data);
+        }catch(error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getLoc();
+    }, [])
+
+    return(<>
+        <div className='subTit'>터미널 정보</div>
+            <select className='subCont' value={locid} onChange={(e) => setLocid(e.target.value)}>
+                <option>선택</option>
+            {
+                selectLocs.map((selectLoc, index) => {
+                    return(
+                            <option key={index} value={`${selectLoc.locid}`}>{selectLoc.dest}</option>
+                    )
+                })
+            }
+            </select>
     </>)
 }
