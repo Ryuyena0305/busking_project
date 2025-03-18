@@ -6,14 +6,14 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 // select에서 사용할 차량정보 가져오기
-export default function GetBusData(props){
+export default function GetBusData({findBiid}){
     const [biid, setBiid] = useState('');
     const [selectBuss, setSelectBuss] = useState([]);
 
     const getBus = async () => {
         try{
             const response = await axios.get(`http://localhost:8080/timetable/getbus`)
-            console.log(response.data);
+            //console.log(response.data);
             setSelectBuss(response.data);
         }catch(error) {
             console.log(error);
@@ -22,11 +22,24 @@ export default function GetBusData(props){
 
     useEffect(() => {
         getBus();
-    }, [])
+    }, []);
+
+    // biid가 변경될 때마다 biid를 GetBusData에 전달
+    useEffect(() => {
+       if (biid) {
+            findBiid(biid);
+        }
+    }, [biid, findBiid]);
+
+    const onReset = () => {
+        
+    }
+
+
     return(<>
-        <div className='subTit'>차량 정보</div>
-        <select className='subCont' value={biid} onChange={(e) => setBiid(e.target.value)}>
-            <option>선택</option>
+        <div className='viewFind'>차량 정보</div>
+        <select className='viewSelect' value={biid} onChange={(e) => setBiid(e.target.value)}>
+            <option value="">선택</option>
         {
             selectBuss.map((selectBus, index) => {
                 return(
@@ -40,7 +53,7 @@ export default function GetBusData(props){
 
 
 // select에서 사용할 터미널 정보 가져오기
-export function GetLocData(props){
+export function GetLocData({findLocid}){
     const [locid, setLocid] = useState('');
     const [selectLocs, setSelectLocs] = useState([]);
 
@@ -58,10 +71,17 @@ export function GetLocData(props){
         getLoc();
     }, [])
 
+    // Locid가 변경될 때마다 biid를 GetBusData에 전달
+    useEffect(() => {
+        if (locid) {
+                findLocid(locid);
+            }
+        }, [locid, findLocid]);
+
     return(<>
-        <div className='subTit'>터미널 정보</div>
-            <select className='subCont' value={locid} onChange={(e) => setLocid(e.target.value)}>
-                <option>선택</option>
+        <div className='viewFind'>터미널 정보</div>
+            <select className='viewSelect' value={locid} onChange={(e) => setLocid(e.target.value)}>
+                <option value="">선택</option>
             {
                 selectLocs.map((selectLoc, index) => {
                     return(
