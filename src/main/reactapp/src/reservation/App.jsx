@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  import Dest from './Dest.jsx'
  import Main from './Main.jsx';
  import Time from "./Time.jsx";
- import Seat from '../seat/resvseat.jsx';
- 
+ import Seat from "./Seat.jsx";
+
  import Person from "./Person.jsx";
  import './App.css';
  
@@ -53,7 +53,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
                  <Route path="/dest" element={<Dest />} />
                  <Route path="/time" element={<Time />} /> 
                  <Route path="/person" element={<Person />} />  
-                 <Route path="/Seat" element ={<Seat/>} />
+                 <Route path="/seat" element={<Seat />} />
              </Routes>
          </div>
      )};
