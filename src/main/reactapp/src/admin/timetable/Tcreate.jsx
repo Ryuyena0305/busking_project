@@ -12,17 +12,29 @@ import GetBusData, { GetLocData } from './Timetable';
 
 
 export default function Tcreate(props){
-    const [starttime, setStarttime] = useState('');
-    const [startdate, setStartdate] = useState('');
+    const defaultDate = new Date().toISOString().split("T")[0];
+    const defaultTime = new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit", hour12: false });
+
+    const [starttime, setStarttime] = useState(defaultTime);
+    const [startdate, setStartdate] = useState(defaultDate);
     const [biid, setBiid] = useState('');
     const [locid, setLocid] = useState('');
 
-
-    // 지난 날짜, 지난 시간(수정 필요)
+    // 지난 날짜, 지난 시간(수정 필요) 선택 불가
     const today = dayjs().format("YYYY-MM-DD");
     const nowTime = dayjs().format("HH:mm");
     const minTime  = startdate === today ? nowTime : "";
 
+    const defaultSelectDate = () => {}
+    const defaultSelectTime = () => {}
+
+    useEffect( () => {
+        defaultSelectDate();
+    },defaultDate)
+
+    useEffect( () => {
+        defaultSelectTime();
+    }, defaultTime)
 
 
     // 등록버튼 클릭시 실행

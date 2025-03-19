@@ -38,7 +38,7 @@ export default function GetBusData({findBiid}){
 
     return(<>
         <div className='viewFind'>차량 정보</div>
-        <select className='viewSelect' value={biid} onChange={(e) => setBiid(e.target.value)}>
+        <select className='subCont' value={biid} onChange={(e) => setBiid(e.target.value)}>
             <option value="">선택</option>
         {
             selectBuss.map((selectBus, index) => {
@@ -80,7 +80,7 @@ export function GetLocData({findLocid}){
 
     return(<>
         <div className='viewFind'>터미널 정보</div>
-            <select className='viewSelect' value={locid} onChange={(e) => setLocid(e.target.value)}>
+            <select className='subCont' value={locid} onChange={(e) => setLocid(e.target.value)}>
                 <option value="">선택</option>
             {
                 selectLocs.map((selectLoc, index) => {

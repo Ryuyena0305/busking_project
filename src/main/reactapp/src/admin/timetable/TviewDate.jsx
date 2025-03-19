@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 
 
 export default function TviewDate(props){
-    const today = new Date().toISOString().split("T")[0];
-    const [startDate, setStartDate] = useState([today]);
+    const defaultDay = new Date().toISOString().split("T")[0];
+    const [startDate, setStartDate] = useState([defaultDay]);
     const [getViewLists, setViewLists] = useState([])
 
 
@@ -41,7 +41,7 @@ export default function TviewDate(props){
             <div className='pickContent'>
                 <div className='viewTop'>
                     <div className='viewFind'>일자 선택</div>
-                    <input type="date" className='viewSelect' value={startDate} onChange={dateChange} />
+                    <input type="date" className='subCont' value={startDate} onChange={dateChange} />
                 </div>
                 <table>
                     <thead>
