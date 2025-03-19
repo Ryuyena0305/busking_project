@@ -38,6 +38,8 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
     //[5] 사용자 정의 AOP 라이브러리
     implementation 'org.springframework.boot:spring-boot-starter-aop'
+    // 이메일 관련 의존성 설치
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 
 tasks.named('test') {
