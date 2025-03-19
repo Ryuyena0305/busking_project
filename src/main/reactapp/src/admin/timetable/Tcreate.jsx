@@ -8,24 +8,43 @@ import { useEffect } from 'react';
 import dayjs from 'dayjs';
 
 import GetBusData, { GetLocData } from './Timetable';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function Tcreate(props){
-    const [starttime, setStarttime] = useState('');
-    const [startdate, setStartdate] = useState('');
+    // 날짜, 시간 기본값 설정
+    const defaultDate = new Date().toISOString().split("T")[0];
+    const defaultTime = new Date().toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit", hour12: false });
+
+    const defaultSelectDate = () => {}
+    const defaultSelectTime = () => {}
+
+    useEffect( () => {
+        defaultSelectDate();
+    },defaultDate)
+
+    useEffect( () => {
+        defaultSelectTime();
+    }, defaultTime)
+
+    
+
+    const [starttime, setStarttime] = useState(defaultTime);
+    const [startdate, setStartdate] = useState(defaultDate);
     const [biid, setBiid] = useState('');
     const [locid, setLocid] = useState('');
 
-
-    // 지난 날짜, 지난 시간(수정 필요)
+    // 지난 날짜, 지난 시간(수정 필요) 선택 불가
     const today = dayjs().format("YYYY-MM-DD");
     const nowTime = dayjs().format("HH:mm");
     const minTime  = startdate === today ? nowTime : "";
 
 
 
+
     // 등록버튼 클릭시 실행
+    const navigate = useNavigate()
     const handleCreate = async () => {
         const timeTableDto = {
             starttime : starttime,
@@ -37,20 +56,27 @@ export default function Tcreate(props){
             const response = await axios.post(`http://localhost:8080/timetable`, timeTableDto)
             console.log(response.data);
             if(response.data == true){
-                alert('스케줄 등록 성공')
-                setStarttime('');
-                setStartdate('');
-                setBiid('');
-                setLocid('');
+                alert('스케줄 등록 성공');
+                navigate("/");
             }else{
                 alert('스케줄 등록 실패');
             }
         }catch(error){
             console.log(error);
         }
-    } // handleCreate end
+    }
 
+    
+    // GetBusData에서 전달받은 biid
+    const paramBiid = (selectedBiid) => {
+        setBiid(selectedBiid);
+    }
 
+    // GetBusData에서 전달받은 locid
+    const paramLocid = (selectedLocid) => {
+        setLocid(selectedLocid);
+    }
+    
 
     return(<> 
         <div id="container"> 
@@ -62,17 +88,12 @@ export default function Tcreate(props){
                     <div className='subTit'>출발시간</div>
                     <input type="time" min={minTime} className='subCont' value={starttime} onChange={(e) => setStarttime(e.target.value)}/>
 
-                    <GetBusData />
-                    <GetLocData />
+                    <GetBusData findBiid={paramBiid} />
+                    <GetLocData findLocid={paramLocid}/>
 
                     <hr/>
                     <button type='button' onClick={handleCreate} className='createBtn'>등록</button>
-
-                
-
-
             </div>
-
         </div> 
     </>)
 

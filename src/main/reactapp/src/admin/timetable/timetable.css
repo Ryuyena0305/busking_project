@@ -24,26 +24,25 @@ h1{
     padding: 30px;
 }
 
-.subTit{
+.subTit {
     width: 45%;
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 25px;
-    text-align: start;
+    font-size: 20px;
     font-weight: bold;
 }
 
-.viewTit{
-    font-size: 20px;
+/* .viewTit{
+    font-size: 25px;
     font-weight: bold;
     margin: 0px 20px;
     padding-top:15px;
     
-}
+} */
 
 .subCont{
-    width: 50%;
+    width: 340px;
     height: 40px;
     margin: 5px 0px 40px 0px;
     padding: 10px;
@@ -54,13 +53,13 @@ h1{
 .timeSubCont{
     margin-bottom: 30px;
 }
-.viewSelect{
-    width: 10%;
+/* .viewSelect{
+    width: 270px;
     font-size: 17px;
     padding: 10px;
     border: 1px solid #d4d4d4;
     border-radius: 7px;
-}
+} */
 
 hr{
     border: 1px solid #d4d4d4;
@@ -88,7 +87,7 @@ hr{
     text-align: center;
     border-radius: 20px;
     margin: 0 auto;
-    padding: 50px 30px;
+    padding: 80px 0px 50px 0px;
     height: 730px;
 }
 
