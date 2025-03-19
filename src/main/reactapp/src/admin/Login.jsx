@@ -25,12 +25,19 @@ export default function Login() {
         }
     };
 
+    // Enter 키 입력 시 로그인 함수 실행
+    const handleKeyDown = (event) => {
+        checkCapsLock(event); // Caps Lock 감지
+        if (event.key === "Enter") {
+            event.preventDefault(); // 폼 자동 제출 방지
+            onLogin();
+        }
+    };
+
     // 로그인 처리 함수
     const onLogin = async () => {
         try {
-            const requestData = {
-                adpwd: loginInfo.adpwd,
-            };
+            const requestData = { adpwd: loginInfo.adpwd };
             const response = await axios.post(
                 "http://localhost:8080/busking/admin/login",
                 requestData,
@@ -39,7 +46,7 @@ export default function Login() {
             const result = response.data;
             if (result) {
                 alert("로그인 성공");
-                location.href = "/";
+                location.href = '/';
             } else {
                 alert("로그인 실패: 비밀번호를 확인하세요.");
             }
@@ -51,7 +58,7 @@ export default function Login() {
 
     return (
         <div className="content2">
-            <form className="loginBox">
+            <form className="loginBox" onSubmit={(e) => e.preventDefault()}>
                 <h2 className="title"> Admin </h2>
                 <div className="pwd">비밀번호</div>
                 <input
@@ -60,7 +67,7 @@ export default function Login() {
                     name="adpwd"
                     value={loginInfo.adpwd}
                     onChange={onInputChange}
-                    onKeyDown={checkCapsLock} // Caps Lock 감지 이벤트 추가
+                    onKeyDown={handleKeyDown} // Enter 키 입력 시 로그인 실행
                 />
                 {capsLockOn && <div className="caps-warning">⚠ Caps Lock이 켜져 있습니다.</div>}
                 
