@@ -10,34 +10,35 @@ import java.util.List;
 @Mapper
 public interface ResvlogMapper {
     /*  << 조인 항목 >>
-        (예매)
+        (예매)resv
         예매아이디
-        resv(resvid)
+        resvid
 
-        (예매)
+        (예매)resv
         전화번호
-        resv(phone)
+        phone
 
-        (버스타입)
+        (예매)resv
         총금액
-        resv(rprice)
-        // bustype(btprice) + location(locprice)
+        totalprice = 한명의 가격 * 인원수
+        <사용x> resv(rprice) 한명의 가격 / 목적지 + 좌석 = 좌석금액
+                // rprice = bustype(btprice) + location(locprice)
 
-        (터미널)
+        (터미널)location
         도착지
-        location(dest)
+        dest
 
-        (스케줄)
+        (스케줄)timetable
         출발일자
-        timetable(startdate)
+        startdate
 
-        (스케줄)
+        (스케줄)timetable
         출발시간
-        timetable(starttime)
+        starttime
 
-        (좌석)
+        (좌석)busseat
         좌석번호
-        busseat(bsnum)
+        bsnum
     */
 
     // 예매내역 전체 조회
