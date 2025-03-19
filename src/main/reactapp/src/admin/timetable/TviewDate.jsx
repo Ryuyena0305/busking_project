@@ -8,11 +8,13 @@ import { Link } from 'react-router-dom';
 
 
 export default function TviewDate(props){
-    const [startDate, setStartDate] = useState([]);
+    const today = new Date().toISOString().split("T")[0];
+    const [startDate, setStartDate] = useState([today]);
     const [getViewLists, setViewLists] = useState([])
 
 
     const onViewDate = async () => {
+        if(!startDate) return;
         try{
             const response = await axios.get(`http://localhost:8080/timetable/view/date?startdate=${startDate}`);
             setViewLists(response.data);
@@ -24,7 +26,8 @@ export default function TviewDate(props){
 
     useEffect(() => {
         onViewDate();
-    })
+    },[startDate]);
+
 
     // 선택한 날짜가 달라지면 set에 저장
     const dateChange = (e) => {
@@ -38,7 +41,7 @@ export default function TviewDate(props){
             <div className='pickContent'>
                 <div className='viewTop'>
                     <div className='viewFind'>일자 선택</div>
-                    <input type="date" className='viewSelect' value={startDate} onChange={dateChange}/>
+                    <input type="date" className='viewSelect' value={startDate} onChange={dateChange} />
                 </div>
                 <table>
                     <thead>
