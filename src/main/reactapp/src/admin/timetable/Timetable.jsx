@@ -4,6 +4,8 @@ import axios from 'axios';
 import './timetable.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
+//import { Link } from 'react-router-dom';
+//import { Pagination, Stack } from '@mui/material';
 
 // select에서 사용할 차량정보 가져오기
 export default function GetBusData({findBiid}){
@@ -133,3 +135,54 @@ export function GetBusData2(){
         </select>
     </>)
 }
+
+
+
+
+
+
+
+// // 테이블
+// export function MyTable(props){
+//     return(<>
+//         <table>
+//             <thead>
+//                 <tr>
+//                     <th>번호</th><th>출발일자</th><th>출발시간</th><th>차량정보</th><th>운전기사</th><th>도착지</th><th>비고</th>
+//                 </tr>
+//             </thead>
+//             <tbody> 
+//                 {
+//                     getViewLists.map((getViewList, index) => (
+//                         <tr className='bodyTr' key={index}>
+//                             <td>{getViewList.timeid}</td>
+//                             <td>{getViewList.startdate}</td>
+//                             <td>{getViewList.starttime}</td>
+//                             <td>{getViewList.binum}</td>
+//                             <td>{getViewList.driver}</td>
+//                             <td>{getViewList.dest}</td>
+//                             <td><Link to={`/tview?timeid=${getViewList.timeid}`} className='link'><button type='button'>상세조회</button></Link></td>
+//                         </tr>
+//                     ))
+//                 }
+//             </tbody>
+//         </table>
+//     </>)
+// }
+
+
+
+
+
+
+
+
+
+// // 페이지네이션
+// export function Page(props){
+//     return(<>
+//         <Stack spacing={2} className='page'>
+//             <Pagination count={10} shape="rounded" />
+//         </Stack> 
+//     </>)
+// }
