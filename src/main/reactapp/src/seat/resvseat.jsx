@@ -86,7 +86,6 @@ export default function Seat() {
                     {groupedSeats.map((x, y) => (
                         <div key={y} className="seatrow" style={{ display: 'flex', justifyContent: 'space-evenly', marginBottom: '3px' }}>
                             {x && x.map((seat, y) => (
-                                
                                 <div
                                     className="seatbtn"
                                     key={y}
