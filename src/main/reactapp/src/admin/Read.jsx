@@ -37,7 +37,7 @@ export default function Read(props) {
                   <td>{bus.binum}</td>
                   <td>{bus.btname}</td>
                   <td>
-                    <Link className='link'>
+                    <Link to={`/businfoseat?biid=${bus.biid}`} className='link'>
                       <button>좌석보기</button>
                     </Link>
                   </td>

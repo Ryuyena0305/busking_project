@@ -9,6 +9,7 @@ import TypeRead from './TypeRead.jsx'
 //import Delete from './Delete.jsx';
 import SideBar from './SideBar.jsx';
 import AppBar2 from './AppBar2.jsx';
+import BusInfoSeat from './BusInfoSeat.jsx';
 
 /* timetable 스케줄 관리 */
 import Tcreate from './timetable/Tcreate.jsx';
@@ -54,6 +55,7 @@ export default function App( props ){ // 컴포넌트
                     <Route path="/update" element={ <Update /> } /> {/* 각 가상의 URL 정의한다. 컴포넌트 연결 */}
                     <Route path="/bus/view" element={<BusView />} /> 
                     <Route path="/typeread" element={<TypeRead />} />
+                    <Route path="/businfoseat" element={<BusInfoSeat/>}/>
                     
                     {/* timetable 스케줄 관리 */}
                     <Route path="/tcreate" element={<Tcreate/>} />
