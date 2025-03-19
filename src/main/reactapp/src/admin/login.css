@@ -46,6 +46,19 @@
 .loginBtn:hover {
     background-color: #0056b3;
 }
-.caps-warning, .show-password{
+.caps-warning {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.show-password {
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.show-password label {
+    margin-left: 5px;
+    font-size: 14px;
 }
