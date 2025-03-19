@@ -12,18 +12,10 @@ export default function Seat() {
     const { biid } = useParams();
     const  navigate  = useNavigate();
 
-    useEffect(() => {
-        onGet();
-    }, [biid]);
-
-    const onGet = async () => {
-        const response = await axios.get(`http://localhost:8080/busseat?biid=1`);
-        setSeats(response.data);
-        setBinum(response.data[0].binum); 
-    }
+   
 
     const onUpdate = async (bsnum, bsstate) => {
-        const response = await axios.put(`http://localhost:8080/busseat?biid=1&bsnum=${bsnum}`, { biid: 1, bsnum, bsstate });
+        const response = await axios.put(`http://localhost:8080/busseat?biid=1&bsnum=${bsnum}`, { biid, bsnum, bsstate });
         if (response.data) onGet(); // 상태 업데이트 후 좌석 정보 새로 가져오기
     }
 
@@ -77,7 +69,7 @@ export default function Seat() {
                     </div>
                 </div>
                 <div className="bus2">
-            <Button className="nextPageBtn" onClick={()=>onPage()}>좌석수정</Button>
+            <Button className="nextPageBtn" onClick={()=>onPage()}>좌석수정</Button>:
             </div>
             </div>
         </>
