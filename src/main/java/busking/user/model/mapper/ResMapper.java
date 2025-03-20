@@ -33,7 +33,7 @@ public interface ResMapper {
             "AND rd.bsid IS NULL")
     List<String> getSeat(@Param("startdate") String startdate, @Param("dest") String dest, @Param("starttime") String starttime);
 
-    @Insert("INSERT INTO resv (phone, rprice, total , timeid) VALUES (#{phone}, #{rprice}, #{total}, #{timeid})")
+    @Insert("INSERT INTO resv (email, rprice, total , timeid) VALUES (#{email}, #{rprice}, #{total}, #{timeid})")
     @Options(useGeneratedKeys = true, keyProperty = "resvid")  // resDto 객체의 resvid 필드로 생성된 키를 자동 매핑
     int Res(ResDto resDto);
 
