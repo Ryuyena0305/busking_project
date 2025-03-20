@@ -17,8 +17,14 @@ import Tview from './timetable/Tview.jsx';
 import TviewBus from './timetable/TviewBus.jsx';
 import TviewDate from './timetable/TviewDate.jsx';
 import TviewLoc from './timetable/TviewLoc.jsx';
+
+/* resvlog 예매 로그 */
+import Resvlog from './resvlog/Resvlog.jsx';
+
 /* css impot */
 import './app.css'; // ./ : 현재 파일과 같은 경로 뜻
+
+
 import { useEffect, useState } from 'react';
 import Login from './Login.jsx';
 import axios from 'axios';
@@ -63,6 +69,9 @@ export default function App( props ){ // 컴포넌트
                     <Route path="/tview/bus" element={<TviewBus/>} />
                     <Route path="/tview/date" element={<TviewDate/>} />
                     <Route path="/tview/loc" element={<TviewLoc/>} />
+
+                    {/* resvlog 예매로그 */}
+                    <Route path="/resvlog" element={<Resvlog/>} />
                 </Routes>
             </div>
    
