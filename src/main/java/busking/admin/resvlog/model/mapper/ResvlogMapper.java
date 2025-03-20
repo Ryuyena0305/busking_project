@@ -15,8 +15,8 @@ public interface ResvlogMapper {
         resvid
 
         (예매)resv
-        전화번호
-        phone
+        이메일
+        email
 
         (예매)resv
         총금액
@@ -42,6 +42,21 @@ public interface ResvlogMapper {
     */
 
     // 예매내역 전체 조회
-    @Select("select * from resv")
+    @Select("SELECT \n" +
+            "    r.resvid, \n" +
+            "    r.email, \n" +
+            "    r.total, \n" +
+            "    r.rprice,\n" +
+            "    t.startdate, \n" +
+            "    t.starttime,\n" +
+            "    l.dest,  -- location 테이블에서 dest 조회\n" +
+            "    b.bsid\n" +
+            "    -- GROUP_CONCAT(b.bsnum ORDER BY b.bsnum) AS bsnum  -- 여러 좌석을 쉼표로 연결\n" +
+            "FROM resv r\n" +
+            "JOIN timetable t ON r.timeid = t.timeid\n" +
+            "JOIN resvdetail rd ON r.resvid = rd.resvid\n" +
+            "JOIN busseat b ON rd.bsid = b.bsid\n" +
+            "JOIN location l ON t.locid = l.locid  -- location 테이블을 조인하여 dest 가져오기\n" +
+            "GROUP BY b.bsid, r.resvid, r.email, r.total, t.startdate, t.starttime, l.dest;")
     public List<ResDto> findAll();
 }

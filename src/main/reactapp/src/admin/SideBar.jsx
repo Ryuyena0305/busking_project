@@ -89,7 +89,7 @@ export default function SideBar(props) {
         </Collapse>
 
         {/* 메뉴1개 */}
-        <ListItemButton component={Link} to="/create">
+        <ListItemButton component={Link} to="/resvlog">
           {' '}
           {/*링크 , to만 수정한다.*/}
           <ListItemText primary="예매로그" /> {/*텍스트 , primary만 수정한다.*/}
