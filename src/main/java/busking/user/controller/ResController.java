@@ -54,8 +54,8 @@ public class ResController {
             if(result > 0) {
 
                 String filePath = "qrcode.png";
-                BufferedImage qrCodeImage = qrCodeService.generateQRCodeImage("안녕하세요", 300, 300);
-                qrCodeService.saveQRCodeImage(qrCodeImage, filePath);
+                byte[] qrCodeImage = qrCodeService.generateQRCodeImage("good", 300, 300);
+                //qrCodeService.saveQRCodeImage(qrCodeImage, filePath);
 
                 File file = new File(filePath);
                 Resource resource = new UrlResource(file.toURI());
