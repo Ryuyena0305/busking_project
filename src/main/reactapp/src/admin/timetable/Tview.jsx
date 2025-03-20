@@ -4,7 +4,7 @@ import './timetable.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import GetBusData, { GetBusData2, GetLocData } from './Timetable';
+import GetBusData, { GetLocData } from './Timetable';
 
 
 export default function Tview(props){
