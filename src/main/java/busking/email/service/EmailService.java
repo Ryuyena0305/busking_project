@@ -41,10 +41,10 @@ public class EmailService {
         // 3. 이메일 정보 설정
         helper.setFrom("capzhang123@gmail.com"); // 이메일 발송자
         helper.setTo(email); // 이메일 수신자
-        helper.setSubject("이메일 문의");
+        helper.setSubject("예매가 완료되었습니다. QR 코드를 확인해주세요.");
 
         // 4. 이메일 본문 작성(HTML) 형식
-        String mailContent = "good";
+        String mailContent = "QR 코드를 버스에 찍어주세요.";
 
         helper.setText(mailContent, true);
 
