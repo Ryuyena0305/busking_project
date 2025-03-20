@@ -104,10 +104,7 @@ insert into timetable (starttime,startdate,biid,locid) values('18:00:00','2025-0
 insert into timetable (starttime,startdate,biid,locid) values('18:00:00','2025-03-10',2,7);
 insert into timetable (starttime,startdate,biid,locid) values('18:00:00','2025-03-20',2,7);
 insert into timetable (starttime,startdate,biid,locid) values('18:00:00','2025-03-20',1,6);
-insert into timetable (starttime,startdate,biid,locid) values('19:00:00','2025-03-20',1,6);
-
-
--- 추가 샘플들
+insert into timetable (starttime,startdate,biid,locid) values('19:00:00','2025-03-20',1,6),
 ('06:00:00', '2025-03-01', 3, 1), ('06:30:00', '2025-03-05', 4, 2),
 ('07:00:00', '2025-03-02', 5, 3), ('07:30:00', '2025-03-15', 6, 4),
 ('08:00:00', '2025-03-10', 7, 5), ('08:30:00', '2025-03-20', 8, 6),
