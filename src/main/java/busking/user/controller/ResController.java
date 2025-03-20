@@ -1,10 +1,16 @@
 package busking.user.controller;
 
+import busking.email.service.EmailService;
+import busking.qrcode.service.QRCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.web.bind.annotation.*;
 import busking.user.model.dto.ResDto;
 import busking.user.service.ResService;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.List;
 
 @RestController
@@ -33,11 +39,30 @@ public class ResController {
     public List<String> getSeat(@RequestParam("startdate") String startdate, @RequestParam("dest") String dest, @RequestParam("starttime") String starttime) {
         return resService.getSeat(startdate, dest, starttime);
     }
+    @Autowired
+    private EmailService emailService;
+    
+    @Autowired
+    private QRCodeService qrCodeService;
+
     @PostMapping("")
     public int Reservation(@RequestBody ResDto resDto) {
+
         try {
             System.out.println("resDto = " + resDto);
-            return resService.Reservation(resDto);
+            int result = resService.Reservation(resDto);
+            if(result > 0) {
+
+                String filePath = "qrcode.png";
+                BufferedImage qrCodeImage = qrCodeService.generateQRCodeImage("안녕하세요", 300, 300);
+                qrCodeService.saveQRCodeImage(qrCodeImage, filePath);
+
+                File file = new File(filePath);
+                Resource resource = new UrlResource(file.toURI());
+                
+                emailService.sendMessage(resDto.getPhone(), qrCodeImage );
+            }
+            return result;
         } catch (Exception e) {
             System.out.println(e);
             return 0;

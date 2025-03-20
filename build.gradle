@@ -40,6 +40,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     // 이메일 관련 의존성 설치
     implementation 'org.springframework.boot:spring-boot-starter-mail'
+    // QR 코드 관련 의존성 설치
+    implementation 'com.google.zxing:core:3.5.1'
+    implementation 'com.google.zxing:javase:3.5.1'
 }
 
 tasks.named('test') {
