@@ -15,6 +15,7 @@ export default function Time(props) {
         if (startdate && dest) {
             axios.get(`http://localhost:8080/resv/time?startdate=${startdate}&dest=${encodeURIComponent(dest)}`)
                 .then(response => {
+                    console.log(response.data);
                     setSaveTime(response.data);
                 })
                 .catch(error => {
@@ -23,9 +24,9 @@ export default function Time(props) {
         }
     }, [startdate, dest]);
 
-    const onTimeSelect = (selectedTime) => {
-        setSelectedTime(selectedTime);
-        navigate(`/person?startdate=${startdate}&dest=${encodeURIComponent(dest)}&time=${selectedTime}`);
+    const onTimeSelect = (timeid) => {
+        //setSelectedTime(selectedTime);
+        navigate(`/person?timeid=${timeid}`);
     }
 
     return (
@@ -34,10 +35,10 @@ export default function Time(props) {
                 {saveTime.length > 0 && (
                     <ul>
                         {saveTime.map((time, index) => {
-                            const formattedTime = time.split(':').slice(0, 2).join(':');
+                            const formattedTime = time.starttime.split(':').slice(0, 2).join(':');
                             return (
                                 <li key={index}>
-                                    <button onClick={() => onTimeSelect(time)}>{formattedTime}</button>
+                                    <button onClick={() => onTimeSelect(time.timeid)}>{formattedTime}</button>
                                 </li>
                             );
                         })}

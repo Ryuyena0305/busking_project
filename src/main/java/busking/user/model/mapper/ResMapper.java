@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.*;
 import busking.user.model.dto.ResDto;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface ResMapper {
@@ -16,11 +17,11 @@ public interface ResMapper {
             "WHERE t.startdate = #{startdate}")
     List<String> getLocation(@Param("startdate") String startdate);
 
-    @Select("SELECT DISTINCT t.starttime FROM timetable t " +
+    @Select("SELECT DISTINCT t.starttime, t.timeid FROM timetable t " +
             "JOIN location l ON t.locid = l.locid " +
             "WHERE t.startdate = #{startdate} " +
             "AND l.dest = #{dest}")
-    List<String> getStartTime(@Param("startdate") String startdate, @Param("dest") String dest);
+    List<Map<Object,Object>> getStartTime(@Param("startdate") String startdate, @Param("dest") String dest);
 
     @Select("SELECT DISTINCT b.bsnum " +
             "FROM busseat b " +
@@ -82,4 +83,17 @@ public interface ResMapper {
 
     @Select("SELECT locprice FROM location WHERE dest = #{dest}")
     int getLocprice(@Param("dest") String dest);
+
+    @Select("SELECT " +
+            "    t.biid, " +
+            "    t.startdate, " +
+            "    l.dest, " +
+            "    t.starttime " +
+            "FROM " +
+            "    timetable t " +
+            "JOIN " +
+            "    location l ON t.locid = l.locid " +
+            "WHERE " +
+            "    t.timeid = #{timeid}")
+    ResDto getTimeInfo(int timeid);
 }

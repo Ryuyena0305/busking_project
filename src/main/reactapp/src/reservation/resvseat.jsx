@@ -7,79 +7,94 @@ import "./resvseat.css";
 import Button from "@mui/joy/Button";
 
 export default function ResvSeat() {
-  const [seats, setSeats] = useState([]); 
-  const [seatId, setSeatId] = useState([]); 
+  const [seats, setSeats] = useState([]);  // 버스 좌석 상태 
+  const [seats2, setSeats2] = useState([]);  // 버스 좌석 예매 상태 
+  const [seatId, setSeatId] = useState([]);
   const [rprice, setRprice] = useState(0);
-  const [total, setTotal] = useState(0); 
-  const { biid } = useParams();
+  const [total, setTotal] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
-  const { startdate, dest, time, person } = queryString.parse(location.search);
+  const { timeid, person } = queryString.parse(location.search);
 
   const onGet = async () => {
     try {
+
+      //1. timeid에 해당하는 biid / startdate / dest / starttime 가져오기
+      const timeid = await axios.get(`http://localhost:8080/resv/timeinfo?timeid=${timeid}`)
+
+      const response = await axios.get(`http://localhost:8080/busseat?biid=${timeid.data.biid}}`);
+      setSeats(response.data);
+
       const seatsResponse = await axios.get(
-        `http://localhost:8080/resv/seat?startdate=${startdate}&dest=${encodeURIComponent(dest)}&starttime=${encodeURIComponent(time)}`
+        `http://localhost:8080/resv/seat?startdate=${timeid.data.startdate}&dest=${encodeURIComponent(timeid.data.dest)}&starttime=${encodeURIComponent(timeid.data.time)}`
       );
-  
+
       const priceResponse = await axios.get(
-        `http://localhost:8080/resv/price?startdate=${startdate}&dest=${encodeURIComponent(dest)}&starttime=${encodeURIComponent(time)}`
+        `http://localhost:8080/resv/price?startdate=${timeid.data.startdate}&dest=${encodeURIComponent(timeid.data.dest)}&starttime=${encodeURIComponent(timeid.data.time)}`
       );
-  
+
       const seats = seatsResponse.data;
-      const rprice  = priceResponse.data;
-  
-      setSeats(seats); 
-      setRprice(rprice); 
+      const rprice = priceResponse.data;
+
+      setSeats2(seats);
+      console.log(seats)
+      setRprice(rprice);
       setTotal(rprice * person);
     } catch (error) {
       console.log(error);
-    } 
+    }
   };
-  
+
   const onChoice = (bsnum) => {
     setSeatId((prevSeatId) => {
       if (prevSeatId.includes(bsnum)) {
-        return prevSeatId.filter((id) => id !== bsnum); 
+        return prevSeatId.filter((id) => id !== bsnum);
       } else if (prevSeatId.length >= person) {
-        return prevSeatId; 
+        return prevSeatId;
       } else {
         return [...prevSeatId, bsnum];
       }
     });
   };
 
+  // 좌석을 x, y 2차원 배열형태로 변환
   const groupSeats = () => {
     const rows = [];
-    const cols = 5; 
-    const totalSeats = seats.length;
+    let count = 0;
+    let viewbsnum = 0;
 
-    for (let i = 0; i < 11; i++) {
-      const row = [];
-      for (let j = 0; j < cols; j++) {
-        const seatIndex = i * cols + j;
-        if (seatIndex < totalSeats) {
-          row.push(seats[seatIndex]); 
-        } else {
-          row.push(null); 
-        }
+    seats.forEach(({ x, y, bsnum, bsstate }) => {
+      viewbsnum++
+      if (!rows[x]) rows[x] = []; // 행변경 
+      rows[x][y] = { viewbsnum, bsnum, bsstate }; // 좌석상태 
+
+      if (rows[x][y].bsstate == 0) {
+        count++;
+
+      } else {
+        rows[x][y].viewbsnum = rows[x][y].viewbsnum - count;
+        console.log(viewbsnum)
       }
-      rows.push(row); 
-    }
 
+    });
     return rows;
   };
-
   const groupedSeats = groupSeats();
 
   useEffect(() => {
-    onGet(); 
-  }, [startdate, dest, time]); 
+    console.log(seatId);
+  }, [seatId]);
+
+  useEffect(() => {
+    onGet();
+  }, [startdate, dest, time, biid]);
 
   const onPage = () => {
     alert(`${startdate} ${dest}행 ${time.split(":").slice(0, 2)} ${person}명 선택하였습니다.`);
-    navigate("./"); 
+    navigate("./");
   };
+
+
 
 
   return (
@@ -94,42 +109,43 @@ export default function ResvSeat() {
         </div>
         {/* 좌석 버튼 */}
         <div className="btncontain">
-          {groupedSeats.map((row, rowIdx) => (
-            <div key={rowIdx} className="seatrow" style={{ display: 'flex', justifyContent: 'space-evenly', marginBottom: '3px' }}>
-              {row.map((seat, colIdx) => (
+          {groupedSeats.map((x, y) => (
+            <div key={y} className="seatrow" style={{ display: 'flex', justifyContent: 'space-evenly', marginBottom: '3px' }}>
+              {x && x.map((seat, y) => (
                 <div
                   className="seatbtn"
-                  key={colIdx}
+                  key={y}
                   style={{
-                    backgroundColor: seatId.includes(seat) ? '#69a9f973' : '', 
-                    borderRadius: '5px',
-                    visibility: seat ? 'visible' : 'hidden', // 빈 좌석은 숨기기
+                    visibility: seat.bsstate == 1 ? 'visible' : 'hidden',
+                    backgroundColor: seatId.includes(seat.bsnum) ? '#69a9f973' : '', // 선택된 좌석에 색을 추가
+                    borderRadius: '5px'
                   }}
                 >
-                  {seat ? (
-                    <Button
-                      className="statebtn"
-                      onClick={() => onChoice(seat)}
-                      variant="outlined"
-                    >
-                      {seat}
+                  {seat.bsstate == 1 && seats2.includes(seat.bsnum.toString()) ? (
+                    <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="outlined">
+                      {seat.viewbsnum}
                     </Button>
-                  ) : null}
+                  ) : (
+                    <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="soft">X</Button>
+                  )}
+
                 </div>
               ))}
             </div>
           ))}
         </div>
-      </div>
 
-      <div className="bus2">
-        <u1>
-          <l1>인원수 : {person} ----- {rprice}원</l1> <br/>
-          <l1>총 가격 : {total}원 </l1>
-          <Button className="nextPageBtn" onClick={onPage}>
-            예약하기
-          </Button>
-        </u1>
+
+        <div className="bus2">
+          <u1>
+            <l1>인원수 : {person} ----- {rprice}원</l1> <br />
+            <l1>총 가격 : {total}원 </l1>
+            <Button className="nextPageBtn" onClick={onPage}>
+              예약하기
+            </Button>
+          </u1>
+        </div>
+
       </div>
     </div>
   );

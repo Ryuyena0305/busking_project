@@ -19,6 +19,7 @@ export default function Dest() {
             axios.get(`http://localhost:8080/resv/dest?startdate=${startdate}`)
                 .then(response => {
                     setDests(response.data); 
+                    console.log( response.data )
                 })
                 .catch(error => {
                     console.log(error);

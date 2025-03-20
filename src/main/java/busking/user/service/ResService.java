@@ -6,6 +6,7 @@ import busking.user.model.dto.ResDto;
 import busking.user.model.mapper.ResMapper;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ResService {
@@ -21,7 +22,7 @@ public class ResService {
         return resMapper.getLocation(startdate);
     }
 
-    public List<String> getStartTime(String startdate, String dest) {
+    public List<Map<Object,Object>> getStartTime(String startdate, String dest) {
         return resMapper.getStartTime(startdate, dest);
     }
 
@@ -45,7 +46,14 @@ public class ResService {
             return 0;  // 예외 발생 시 0을 반환
         }
     }
-
+    public ResDto getTimeInfo(int timeid) {
+        try {
+            return resMapper.getTimeInfo(timeid);
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
 
     public int Reservation(ResDto resDto) {
         try {

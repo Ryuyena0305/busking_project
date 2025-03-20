@@ -12,6 +12,7 @@ import busking.user.service.ResService;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/resv")
@@ -32,7 +33,7 @@ public class ResController {
     }
 
     @GetMapping("/time")
-    public List<String> getStartTime(@RequestParam("startdate") String startdate, @RequestParam("dest") String dest) {
+    public List<Map<Object,Object>> getStartTime(@RequestParam("startdate") String startdate, @RequestParam("dest") String dest) {
         return resService.getStartTime(startdate, dest);
     }
     @GetMapping("/seat")
@@ -80,6 +81,9 @@ public class ResController {
             return 0;  // 예외 발생 시 0을 반환
         }
     }
-
+    @GetMapping("/timeinfo")
+    public ResDto getTimeInfo(@RequestParam int timeid) {
+        return resService.getTimeInfo(timeid);
+    }
 }
 
