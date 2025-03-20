@@ -141,29 +141,42 @@ create table resv(
     constraint primary key (resvid),
 	constraint foreign key (timeid) references timetable(timeid) ON DELETE CASCADE ON UPDATE CASCADE
 );
-insert into resv (email,rprice,total,timeid) values('010-2222-2222','10000','20000',1);
-insert into resv (email,rprice,total,timeid) values('010-2222-2221','10000','20000',2);
-insert into resv (email,rprice,total,timeid) values('010-2222-2223','10000','20000',2);
+insert into resv (email,rprice,total,timeid) values('bear@naver.com','10000','20000',1);
+insert into resv (email,rprice,total,timeid) values('asdf@naver.com','10000','20000',2);
+insert into resv (email,rprice,total,timeid) values('bbbb@naver.com','10000','20000',2);
 
-insert into resv (phone, rprice, timeid) values
-('010-1010-1010', 15000, 3),   -- 1개 좌석, 가격 15,000 (우등버스)
-('010-1010-1011', 30000, 4),   -- 2개 좌석, 가격 30,000 (우등버스)
-('010-1010-1012', 40000, 5),   -- 2개 좌석, 가격 40,000 (프리미엄버스)
-('010-1010-1013', 20000, 6),   -- 1개 좌석, 가격 20,000 (프리미엄버스)
-('010-1010-1014', 35000, 7),   -- 1개 좌석, 가격 35,000 (프리미엄버스)
-('010-1010-1015', 25000, 8),   -- 2개 좌석, 가격 25,000 (우등버스)
-('010-1010-1016', 20000, 9),   -- 1개 좌석, 가격 20,000 (프리미엄버스)
-('010-1010-1017', 45000, 10),  -- 2개 좌석, 가격 45,000 (프리미엄버스)
-('010-1010-1018', 30000, 11),  -- 2개 좌석, 가격 30,000 (우등버스)
-('010-1010-1019', 25000, 12),  -- 1개 좌석, 가격 25,000 (우등버스)
-('010-1010-1020', 50000, 13),  -- 3개 좌석, 가격 50,000 (프리미엄버스)
-('010-1010-1021', 40000, 14),  -- 2개 좌석, 가격 40,000 (프리미엄버스)
-('010-1010-1022', 15000, 15),  -- 1개 좌석, 가격 15,000 (우등버스)
-('010-1010-1023', 30000, 16),  -- 2개 좌석, 가격 30,000 (우등버스)
-('010-1010-1024', 20000, 17),  -- 1개 좌석, 가격 20,000 (프리미엄버스)
-('010-1010-1025', 50000, 18),  -- 3개 좌석, 가격 50,000 (프리미엄버스)
-('010-1010-1026', 15000, 19),  -- 1개 좌석, 가격 15,000 (우등버스)
-('010-1010-1027', 20000, 20);  -- 1개 좌석, 가격 20,000 (프리미엄버스)
+insert into resv (email, rprice, total, timeid) values
+('user1@example.com', 15000, 15000, 3),   -- 1개 좌석, 가격 15,000 (우등버스)
+('user2@example.com', 30000, 60000, 4),   -- 2개 좌석, 가격 30,000 (우등버스)
+('user3@example.com', 40000, 80000, 5),   -- 2개 좌석, 가격 40,000 (프리미엄버스)
+('user4@example.com', 20000, 20000, 6),   -- 1개 좌석, 가격 20,000 (프리미엄버스)
+('user5@example.com', 35000, 35000, 7),   -- 1개 좌석, 가격 35,000 (프리미엄버스)
+('user6@example.com', 25000, 50000, 8),   -- 2개 좌석, 가격 25,000 (우등버스)
+('user7@example.com', 20000, 20000, 9),   -- 1개 좌석, 가격 20,000 (프리미엄버스)
+('user8@example.com', 45000, 90000, 10),  -- 2개 좌석, 가격 45,000 (프리미엄버스)
+('user9@example.com', 30000, 60000, 11),  -- 2개 좌석, 가격 30,000 (우등버스)
+('user10@example.com', 25000, 25000, 12),  -- 1개 좌석, 가격 25,000 (우등버스)
+('user11@example.com', 50000, 150000, 13), -- 3개 좌석, 가격 50,000 (프리미엄버스)
+('user12@example.com', 40000, 80000, 14),  -- 2개 좌석, 가격 40,000 (프리미엄버스)
+('user13@example.com', 15000, 15000, 15),  -- 1개 좌석, 가격 15,000 (우등버스)
+('user14@example.com', 30000, 60000, 16),  -- 2개 좌석, 가격 30,000 (우등버스)
+('user15@example.com', 20000, 20000, 17),  -- 1개 좌석, 가격 20,000 (프리미엄버스)
+('user16@example.com', 50000, 150000, 18), -- 3개 좌석, 가격 50,000 (프리미엄버스)
+('user17@example.com', 15000, 15000, 19),  -- 1개 좌석, 가격 15,000 (우등버스)
+('user18@example.com', 20000, 20000, 20);  -- 1개 좌석, 가격 20,000 (프리미엄버스)
+
+
+create table resvdetail(
+	detailid int unsigned auto_increment,
+	bsid int unsigned not null,
+    resvid int unsigned,
+    constraint primary key (detailid),
+	constraint foreign key (bsid) references busseat(bsid) ON DELETE CASCADE ON UPDATE CASCADE,
+    constraint foreign key (resvid) references resv(resvid) ON DELETE CASCADE ON UPDATE CASCADE
+);
+insert into resvdetail (bsid,resvid) values(1,1);
+insert into resvdetail (bsid,resvid) values(2,1);
+insert into resvdetail (bsid,resvid) values(3,2);
 
 insert into resvdetail (bsid, resvid) values
 (1, 3), (2, 3), (3, 3),  -- 예약 3 (우등버스) - 3개 좌석
@@ -191,17 +204,7 @@ select * from resv;
 
 
 # 예약 상세
-create table resvdetail(
-	detailid int unsigned auto_increment,
-	bsid int unsigned not null,
-    resvid int unsigned,
-    constraint primary key (detailid),
-	constraint foreign key (bsid) references busseat(bsid) ON DELETE CASCADE ON UPDATE CASCADE,
-    constraint foreign key (resvid) references resv(resvid) ON DELETE CASCADE ON UPDATE CASCADE
-);
-insert into resvdetail (bsid,resvid) values(1,1);
-insert into resvdetail (bsid,resvid) values(2,1);
-insert into resvdetail (bsid,resvid) values(3,2);
+
 
 select * from resvdetail;
 select * from resv;
