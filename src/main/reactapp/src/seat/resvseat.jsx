@@ -6,13 +6,14 @@ import './resvseat.css';
 
 import Button from '@mui/joy/Button';
 
-export default function Seat() {
+export default function ResvSeat() {
     const [seats, setSeats] = useState([]);
     const [binum, setBinum] = useState();
     const [seatId, setSeatId] = useState([]);
     const { biid } = useParams();
     const  navigate  = useNavigate();
   
+    
     
     useEffect(() => {
         onGet();

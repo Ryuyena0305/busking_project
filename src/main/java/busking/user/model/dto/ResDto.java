@@ -22,13 +22,13 @@ public class ResDto {
     private int btprice;
     private int locprice;
     private int locid;
+    private int total;
 
     public void setTotal(int btprice, int locprice) {
         this.rprice = btprice + locprice;
     }
-    // getTotal 메소드 추가
+
     public int getTotal() {
-        return this.rprice;
+        return this.rprice * this.bsnum.size();
     }
 }
-

@@ -18,7 +18,7 @@ export default function Person(props) {
         setCount(count + 1);
     };
     const handleSelect = () => {
-        navigate(`/seat?startdate=${startdate}&dest=${encodeURIComponent(dest)}&time=${time}&person=${count}`);
+        navigate(`/resvseat?startdate=${startdate}&dest=${encodeURIComponent(dest)}&time=${time}&person=${count}`);
     };
 
     return (
