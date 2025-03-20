@@ -4,8 +4,10 @@ import axios from 'axios';
 import './timetable.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
+//import Pagination from 'react-js-pagination';
+//import StockItemForm from './StockItemForm';
 //import { Link } from 'react-router-dom';
-//import { Pagination, Stack } from '@mui/material';
+
 
 // select에서 사용할 차량정보 가져오기
 export default function GetBusData({findBiid}){
@@ -97,51 +99,6 @@ export function GetLocData({findLocid}){
 
 
 
-
-export function GetBusData2(){
-    const [biid, setBiid] = useState('');
-    const [selectBuss, setSelectBuss] = useState([]);
-
-    const getBus = async () => {
-        try{
-            const response = await axios.get(`http://localhost:8080/timetable/getbus`)
-            //console.log(response.data);
-            setSelectBuss(response.data);
-        }catch(error) {
-            console.log(error);
-        }
-    } //  end
-
-    useEffect(() => {
-        getBus();
-    },[biid]);
-
-
-    const onReset = () => {
-        
-    }
-
-    return(<>
-        <div className='viewFind'>차량 정보</div>
-        <select className='subCont' value={biid} onChange={(e) => setBiid(e.target.value)}>
-            <option value="">선택</option>
-        {
-            selectBuss.map((selectBus, index) => {
-                return(
-                        <option key={index} value={`${selectBus.biid}`}>{selectBus.binum}</option>
-                )
-            })
-        }
-        </select>
-    </>)
-}
-
-
-
-
-
-
-
 // // 테이블
 // export function MyTable(props){
 //     return(<>
@@ -180,9 +137,47 @@ export function GetBusData2(){
 
 // // 페이지네이션
 // export function Page(props){
+    
+//     const [stockList, setStockList ] = useState([])
+
+//     const [page, setPage] = useState(1);
+
+//     const itemsPerPage = 10;
+
+//     const changePageHandler = (page) => {
+//         setPage(page);
+//     }
+
+//     const [currentList, setCurrentList] = useState(stockList);
+
+//     const indexOfLastItem = page * itemsPerPage;
+//     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+//     useEffect(() => {
+//         setCurrentList(stockList.slice(indexOfFirstItem, indexOfLastItem));
+
+//     },[page, stockList]);
+
+
+
+
 //     return(<>
-//         <Stack spacing={2} className='page'>
-//             <Pagination count={10} shape="rounded" />
-//         </Stack> 
+
+//         {/* {currentList.map((item) => {
+//             <div>
+//                 <StockItemForm item={item} />
+//             </div>
+//         })} */}
+//         {/* 페이지네이션 컴포넌트 */}
+//         <Pagination
+//             activePage={page} //현재 페이지
+//             itemsCountPerPage={itemsPerPage} // 한 페이지 당 보여줄 아이템 갯수
+//             totalitensCount={stockList.length} // 총 아이템 갯수
+//             pageRangeDisplayed={5}// paginator에 나타낼 페이지 범위
+//             prevPageText={"<"} // 이전을 나타낼 텍스트
+//             nextPageText={">"} // "다음"을 나타낼 텍스트
+//             onChange={changePageHandler} // 페이지 변경을 핸들링하는 함수
+//         />
 //     </>)
+    
 // }

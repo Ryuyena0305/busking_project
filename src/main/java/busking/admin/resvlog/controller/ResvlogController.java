@@ -1,6 +1,7 @@
 package busking.admin.resvlog.controller;
 
 
+import busking.admin.resvlog.model.dto.ResvlogDto;
 import busking.admin.resvlog.service.ResvlogService;
 import busking.user.model.dto.ResDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class ResvlogController {
 
     // 예매내역 전체 조회
     @GetMapping
-    public List<ResDto> findAll(){
+    public List<ResvlogDto> findAll(){
         return resvlogService.findAll();
     }
 }
