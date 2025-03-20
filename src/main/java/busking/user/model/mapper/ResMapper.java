@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.*;
 import busking.user.model.dto.ResDto;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface ResMapper {
@@ -16,11 +17,11 @@ public interface ResMapper {
             "WHERE t.startdate = #{startdate}")
     List<String> getLocation(@Param("startdate") String startdate);
 
-    @Select("SELECT DISTINCT t.starttime FROM timetable t " +
+    @Select("SELECT DISTINCT t.starttime, t.timeid FROM timetable t " +
             "JOIN location l ON t.locid = l.locid " +
             "WHERE t.startdate = #{startdate} " +
             "AND l.dest = #{dest}")
-    List<String> getStartTime(@Param("startdate") String startdate, @Param("dest") String dest);
+    List<Map<Object,Object>> getStartTime(@Param("startdate") String startdate, @Param("dest") String dest);
 
     @Select("SELECT DISTINCT b.bsnum " +
             "FROM busseat b " +
@@ -33,7 +34,7 @@ public interface ResMapper {
             "AND rd.bsid IS NULL")
     List<String> getSeat(@Param("startdate") String startdate, @Param("dest") String dest, @Param("starttime") String starttime);
 
-    @Insert("INSERT INTO resv (email, rprice, total , timeid) VALUES (#{email}, #{rprice}, #{total}, #{timeid})")
+    @Insert("INSERT INTO resv (email, rprice, total , timeid) VALUES (#{phone}, #{rprice}, #{total}, #{timeid})")
     @Options(useGeneratedKeys = true, keyProperty = "resvid")  // resDto 객체의 resvid 필드로 생성된 키를 자동 매핑
     int Res(ResDto resDto);
 
@@ -82,4 +83,17 @@ public interface ResMapper {
 
     @Select("SELECT locprice FROM location WHERE dest = #{dest}")
     int getLocprice(@Param("dest") String dest);
+
+    @Select("SELECT " +
+            "    t.biid, " +
+            "    t.startdate, " +
+            "    l.dest, " +
+            "    t.starttime " +
+            "FROM " +
+            "    timetable t " +
+            "JOIN " +
+            "    location l ON t.locid = l.locid " +
+            "WHERE " +
+            "    t.timeid = #{timeid}")
+    ResDto getTimeInfo(int timeid);
 }

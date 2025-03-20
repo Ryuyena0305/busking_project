@@ -6,7 +6,7 @@ export default function Person(props) {
     const [count, setCount] = useState(0);
     const navigate = useNavigate();
     const location = useLocation();
-    const { startdate, dest, time } = queryString.parse(location.search);
+    const { timeid } = queryString.parse(location.search);
 
     const handleDecrement = () => {
         if (count > 0) {
@@ -18,7 +18,7 @@ export default function Person(props) {
         setCount(count + 1);
     };
     const handleSelect = () => {
-        navigate(`/resvseat?startdate=${startdate}&dest=${encodeURIComponent(dest)}&time=${time}&person=${count}`);
+        navigate(`/resvseat?timeid=${timeid}&person=${count}`);
     };
 
     return (

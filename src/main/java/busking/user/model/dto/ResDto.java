@@ -29,6 +29,6 @@ public class ResDto {
     }
 
     public int getTotal() {
-        return this.rprice * this.bsnum.size();
+        return this.rprice * (this.bsnum != null ? this.bsnum.size() : 0);
     }
 }
