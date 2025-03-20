@@ -20,7 +20,7 @@ export default function ResvSeat() {
     }, [biid]);
 
     const onGet = async () => {
-        const response = await axios.get(`http://localhost:8080/busseat?biid=1`);
+        const response = await axios.get(`http://localhost:8080/busseat?biid=${biid}`);
         setSeats(response.data);
         setBinum(response.data[0].binum);
     };

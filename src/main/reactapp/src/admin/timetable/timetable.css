@@ -212,3 +212,16 @@ tbody > tr > td > .link > button{
     padding: 8px;
     cursor: pointer;
 }
+
+.prints {
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 40px;
+    background-color: #ff914d;
+    color: #ffff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+
+}

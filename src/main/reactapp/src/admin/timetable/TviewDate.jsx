@@ -42,6 +42,7 @@ export default function TviewDate(props){
                 <div className='viewTop'>
                     <div className='viewFind'>일자 선택</div>
                     <input type="date" className='subCont' value={startDate} onChange={dateChange} />
+                    <button type='button' className='prints'>스케줄 출력</button>
                 </div>
                 <table>
                     <thead>
