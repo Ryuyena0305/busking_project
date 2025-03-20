@@ -43,5 +43,18 @@ public class ResController {
             return 0;
         }
     }
+    @GetMapping("/price")
+    public int calculatePrice(@RequestParam String startdate,
+                              @RequestParam String dest,
+                              @RequestParam String starttime) {
+        try {
+            // 가격 계산 서비스 호출
+            return resService.calculatePrice(startdate, dest, starttime);
+        } catch (Exception e) {
+            e.printStackTrace();  // 예외 로그 출력
+            return 0;  // 예외 발생 시 0을 반환
+        }
+    }
+
 }
 
