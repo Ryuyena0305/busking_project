@@ -36,10 +36,18 @@ public class ResController {
     public List<Map<Object,Object>> getStartTime(@RequestParam("startdate") String startdate, @RequestParam("dest") String dest) {
         return resService.getStartTime(startdate, dest);
     }
+//    @GetMapping("/seat")
+//    public List<String> getSeat(@RequestParam("startdate") String startdate,
+//                                @RequestParam("dest") String dest,
+//                                @RequestParam("starttime") String starttime,
+//                                @RequestParam("timeid") int timeid) {  // timeid를 파라미터로 받음
+//        return resService.getSeat(startdate, dest, starttime, timeid);  // 서비스 메서드 호출 시 timeid 넘겨줌
+//    }
     @GetMapping("/seat")
-    public List<String> getSeat(@RequestParam("startdate") String startdate, @RequestParam("dest") String dest, @RequestParam("starttime") String starttime) {
-        return resService.getSeat(startdate, dest, starttime);
+    public List<Map<String,Object>> getResvDetail(@RequestParam("timeid")int timeid) {
+        return resService.getResvDetail(timeid);
     }
+
     @Autowired
     private EmailService emailService;
     

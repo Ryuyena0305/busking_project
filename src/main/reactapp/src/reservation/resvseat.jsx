@@ -16,27 +16,57 @@ export default function ResvSeat() {
   const location = useLocation();
   const { timeid, person } = queryString.parse(location.search);
 
+  const [startdate, setStartdate] = useState('');
+  const [dest, setDest] = useState('');
+  const [starttime, setStarttime] = useState('');
+  const [time, setTime] = useState('');
+  const [biid, setBiid] = useState(0);
+
   const onGet = async () => {
     try {
-
       //1. timeid에 해당하는 biid / startdate / dest / starttime 가져오기
-      const timeid = await axios.get(`http://localhost:8080/resv/timeinfo?timeid=${timeid}`)
+      const timeresponse = await axios.get(`http://localhost:8080/resv/timeinfo?timeid=${timeid}`);
 
-      const response = await axios.get(`http://localhost:8080/busseat?biid=${timeid.data.biid}}`);
+      console.log(timeresponse.data);
+
+      setBiid(timeresponse.data.biid);
+      const biid = timeresponse.data.biid;
+
+      setStartdate(timeresponse.data.startdate);
+      const startdate = timeresponse.data.startdate;
+
+      setDest(timeresponse.data.dest);
+      const dest = timeresponse.data.dest;
+
+      setStarttime(timeresponse.data.starttime);
+      const starttime = timeresponse.data.starttime;
+
+      const response = await axios.get(`http://localhost:8080/busseat?biid=${biid}`);
       setSeats(response.data);
 
       const seatsResponse = await axios.get(
-        `http://localhost:8080/resv/seat?startdate=${timeid.data.startdate}&dest=${encodeURIComponent(timeid.data.dest)}&starttime=${encodeURIComponent(timeid.data.time)}`
-      );
+        `http://localhost:8080/resv/seat?timeid=${timeid}` 
+    );
 
-      const priceResponse = await axios.get(
-        `http://localhost:8080/resv/price?startdate=${timeid.data.startdate}&dest=${encodeURIComponent(timeid.data.dest)}&starttime=${encodeURIComponent(timeid.data.time)}`
-      );
+    const priceResponse = await axios.get(
+        `http://localhost:8080/resv/price?startdate=${startdate}&dest=${encodeURIComponent(dest)}&starttime=${encodeURIComponent(starttime)}&timeid=${timeid}` 
+    );
 
       const seats = seatsResponse.data;
       const rprice = priceResponse.data;
 
-      setSeats2(seats);
+      console.log( seats );
+
+      const 예매석 = []
+      for( let i = 0 ; i<seats.length ; i++ ){
+        예매석.push(seats[i].bsid -(biid==2? 55 : 0))
+      }
+
+      console.log( 예매석 );
+
+      setSeats2(예매석);
+
+
       console.log(seats)
       setRprice(rprice);
       setTotal(rprice * person);
@@ -73,7 +103,7 @@ export default function ResvSeat() {
 
       } else {
         rows[x][y].viewbsnum = rows[x][y].viewbsnum - count;
-        console.log(viewbsnum)
+        //console.log(viewbsnum)
       }
 
     });
@@ -91,7 +121,7 @@ export default function ResvSeat() {
 
   const onPage = () => {
     alert(`${startdate} ${dest}행 ${time.split(":").slice(0, 2)} ${person}명 선택하였습니다.`);
-    navigate("./");
+    navigate(`/phone?startdate=${startdate}&dest=${encodeURIComponent(dest)}&time=${starttime}&seats=${seatId.join(',')}`);
   };
 
 
@@ -99,7 +129,7 @@ export default function ResvSeat() {
 
   return (
     <div className="buswrap">
-      <h5>{dest}행 {startdate} {time} 출발</h5>
+      <h5>{dest}행 {startdate} {starttime} 출발</h5>
       {/* 좌석 상단 */}
       <div className="bus">
         <div className="buswidth">
@@ -121,12 +151,12 @@ export default function ResvSeat() {
                     borderRadius: '5px'
                   }}
                 >
-                  {seat.bsstate == 1 && seats2.includes(seat.bsnum.toString()) ? (
+                  {seat.bsstate != 1 || seats2.includes( seat.bsnum )  ? (
+                    <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="soft" readonly disabled>X</Button>
+                  ) : (
                     <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="outlined">
                       {seat.viewbsnum}
                     </Button>
-                  ) : (
-                    <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="soft">X</Button>
                   )}
 
                 </div>

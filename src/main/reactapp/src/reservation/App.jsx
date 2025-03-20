@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  import Time from "./Time.jsx";
  import Person from "./Person.jsx";
  import ResvSeat from "./resvseat.jsx";
+ import Phone from "./Phone.jsx";
  import './App.css';
  
  export default function App(props) {
@@ -53,6 +54,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
                  <Route path="/time" element={<Time />} /> 
                  <Route path="/person" element={<Person />} />  
                  <Route path="/resvSeat" element={<ResvSeat />} />
+                 <Route path="/phone" element={<Phone />} />
              </Routes>
          </div>
      )};

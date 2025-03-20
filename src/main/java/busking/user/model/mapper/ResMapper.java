@@ -23,16 +23,27 @@ public interface ResMapper {
             "AND l.dest = #{dest}")
     List<Map<Object,Object>> getStartTime(@Param("startdate") String startdate, @Param("dest") String dest);
 
-    @Select("SELECT DISTINCT b.bsnum " +
-            "FROM busseat b " +
-            "JOIN timetable t ON b.biid = t.biid " +
-            "JOIN location l ON t.locid = l.locid " +
-            "LEFT JOIN resvdetail rd ON b.bsid = rd.bsid " +
-            "WHERE t.startdate = #{startdate} " +
-            "AND l.dest = #{dest} " +
-            "AND t.starttime = #{starttime} " +
-            "AND rd.bsid IS NULL")
-    List<String> getSeat(@Param("startdate") String startdate, @Param("dest") String dest, @Param("starttime") String starttime);
+    @Select("SELECT * \n" +
+            "FROM resvdetail AS rd\n" +
+            "INNER JOIN resv AS r ON rd.resvid = r.resvid\n" +
+            "WHERE r.timeid = #{timeid}\n" +
+            "AND rd.bsid IS NOT NULL;")
+    List<Map<String, Object>> getResvDetail(int timeid);
+//    @Select("SELECT DISTINCT b.bsnum " +
+//            "FROM busseat b " +
+//            "JOIN timetable t ON b.biid = t.biid " +
+//            "JOIN location l ON t.locid = l.locid " +
+//            "LEFT JOIN resvdetail rd ON b.bsid = rd.bsid " +
+//            "LEFT JOIN resv r ON rd.resvid = r.resvid " +  // resv 테이블과 조인하여 timeid 필터링
+//            "WHERE t.startdate = #{startdate} " +
+//            "AND l.dest = #{dest} " +
+//            "AND t.starttime = #{starttime} " +
+//            "AND (r.timeid = #{timeid} OR r.timeid IS NULL) " +  // 예약된 `timeid`만 필터링 (또는 예약되지 않은 좌석)
+//            "AND rd.bsid IS NULL")  // 예약되지 않은 좌석만
+//    List<String> getSeat(@Param("startdate") String startdate,
+//                         @Param("dest") String dest,
+//                         @Param("starttime") String starttime,
+//                         @Param("timeid") int timeid);
 
     @Insert("INSERT INTO resv (email, rprice, total , timeid) VALUES (#{phone}, #{rprice}, #{total}, #{timeid})")
     @Options(useGeneratedKeys = true, keyProperty = "resvid")  // resDto 객체의 resvid 필드로 생성된 키를 자동 매핑

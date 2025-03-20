@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface SeatMapper {
 
-    @Insert("INSERT INTO busseat (bsnum, x, y, biid) SELECT bsnum, x, y, #{biid} FROM busseat WHERE biid = 1")
+    @Insert("INSERT INTO busseat (bsnum, x, y, biid) SELECT bsnum, x, y, #{biid} FROM busseat WHERE biid = #{biid}")
     public int onPost(int biid, SeatDto seatDto);
 
 

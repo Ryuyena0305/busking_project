@@ -26,8 +26,11 @@ public class ResService {
         return resMapper.getStartTime(startdate, dest);
     }
 
-    public List<String> getSeat(String startdate, String dest, String starttime) {
-        return resMapper.getSeat(startdate, dest, starttime);
+//    public List<String> getSeat(String startdate, String dest, String starttime, int timeid) {
+//        return resMapper.getSeat(startdate, dest, starttime, timeid);
+//    }
+    public List<Map<String,Object>> getResvDetail(int timeid) {
+        return resMapper.getResvDetail(timeid);
     }
 
     public int calculatePrice(String startdate, String dest, String starttime) {
