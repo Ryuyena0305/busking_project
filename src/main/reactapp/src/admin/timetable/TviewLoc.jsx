@@ -68,7 +68,7 @@ export default function TviewLoc(){
                             }
                         </tbody>
                     </table>
-                    <Page/>
+                    
         
 
                 </div>
