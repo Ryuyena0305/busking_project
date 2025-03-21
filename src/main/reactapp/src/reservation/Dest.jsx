@@ -33,12 +33,12 @@ export default function Dest() {
 
     return (
         <div>
-            <h1>선택된 날짜</h1>
-            <p>선택된 날짜: {formattedDate}</p>
-            <h1>목적지를 선택해주세요</h1>
-            <div>
+            <div className='date-header'>
+                <h2>선택된 날짜 : {formattedDate}</h2>
+            </div>
+            <div className='button-container'>
                 {dests.map((dest, index) => (
-                    <button key={index} onClick={() => handleDest(dest)}>
+                    <button key={index} className='dest-button' onClick={() => handleDest(dest)}>
                         {dest}
                     </button>
                 ))}

@@ -45,14 +45,17 @@ export default function Phone() {
 
     return (
         <>
-            <h1>이메일 입력해주세요</h1>
+        <div className="date-header">
+            <h2>이메일 입력해주세요</h2>
+            </div>
             <input 
+                className='email'
                 type="email" 
                 placeholder="이메일을 입력하세요"
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} 
             />
-            <button onClick={onRes}>다음</button>
+            <button className='emailButton' onClick={onRes}>다음</button>
         </>
     );
 }

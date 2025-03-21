@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  import Phone from "./Phone.jsx";
  import Resfin from "./Resfin.jsx";
  import './App.css';
+ import './Res.css';
  
  export default function App(props) {
      const location = useLocation();

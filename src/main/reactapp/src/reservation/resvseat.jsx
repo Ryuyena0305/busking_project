@@ -123,14 +123,19 @@ export default function ResvSeat() {
     navigate(`/phone?startdate=${startdate}&dest=${encodeURIComponent(dest)}&time=${starttime}&seats=${seatId.join(',')}`);
   };
 
-  return (
+  return (<div>
+    <div className="date-header">
+      <h2>{dest}행 {startdate} {starttime} 출발</h2>
+      </div>
     <div className="buswrap">
-      <h5>{dest}행 {startdate} {starttime} 출발</h5>
+      
+      
       {/* 좌석 상단 */}
+      <div className="busflex">
       <div className="bus">
         <div className="buswidth">
           <img className="driverImg" src="../etc/driver.png" alt="driver" />
-          <div>{dest}<br />&nbsp;&nbsp;&nbsp;&nbsp;BUS</div>
+          <div>{dest}</div>
           <img className="driverImg" src="../etc/ent.png" alt="entrance" />
         </div>
         {/* 좌석 버튼 */}
@@ -162,17 +167,33 @@ export default function ResvSeat() {
         </div>
 
 
-        <div className="bus2">
-          <u1>
-            <l1>인원수 : {person} ----- {rprice}원</l1> <br />
-            <l1>총 가격 : {total}원 </l1>
-            <Button className="nextPageBtn" onClick={onPage}>
-              예약하기
-            </Button>
-          </u1>
-        </div>
+        
 
       </div>
+      <div>
+        <div  className="bus bus2">
+          <u1>
+            <l1>인원수 X {person} ············· {rprice}원</l1> <br /><br/>
+            <li>&nbsp;&nbsp;&nbsp;</li>
+            <hr></hr> 
+            <li>&nbsp;&nbsp;&nbsp;</li>
+            <l1 className="totalPrice">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;총 가격 : {total}원 </l1>
+            
+          </u1>
+        </div>
+        <div>
+      <Button className="nextPageBtn" onClick={onPage}>
+              예약하기
+            </Button>
+            </div>
+          
+      
+      </div>
+     
+
+    </div>
+    </div>
     </div>
   );
 }

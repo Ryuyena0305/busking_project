@@ -5,7 +5,7 @@ a{color: black; text-decoration: none;}
 
 .buswrap{
         margin: 0px auto;
-        width:40%;
+        width:65%;
         
         
 }
@@ -28,19 +28,32 @@ a{color: black; text-decoration: none;}
 }
 
 .bus{
-        width: 320px;
+        width: 500px;
         margin: 0px auto;
         margin-top: 10px;
         border : 1px solid #0b6bcb;
         border-radius: 5px;
         padding : 10px;
         background-color: white !important;
+     
 }
 .bus2{
-        width: 300px;
+     
         margin: 0px auto;
-        padding-left: 50px; 
-        padding-right: 50px; 
+        width: 320px;
+        margin: 0px auto;
+        margin-top: 10px;
+        border : 1px solid #0b6bcb;
+        border-radius: 5px;
+        padding : 10px;
+        height: 120px;
+        background-color: white !important;
+        align-items: center;
+        width: 250px;
+        font-weight: bold;
+        color: #353535 ;
+        padding-left: 20px;
+    
 }
 .buswidth{
         display: flex;
@@ -53,8 +66,43 @@ img{
 }
 .nextPageBtn{
         margin: 0px auto !important;
-        width: 200px;
+        width: 250px;
         margin-top: 10px !important;
         margin-bottom: 10px !important;
-        background-color: #004aad;
+        background-color: white !important;
+        color: #0b6bcb !important;
+        border-radius: 10px !important;
+        border: 2px solid #0b6bcb !important;
+}
+
+.nextPageBtn:hover{
+        background-color: #0b6bcb !important;
+        color: white !important;
+}
+
+.emailButton{
+        margin: 0px auto !important;
+        width: 100px;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        background-color: white !important;
+        color: #0b6bcb !important;
+        border-radius: 10px !important;
+        border: 2px solid #0b6bcb !important;
+}
+.emailButton:hover{
+        background-color: #0b6bcb !important;
+        color: white !important;
+}
+
+.busflex{
+        display: flex;
+        gap:30px;
+        justify-content: center;
+        
+}
+.totalPrice{
+
+      
+        font-weight: bold;
 }

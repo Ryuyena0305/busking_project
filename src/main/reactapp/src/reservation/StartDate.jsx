@@ -42,7 +42,7 @@ export default function StartDate(props) {
             <h1>예매 페이지</h1>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <StaticDatePicker
-                    minDate={dayjs()} 
+                    // minDate={dayjs()} 
                     value={selectedDate}
                     onChange={(newDate) => setSelectedDate(newDate)}  
                     shouldDisableDate={(date) => !isDateAvailable(date)} 
