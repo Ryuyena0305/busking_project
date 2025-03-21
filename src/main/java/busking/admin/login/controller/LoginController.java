@@ -22,7 +22,7 @@ public class LoginController {
         else{
             HttpSession session = req.getSession();
             session.setAttribute("loginDto", result);
-            session.setMaxInactiveInterval(60 * 60);
+            session.setMaxInactiveInterval(60 * 600);
             return true;
         }
     }

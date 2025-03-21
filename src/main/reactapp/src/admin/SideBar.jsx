@@ -70,6 +70,12 @@ export default function SideBar(props) {
           </List>
 
           <List component="div" disablePadding className="test">
+            <ListItemButton component={Link} to="/tcreateexcel" sx={{ pl: 4 }}>
+              <ListItemText primary="스케줄 등록(Excel)" className="test2" />
+            </ListItemButton>
+          </List>
+
+          <List component="div" disablePadding className="test">
             <ListItemButton component={Link} to="/tview/loc" sx={{ pl: 4 }}>
               <ListItemText primary="지역별 조회" className="test2" />
             </ListItemButton>

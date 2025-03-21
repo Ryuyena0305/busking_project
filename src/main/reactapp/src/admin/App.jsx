@@ -17,6 +17,7 @@ import Tview from './timetable/Tview.jsx';
 import TviewBus from './timetable/TviewBus.jsx';
 import TviewDate from './timetable/TviewDate.jsx';
 import TviewLoc from './timetable/TviewLoc.jsx';
+import TviewExcel from './timetable/TcreateExcel.jsx';
 
 /* resvlog 예매 로그 */
 import Resvlog from './resvlog/Resvlog.jsx';
@@ -69,6 +70,7 @@ export default function App( props ){ // 컴포넌트
                     <Route path="/tview/bus" element={<TviewBus/>} />
                     <Route path="/tview/date" element={<TviewDate/>} />
                     <Route path="/tview/loc" element={<TviewLoc/>} />
+                    <Route path="/tcreateexcel" element={<TviewExcel/>} />
 
                     {/* resvlog 예매로그 */}
                     <Route path="/resvlog" element={<Resvlog/>} />
