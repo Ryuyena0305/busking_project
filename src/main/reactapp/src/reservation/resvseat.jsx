@@ -116,16 +116,22 @@ export default function ResvSeat() {
 
   useEffect(() => {
     onGet();
-  }, [startdate, dest, time, biid]);
+  }, [startdate, dest, starttime, biid]);
 
   const onPage = () => {
-    alert(`${startdate} ${dest}행 ${time.split(":").slice(0, 2)} ${person}명 선택하였습니다.`);
+    if (seatId.length !== Number(person)){
+      alert('인원에 맞게 선택해주세요.');
+      return; 
+    }
+    alert(`${startdate} ${dest}행 ${starttime.split(":").slice(0, 2)} ${person}명 선택하였습니다.`);
     navigate(`/phone?startdate=${startdate}&dest=${encodeURIComponent(dest)}&time=${starttime}&seats=${seatId.join(',')}`);
   };
+  const formattedTotal = new Intl.NumberFormat().format(total);
+  const formattedRprice = new Intl.NumberFormat().format(rprice);
 
   return (<div>
     <div className="date-header">
-      <h2>{dest}행 {startdate} {starttime} 출발</h2>
+    <h2>{startdate} &nbsp;&nbsp;|&nbsp;&nbsp; {starttime.split(":").slice(0, 2).join(":")} &nbsp;&nbsp;|&nbsp;&nbsp;{dest}</h2>
       </div>
     <div className="buswrap">
       
@@ -166,19 +172,16 @@ export default function ResvSeat() {
           ))}
         </div>
 
-
-        
-
       </div>
       <div>
         <div  className="bus bus2">
           <u1>
-            <l1>인원수 X {person} ············· {rprice}원</l1> <br /><br/>
+            <l1>인원수 X {person} ············· {formattedRprice}원</l1> <br /><br/>
             <li>&nbsp;&nbsp;&nbsp;</li>
             <hr></hr> 
             <li>&nbsp;&nbsp;&nbsp;</li>
             <l1 className="totalPrice">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;총 가격 : {total}원 </l1>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;총 가격 : {formattedTotal}원 </l1>
             
           </u1>
         </div>
@@ -186,12 +189,8 @@ export default function ResvSeat() {
       <Button className="nextPageBtn" onClick={onPage}>
               예약하기
             </Button>
-            </div>
-          
-      
+            </div> 
       </div>
-     
-
     </div>
     </div>
     </div>

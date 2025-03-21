@@ -151,7 +151,28 @@ button:hover {
     
 }
 
-.emailButton{
+.emailButton:hover{
+    background-color: #004aad !important;
+    color: white !important;
+}
+
+/* 이메일 입력박스 */
+.email {
+    width: 80%; 
+    padding: 10px 15px; 
+    font-size: 16px; 
+    border: 2px solid #004aad; 
+    border-radius: 10px;
+    outline: none; 
+    box-sizing: border-box; 
+    transition: all 0.3s ease;
+    height: 50px; /* 버튼과 동일한 높이 설정 */
+    vertical-align: middle; /* 수직 정렬을 맞추기 위해 추가 */
+    margin-left: 40px; 
+    margin-right: 10px;
+}
+
+.emailButton {
     margin: 0px auto !important;
     width: 100px;
     margin-top: 10px !important;
@@ -160,23 +181,15 @@ button:hover {
     color: #004aad !important;
     border-radius: 10px !important;
     border: 2px solid #004aad !important;
-}
-.emailButton:hover{
-    background-color: #004aad !important;
-    color: white !important;
-}
-
-.email{
-    width: 80%; 
-    padding: 10px 15px; 
-    font-size: 16px; 
-    border: 2px solid #004aad; 
-    border-radius: 10px;
-    outline: none; 
-    box-sizing: border-box; 
-    transition: all 0.3s ease; 
+    height: 50px; /* 버튼 높이를 입력박스와 동일하게 설정 */
+    line-height: 50px; /* 버튼 텍스트를 수직 중앙 정렬 */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle; /* 버튼의 수직 정렬을 맞추기 위해 추가 */
 }
 
 .email::placeholder {
     color: #004aad;
 }
+

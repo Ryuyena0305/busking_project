@@ -6,14 +6,12 @@ export default function Phone() {
     const [email, setEmail] = useState(''); 
     const navigate = useNavigate();
 
-    // URL에서 쿼리 파라미터 받기
     const params = new URLSearchParams(window.location.search);
     const startdate = params.get('startdate'); 
     const dest = params.get('dest');  
     const starttime = params.get('time');  
     const bsnum = params.get('seats').split(','); 
 
-    // 서버에 예약 정보를 전송
     const onRes = async () => {
         const data = {
             phone: email,  

@@ -38,7 +38,7 @@ export default function StartDate(props) {
     };
 
     return (
-        <div>
+        <div className='emaildiv'>
             <h1>예매 페이지</h1>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <StaticDatePicker
