@@ -10,12 +10,20 @@ import java.util.List;
 @Mapper
 public interface ExcelMapper {
 
-    @Select("select time.timeid, time.startdate, time.starttime, info.binum, info.driver, loc.dest, info.biid, loc.locid\n" +
-            "from timetable time\n" +
-            "join businfo info on time.biid = info.biid\n" +
-            "join location loc on time.locid = loc.locid\n" +
-            "where startdate = #{startdate}")
+    @Select("select time.timeid, time.startdate, time.starttime, info.binum, info.driver, loc.dest, info.biid, loc.locid " +
+            "from timetable time " +
+            "join businfo info on time.biid = info.biid " +
+            "join location loc on time.locid = loc.locid " +
+            "where startdate = #{startdate} ")
     List<ExcelDto> findAll(String startdate);
+
+    @Select("select time.timeid, time.startdate, time.starttime, info.binum, info.driver, loc.dest, info.biid, loc.locid " +
+            "from timetable time " +
+            "join businfo info on time.biid = info.biid " +
+            "join location loc on time.locid = loc.locid " +
+            "where startdate = #{startdate}" +
+            "ORDER BY loc.dest ASC, time.starttime ASC")
+    public List<ExcelDto> View(String startdate);
 
 
 

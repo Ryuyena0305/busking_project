@@ -10,7 +10,39 @@ import { Link } from 'react-router-dom';
 export default function TviewDate(props){
     const defaultDay = new Date().toISOString().split("T")[0];
     const [startDate, setStartDate] = useState([defaultDay]);
-    const [getViewLists, setViewLists] = useState([])
+    const [getViewLists, setViewLists] = useState([]);
+    //const [excelLists, setExcelLists] = useState([]);
+
+    const onExcelDate = async () =>{
+
+        if (!startDate) return;
+
+    try {
+        const response = await axios.get(`http://localhost:8080/busking/excel?startdate=${startDate}`, {
+            responseType: 'blob' // 엑셀 파일을 Blob 데이터로 받기
+        });
+
+        // Blob 데이터 생성
+        const blob = new Blob([response.data], { type: "application/vnd.ms-excel" });
+
+        // Blob을 URL로 변환
+        const url = window.URL.createObjectURL(blob);
+
+        //  가상의 <a> 태그 생성하여 다운로드 트리거
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${startDate}_bus_schedule.xls`; // 파일명 설정
+        document.body.appendChild(a);
+        a.click();
+
+        //  URL과 <a> 태그 정리
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    } catch (error) {
+        console.error("엑셀 다운로드 오류:", error);
+    }
+
+    }
 
 
     const onViewDate = async () => {
@@ -42,7 +74,8 @@ export default function TviewDate(props){
                 <div className='viewTop'>
                     <div className='viewFind'>일자 선택</div>
                     <input type="date" className='subCont' value={startDate} onChange={dateChange} />
-                    <button type='button' className='prints'>스케줄 출력</button>
+                    <button type='button' className='prints' onClick={() => onExcelDate()}>스케줄 출력</button>
+
                 </div>
                 <table>
                     <thead>
