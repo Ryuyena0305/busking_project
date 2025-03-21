@@ -29,7 +29,7 @@ export default function Create(props) {
   return (
     <>
       <div id="container">
-        <h1>BUS 등록 페이지</h1>
+        <h1>버스 등록</h1>
         <form className='vContent createBox'>
           <div className='subTit'>버스기사 {' '}</div>
             <input

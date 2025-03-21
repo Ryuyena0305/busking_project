@@ -35,7 +35,7 @@ export default function Update(props) {
   return (
     <>
       <div id="container">
-        <h1>BUS 수정 페이지</h1>
+        <h1>버스 수정</h1>
         <form className='vContent createBox'>
         <div className='subTit'>버스기사 {' '}</div>
             <input

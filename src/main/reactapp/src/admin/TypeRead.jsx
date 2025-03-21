@@ -14,7 +14,7 @@ export default function TypeRead(props) {
   return (
     <>
       <div id="container">
-      <h1>BUS TYPE</h1>
+      <h1>버스 등급</h1>
         <div className='pickContent'>
         
         <table>
