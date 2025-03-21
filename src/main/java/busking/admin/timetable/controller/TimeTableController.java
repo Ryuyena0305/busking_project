@@ -2,6 +2,8 @@ package busking.admin.timetable.controller;
 
 import busking.admin.timetable.model.dto.TimeTableDto;
 import busking.admin.timetable.service.TimeTableService;
+import com.github.pagehelper.PageInfo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/timetable")
 @CrossOrigin("http://localhost:5173")
+@RequiredArgsConstructor // final 기준으로 자동으로 생성자 만들기 / @Autowired 안 써도 됨
 public class TimeTableController {
-    @Autowired
-    private TimeTableService timeTableService;
-
+    private final TimeTableService timeTableService;
 
 
     // 버스정보 가져오기
@@ -72,28 +73,40 @@ public class TimeTableController {
 
     // (도착지별)스케줄 조회
     @GetMapping("/view/loc")
-    public List<TimeTableDto> locView(@RequestParam int locid){
+    public PageInfo<TimeTableDto> locView(
+            @RequestParam int locid,
+            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "10") int pageSize
+    ){
         System.out.println("TimeTableController.locView");
-        System.out.println("locid = " + locid);
-        return timeTableService.locView(locid);
+        System.out.println("locid = " + locid + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
+        return timeTableService.locView(locid, pageNum, pageSize);
     }
 
 
     // (버스별)스케줄 조회
     @GetMapping("/view/bus")
-    public List<TimeTableDto> busView(@RequestParam int biid){
+    public PageInfo<TimeTableDto> busView(
+            @RequestParam int biid,
+            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "10") int pageSize
+    ){
         System.out.println("TimeTableController.busView");
-        System.out.println("biid = " + biid);
-        return timeTableService.busView(biid);
+        System.out.println("biid = " + biid + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
+        return timeTableService.busView(biid, pageNum, pageSize);
     }
 
 
     // (일자별)스케줄 조회
     @GetMapping("/view/date")
-    public List<TimeTableDto> dateView(@RequestParam String startdate){
+    public PageInfo<TimeTableDto> dateView(
+            @RequestParam String startdate,
+            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "10") int pageSize
+    ){
         System.out.println("TimeTableController.dateView");
-        System.out.println("date = " + startdate);
-        return timeTableService.dateView(startdate);
+        System.out.println("startdate = " + startdate + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
+        return timeTableService.dateView(startdate, pageNum, pageSize);
     }
 
 }

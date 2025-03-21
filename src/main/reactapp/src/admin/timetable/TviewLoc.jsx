@@ -2,7 +2,7 @@ import * as React from 'react';
 import axios from 'axios';
 import './timetable.css';
 //import { Page} from './Timetable.jsx'
-import { GetLocData } from './Timetable.jsx';
+import { GetLocData } from '../components/Timetable';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 export default function TviewLoc(){
     const [locid, setLocid] = useState('');
-    const [getViewLists, setViewLists] = useState([])
+    const [getViewLists, setViewLists] = useState({})
 
 
     const onViewLoc = async () => {
@@ -44,7 +44,7 @@ export default function TviewLoc(){
                 <h1> 지역별 조회 </h1>
                 <div className='pickContent'>
                     <div className='viewTop'>
-                    <GetLocData findLocid={paramLocid} className='getLocData'/>
+                    <GetLocData findLocid={paramLocid}  className='getLocData'/>
                     </div>
                     <table>
                         <thead>
@@ -54,7 +54,7 @@ export default function TviewLoc(){
                         </thead>
                         <tbody> 
                             {
-                                getViewLists.map((getViewList, index) => (
+                                getViewLists.list && getViewLists.list.map((getViewList, index) => (
                                     <tr className='bodyTr' key={index}>
                                         <td>{getViewList.timeid}</td>
                                         <td>{getViewList.startdate}</td>
@@ -68,7 +68,6 @@ export default function TviewLoc(){
                             }
                         </tbody>
                     </table>
-                    <Page/>
         
 
                 </div>

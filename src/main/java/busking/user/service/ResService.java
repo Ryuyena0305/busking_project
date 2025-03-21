@@ -90,4 +90,8 @@ public class ResService {
             return 0;
         }
     }
+
+    public boolean getState(int resvid){
+        return resMapper.getState(resvid);
+    }
 }
