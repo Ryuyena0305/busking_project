@@ -18,7 +18,11 @@ export default function Person(props) {
         setCount(count + 1);
     };
     const handleSelect = () => {
+        if (count >= 1) {
         navigate(`/resvseat?timeid=${timeid}&person=${count}`);
+        }else {
+            alert('1명 이상을 선택하세요.');
+        }
     };
 
     return (

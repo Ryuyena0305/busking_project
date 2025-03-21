@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import queryString from "query-string";
 import "./resvseat.css";
@@ -123,9 +122,6 @@ export default function ResvSeat() {
     alert(`${startdate} ${dest}행 ${time.split(":").slice(0, 2)} ${person}명 선택하였습니다.`);
     navigate(`/phone?startdate=${startdate}&dest=${encodeURIComponent(dest)}&time=${starttime}&seats=${seatId.join(',')}`);
   };
-
-
-
 
   return (
     <div className="buswrap">

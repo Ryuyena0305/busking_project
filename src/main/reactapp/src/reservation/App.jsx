@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  import Person from "./Person.jsx";
  import ResvSeat from "./resvseat.jsx";
  import Phone from "./Phone.jsx";
+ import Resfin from "./Resfin.jsx";
  import './App.css';
  
  export default function App(props) {
@@ -55,6 +56,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
                  <Route path="/person" element={<Person />} />  
                  <Route path="/resvSeat" element={<ResvSeat />} />
                  <Route path="/phone" element={<Phone />} />
+                 <Route path="/resfin" element={<Resfin />} />
              </Routes>
          </div>
      )};
