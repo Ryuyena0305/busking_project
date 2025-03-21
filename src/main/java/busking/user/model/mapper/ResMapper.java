@@ -107,4 +107,7 @@ public interface ResMapper {
             "WHERE " +
             "    t.timeid = #{timeid}")
     ResDto getTimeInfo(int timeid);
+
+    @Update("update resv set state = 1 where resvid = #{resvid}")
+    public boolean getState(int resvid);
 }

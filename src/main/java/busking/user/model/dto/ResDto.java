@@ -24,6 +24,7 @@ public class ResDto {
     private int locid;
     private int total;
     private int biid;
+    private int state;
 
     public void setTotal(int btprice, int locprice) {
         this.rprice = btprice + locprice;

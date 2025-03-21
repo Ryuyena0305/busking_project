@@ -63,7 +63,7 @@ public class ResController {
             if(result > 0) {
 
                 String filePath = "qrcode.png";
-                byte[] qrCodeImage = qrCodeService.generateQRCodeImage("good", 300, 300);
+                byte[] qrCodeImage = qrCodeService.generateQRCodeImage("http://localhost:8080/resv/state?resvid="+result, 300, 300);
                 //qrCodeService.saveQRCodeImage(qrCodeImage, filePath);
 
                 File file = new File(filePath);
@@ -92,6 +92,15 @@ public class ResController {
     @GetMapping("/timeinfo")
     public ResDto getTimeInfo(@RequestParam int timeid) {
         return resService.getTimeInfo(timeid);
+    }
+
+
+    // QR코드 스캔 시 예매 상태 변경(버스 탑승 완료)
+    @GetMapping("/state")
+    public String getState(@RequestParam int resvid){
+        boolean result = resService.getState(resvid);
+        if ( result ){ return "탑승 스캔 완료";}
+        else{ return "문제발생 관리자에게 문의";}
     }
 }
 
