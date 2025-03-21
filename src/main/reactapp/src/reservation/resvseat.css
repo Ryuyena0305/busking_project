@@ -31,7 +31,7 @@ a{color: black; text-decoration: none;}
         width: 500px;
         margin: 0px auto;
         margin-top: 10px;
-        border : 1px solid #0b6bcb;
+        border : 1px solid #004aad;
         border-radius: 5px;
         padding : 10px;
         background-color: white !important;
@@ -43,7 +43,7 @@ a{color: black; text-decoration: none;}
         width: 320px;
         margin: 0px auto;
         margin-top: 10px;
-        border : 1px solid #0b6bcb;
+        border : 1px solid #004aad;
         border-radius: 5px;
         padding : 10px;
         height: 120px;
@@ -70,28 +70,13 @@ img{
         margin-top: 10px !important;
         margin-bottom: 10px !important;
         background-color: white !important;
-        color: #0b6bcb !important;
+        color: #004aad !important;
         border-radius: 10px !important;
-        border: 2px solid #0b6bcb !important;
+        border: 2px solid #004aad !important;
 }
 
 .nextPageBtn:hover{
-        background-color: #0b6bcb !important;
-        color: white !important;
-}
-
-.emailButton{
-        margin: 0px auto !important;
-        width: 100px;
-        margin-top: 10px !important;
-        margin-bottom: 10px !important;
-        background-color: white !important;
-        color: #0b6bcb !important;
-        border-radius: 10px !important;
-        border: 2px solid #0b6bcb !important;
-}
-.emailButton:hover{
-        background-color: #0b6bcb !important;
+        background-color: #004aad !important;
         color: white !important;
 }
 
