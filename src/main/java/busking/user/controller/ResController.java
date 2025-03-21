@@ -89,6 +89,7 @@ public class ResController {
             return 0;  // 예외 발생 시 0을 반환
         }
     }
+
     @GetMapping("/timeinfo")
     public ResDto getTimeInfo(@RequestParam int timeid) {
         return resService.getTimeInfo(timeid);

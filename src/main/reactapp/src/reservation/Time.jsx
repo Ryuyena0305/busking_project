@@ -6,7 +6,6 @@ import queryString from 'query-string';
 
 export default function Time(props) {
     const [saveTime, setSaveTime] = useState([]);
-    const [selectedTime, setSelectedTime] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
     const { startdate, dest } = queryString.parse(location.search);
@@ -25,25 +24,29 @@ export default function Time(props) {
     }, [startdate, dest]);
 
     const onTimeSelect = (timeid) => {
-        //setSelectedTime(selectedTime);
         navigate(`/person?timeid=${timeid}`);
     }
 
     return (
         <>
             <div>
+            <div className='date-header'>
+                <h2>{startdate} &nbsp;&nbsp;|&nbsp;&nbsp; {dest}행</h2>
+                </div>
+                <div className='time-button-container'>
                 {saveTime.length > 0 && (
                     <ul>
                         {saveTime.map((time, index) => {
                             const formattedTime = time.starttime.split(':').slice(0, 2).join(':');
                             return (
                                 <li key={index}>
-                                    <button onClick={() => onTimeSelect(time.timeid)}>{formattedTime}</button>
+                                    <button className='time-button' onClick={() => onTimeSelect(time.timeid)}>{formattedTime}</button>
                                 </li>
                             );
                         })}
                     </ul>
                 )}
+                </div>
             </div>
         </>
     );
