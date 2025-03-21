@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-
-import GetBusData from './Timetable';
+import GetBusData from '../components/Timetable';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -32,14 +31,14 @@ export function Page(props){
 
 export default function TviewBus(){
     const [biid, setBiid] = useState('');
-    const [getViewLists, setViewLists] = useState([])
+    const [getViewLists, setViewLists] = useState({ })
 
     
     const onViewBus = async () => {
         try{
             const response = await axios.get(`http://localhost:8080/timetable/view/bus?biid=${biid}`);
             setViewLists(response.data);
-            //console.log(setViewLists);
+            console.log(response.data);
         }catch(error){
             console.log(error);
         }
@@ -65,7 +64,7 @@ export default function TviewBus(){
                 <h1> 버스별 조회 </h1>
                 <div className='pickContent'>
                     <div className='viewTop'>
-                    <GetBusData findBiid={paramBiid} className='getBusData'/>
+                    <GetBusData findBiid={paramBiid}  className='getBusData'/>
                     </div>
                     <table>
                         <thead>
@@ -75,7 +74,7 @@ export default function TviewBus(){
                         </thead>
                         <tbody> 
                             {
-                                getViewLists.map((getViewList, index) => (
+                                getViewLists.list && getViewLists.list.map((getViewList, index) => (
                                     <tr className='bodyTr' key={index}>
                                         <td>{getViewList.timeid}</td>
                                         <td>{getViewList.startdate}</td>
@@ -88,9 +87,7 @@ export default function TviewBus(){
                                 ))
                             }
                         </tbody>
-                    </table>
-                    <Page/>
-        
+                    </table>       
 
                 </div>
             </div>
