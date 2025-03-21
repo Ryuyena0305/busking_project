@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import axios from 'axios';
-import './timetable.css';
+import '../timetable/timetable.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
 //import Pagination from 'react-js-pagination';
@@ -10,9 +10,15 @@ import { useEffect } from 'react';
 
 
 // select에서 사용할 차량정보 가져오기
-export default function GetBusData({findBiid}){
+export default function GetBusData( props ){
     const [biid, setBiid] = useState('');
     const [selectBuss, setSelectBuss] = useState([]);
+
+    const findBiid = props.findBiid;
+    console.log( props );
+
+    let 차량초기번호 = "차량초기번호" in props ? props.차량초기번호 : '' ;
+    console.log( 차량초기번호 );
 
     const getBus = async () => {
         try{
@@ -41,8 +47,8 @@ export default function GetBusData({findBiid}){
 
     return(<>
         <div className='viewFind'>차량 정보</div>
-        <select className='subCont' value={biid} onChange={(e) => setBiid(e.target.value)}>
-            <option value="">선택</option>
+        <select className='subCont' value={ biid == '' ? 차량초기번호 : biid  } onChange={(e) => setBiid(e.target.value)}>
+            <option value="0">선택</option>
         {
             selectBuss.map((selectBus, index) => {
                 return(

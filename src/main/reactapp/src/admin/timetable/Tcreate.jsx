@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 import dayjs from 'dayjs';
 
-import GetBusData, { GetLocData } from './Timetable';
+import GetBusData, { GetLocData } from '../components/Timetable';
 import { useNavigate } from 'react-router-dom';
 
 

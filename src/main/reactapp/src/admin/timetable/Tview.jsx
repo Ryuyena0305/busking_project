@@ -4,7 +4,7 @@ import './timetable.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import GetBusData, { GetLocData } from './Timetable';
+import GetBusData, { GetLocData } from '../components/Timetable';
 
 
 export default function Tview(props){
@@ -29,6 +29,7 @@ export default function Tview(props){
         try{
             const response = await axios.get(`http://localhost:8080/timetable/view?timeid=${timeid}`);
             setTimes(response.data);
+            console.log(response.data);
         }catch(error){
             console.log(error);
         }
@@ -101,13 +102,13 @@ export default function Tview(props){
                                 onChange={onValueChange}
                             />
 
-                            <GetBusData findBiid={paramBiid} className='getBusData' value={times.biid}
+                            <GetBusData findBiid={paramBiid} className='getBusData' value={times.biid} 차량초기번호={ times.biid }
                                 name="biid"
                                 onChange={onValueChange}
                             />
                             {/* 수정시 넘길 땐 biid로 넘겨야 하는 거 아닌가요 value는 한개인데 어쩌죠 */}
 
-                            <GetLocData findLocid={paramLocid} className='getLocData' value={times.locid}
+                            <GetLocData findLocid={paramLocid} className='getLocData' value={times.locid} findDest={ times.dest }
                                 name="locid"
                                 onChange={onValueChange}
                             />

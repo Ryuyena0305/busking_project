@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 export default function TviewDate(props){
     const defaultDay = new Date().toISOString().split("T")[0];
     const [startDate, setStartDate] = useState([defaultDay]);
-    const [getViewLists, setViewLists] = useState([]);
+    const [getViewLists, setViewLists] = useState({})
     //const [excelLists, setExcelLists] = useState([]);
 
     const onExcelDate = async () =>{
@@ -85,7 +85,7 @@ export default function TviewDate(props){
                     </thead>
                     <tbody> 
                         {
-                            getViewLists.map((getViewList, index) => (
+                            getViewLists.list && getViewLists.list.map((getViewList, index) => (
                                 <tr className='bodyTr' key={index}>
                                     <td>{getViewList.timeid}</td>
                                     <td>{getViewList.startdate}</td>
@@ -99,7 +99,6 @@ export default function TviewDate(props){
                         }
                     </tbody>
                 </table>
-                <Page/>
     
 
             </div>
