@@ -74,7 +74,7 @@ export default function TviewDate(props){
                 <div className='viewTop'>
                     <div className='viewFind'>일자 선택</div>
                     <input type="date" className='subCont' value={startDate} onChange={dateChange} />
-                    <button type='button' className='prints' onClick={() => onExcelDate()}>스케줄 출력</button>
+                    <button type='button' className='prints' onClick={() => onExcelDate()}>다운로드(Excel)</button>
 
                 </div>
                 <table>
