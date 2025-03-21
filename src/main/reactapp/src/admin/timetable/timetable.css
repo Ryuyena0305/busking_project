@@ -213,15 +213,15 @@ tbody > tr > td > .link > button{
     cursor: pointer;
 }
 
-.prints{
+.prints {
     margin-top: 5px;
+    margin-left: 10px;
     height: 40px;
-    background-color: #004aad;
+    background-color: #ff914d;
     color: #ffff;
     border: none;
     border-radius: 5px;
-    padding: 13px;
+    padding: 8px;
     cursor: pointer;
-    position: fixed;
-    right: 80px;
+
 }
