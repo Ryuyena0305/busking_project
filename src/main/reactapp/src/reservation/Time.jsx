@@ -29,25 +29,33 @@ export default function Time(props) {
 
     return (
         <>
-            <div>
+          <div>
             <div className='date-header'>
-                <h2>{startdate} &nbsp;&nbsp;|&nbsp;&nbsp; {dest}행</h2>
-                </div>
-                <div className='time-button-container'>
-                {saveTime.length > 0 && (
-                    <ul>
-                        {saveTime.map((time, index) => {
-                            const formattedTime = time.starttime.split(':').slice(0, 2).join(':');
-                            return (
-                                <li key={index}>
-                                    <button className='time-button' onClick={() => onTimeSelect(time.timeid)}>{formattedTime}</button>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                )}
-                </div>
+              <h2>{startdate} &nbsp;&nbsp;|&nbsp;&nbsp; {dest}행</h2>
             </div>
+            <div className='time-button-container'>
+              {saveTime.length > 0 && (
+                <ul>
+                  {saveTime
+                    .sort((a, b) => {
+                      const timeA = a.starttime.split(':').map(Number).reduce((h, m) => h * 60 + m); // 분 단위로 변환
+                      const timeB = b.starttime.split(':').map(Number).reduce((h, m) => h * 60 + m); // 분 단위로 변환
+                      return timeA - timeB; // 오름차순 정렬
+                    })
+                    .map((time, index) => {
+                      const formattedTime = time.starttime.split(':').slice(0, 2).join(':');
+                      return (
+                        <li key={index}>
+                          <button className='time-button' onClick={() => onTimeSelect(time.timeid)}>
+                            {formattedTime}
+                          </button>
+                        </li>
+                      );
+                    })}
+                </ul>
+              )}
+            </div>
+          </div>
         </>
-    );
+      );
 }

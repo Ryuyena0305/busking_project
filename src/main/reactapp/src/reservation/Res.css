@@ -151,7 +151,28 @@ button:hover {
     
 }
 
-.emailButton{
+.emailButton:hover{
+    background-color: #004aad !important;
+    color: white !important;
+}
+
+/* 이메일 입력박스 */
+.email {
+    width: 80%; 
+    padding: 10px 15px; 
+    font-size: 16px; 
+    border: 2px solid #004aad; 
+    border-radius: 10px;
+    outline: none; 
+    box-sizing: border-box; 
+    transition: all 0.3s ease;
+    height: 50px; /* 버튼과 동일한 높이 설정 */
+    vertical-align: middle; /* 수직 정렬을 맞추기 위해 추가 */
+    margin-left: 40px; 
+    margin-right: 10px;
+}
+
+.emailButton {
     margin: 0px auto !important;
     width: 100px;
     margin-top: 10px !important;
@@ -160,23 +181,25 @@ button:hover {
     color: #004aad !important;
     border-radius: 10px !important;
     border: 2px solid #004aad !important;
-}
-.emailButton:hover{
-    background-color: #004aad !important;
-    color: white !important;
-}
-
-.email{
-    width: 80%; /* 입력란이 부모 컨테이너의 가로폭을 꽉 채우도록 설정 */
-    padding: 10px 15px; /* 충분한 내부 여백을 추가 */
-    font-size: 16px; /* 글자 크기 */
-    border: 2px solid #004aad; /* 파란색 경계선 */
-    border-radius: 10px; /* 둥근 경계선 */
-    outline: none; /* 포커스시 테두리 강조를 없애기 */
-    box-sizing: border-box; /* 패딩을 포함하여 전체 폭 계산 */
-    transition: all 0.3s ease; /* 부드러운 전환 효과 */
+    height: 50px; /* 버튼 높이를 입력박스와 동일하게 설정 */
+    line-height: 50px; /* 버튼 텍스트를 수직 중앙 정렬 */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle; /* 버튼의 수직 정렬을 맞추기 위해 추가 */
 }
 
 .email::placeholder {
-    color: #004aad; /* 입력박스의 플레이스홀더 텍스트 색상 */
+    color: #004aad;
 }
+.MuiBox-root{
+    width: 50%;  /* 전체 키패드의 너비 */
+    margin: 0 auto;  /* 가운데 정렬 */
+  }
+
+.resfin{
+    margin-top: 300px;
+    text-align: center;
+}
+  
+
