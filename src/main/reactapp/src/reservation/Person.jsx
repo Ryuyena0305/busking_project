@@ -59,7 +59,7 @@ export default function Person(props) {
                 <button className="decrement-button"  onClick={handleDecrement} disabled={count === 0}>-</button>
                 <div className="count-display">{count}</div>
                 <button className="increment-button" onClick={handleIncrement}>+</button>
-                <button className="select-button" onClick={handleSelect}>선택</button>
+                <button className="select-button" onClick={handleSelect}>다음</button>
             </div>
         </>
     );

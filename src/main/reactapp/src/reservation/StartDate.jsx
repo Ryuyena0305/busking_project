@@ -37,12 +37,14 @@ export default function StartDate(props) {
         }
     };
 
-    return (
-        <div className='emaildiv'>
+    return (<>
+            <div className="date-header">
             <h1>예매 페이지</h1>
+            </div>
+            <div className='emaildiv'>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <StaticDatePicker
-                    // minDate={dayjs()} 
+                    minDate={dayjs()} 
                     value={selectedDate}
                     onChange={(newDate) => setSelectedDate(newDate)}  
                     shouldDisableDate={(date) => !isDateAvailable(date)} 
@@ -58,5 +60,5 @@ export default function StartDate(props) {
                 다음
             </Button>
         </div>
-    );
+        </>);
 }

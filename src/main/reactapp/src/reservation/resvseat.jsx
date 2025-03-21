@@ -187,7 +187,7 @@ export default function ResvSeat() {
         </div>
         <div>
       <Button className="nextPageBtn" onClick={onPage}>
-              예약하기
+              다음
             </Button>
             </div> 
       </div>
