@@ -133,14 +133,16 @@ SELECT * FROM timetable WHERE startdate = '2025-03-20' AND starttime = '18:00:00
 
 # 예약
 create table resv(
-	resvid int unsigned auto_increment,
-	email varchar(30) not null,
+   resvid int unsigned auto_increment,
+   email varchar(30) not null,
     rprice int unsigned not null,
     total int unsigned not null,
-	timeid int unsigned not null,
+   timeid int unsigned not null,
+    state int unsigned default 0,
     constraint primary key (resvid),
-	constraint foreign key (timeid) references timetable(timeid) ON DELETE CASCADE ON UPDATE CASCADE
+   constraint foreign key (timeid) references timetable(timeid) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
 insert into resv (email,rprice,total,timeid) values('bear@naver.com','10000','20000',1);
 insert into resv (email,rprice,total,timeid) values('asdf@naver.com','10000','20000',2);
 insert into resv (email,rprice,total,timeid) values('bbbb@naver.com','10000','20000',2);
