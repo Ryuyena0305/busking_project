@@ -14,7 +14,9 @@ export default function Resfin(props) {
 
     return (
         <>
-            <h1> 예매 완료</h1>
+        <div className='resfin'>
+            <h1>🚩🚍 예매 완료! 🚍🎫</h1>
+        </div>
         </>
     );
 }

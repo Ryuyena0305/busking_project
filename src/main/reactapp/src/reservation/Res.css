@@ -192,4 +192,14 @@ button:hover {
 .email::placeholder {
     color: #004aad;
 }
+.MuiBox-root{
+    width: 50%;  /* 전체 키패드의 너비 */
+    margin: 0 auto;  /* 가운데 정렬 */
+  }
+
+.resfin{
+    margin-top: 300px;
+    text-align: center;
+}
+  
 
