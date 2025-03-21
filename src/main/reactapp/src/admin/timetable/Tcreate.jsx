@@ -57,7 +57,7 @@ export default function Tcreate(props){
             console.log(response.data);
             if(response.data == true){
                 alert('스케줄 등록 성공');
-                navigate("/");
+                navigate("/home");
             }else{
                 alert('스케줄 등록 실패');
             }
