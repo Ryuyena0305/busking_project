@@ -44,7 +44,7 @@ public class EmailService {
         helper.setSubject("예매가 완료되었습니다. QR 코드를 확인해주세요.");
 
         // 4. 이메일 본문 작성(HTML) 형식
-        String mailContent = "QR 코드를 버스에 찍어주세요.";
+        String mailContent = "QR 코드를 버스에 찍어주세요. QR 스캔 사이트 : https://qrscanner.net/ko";
 
         helper.setText(mailContent, true);
 
