@@ -29,6 +29,7 @@ public interface ResMapper {
             "WHERE r.timeid = #{timeid}\n" +
             "AND rd.bsid IS NOT NULL;")
     List<Map<String, Object>> getResvDetail(int timeid);
+
 //    @Select("SELECT DISTINCT b.bsnum " +
 //            "FROM busseat b " +
 //            "JOIN timetable t ON b.biid = t.biid " +
@@ -44,6 +45,7 @@ public interface ResMapper {
 //                         @Param("dest") String dest,
 //                         @Param("starttime") String starttime,
 //                         @Param("timeid") int timeid);
+
 
     @Insert("INSERT INTO resv (email, rprice, total , timeid) VALUES (#{phone}, #{rprice}, #{total}, #{timeid})")
     @Options(useGeneratedKeys = true, keyProperty = "resvid")  // resDto 객체의 resvid 필드로 생성된 키를 자동 매핑
@@ -110,4 +112,20 @@ public interface ResMapper {
 
     @Update("update resv set state = 1 where resvid = #{resvid}")
     public boolean getState(int resvid);
+
+    @Select("SELECT b.bsnum\n" +
+            "FROM busseat b\n" +
+            "JOIN timetable t ON b.biid = t.biid\n" +
+            "JOIN location l ON t.locid = l.locid\n" +
+            "LEFT JOIN resvdetail rd ON b.bsid = rd.bsid\n" +
+            "LEFT JOIN resv r ON rd.resvid = r.resvid\n" +
+            "WHERE t.startdate = #{startdate}\n" +
+            "AND l.dest = #{dest}\n" +
+            "AND t.starttime = #{starttime}\n" +
+            "AND (r.timeid = #{timeid} OR r.timeid IS NULL) " +
+            "AND rd.bsid IS NULL")
+    List<Integer> getAvailableSeats(@Param("startdate") String startdate,
+                                    @Param("starttime") String starttime,
+                                    @Param("dest") String dest,
+                                    @Param("timeid") int timeid);
 }
