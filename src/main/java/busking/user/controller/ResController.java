@@ -103,22 +103,5 @@ public class ResController {
         if ( result ){ return "탑승 스캔 완료";}
         else{ return "문제발생 관리자에게 문의";}
     }
-    @PostMapping("/auto")
-    public int autoReserve(@RequestBody ResDto resDto) {
-        try {
-            System.out.println("resDto = " + resDto);
-
-            // 자동 예약 처리
-            int result = resService.autoReserve(resDto);
-
-            if (result > 0) {
-                return result; // 성공적으로 예약이 처리된 결과 반환
-            }
-            return 0;  // 예약 실패
-        } catch (Exception e) {
-            System.out.println(e);
-            return 0;  // 예외 발생 시 0을 반환
-        }
-    }
 }
 
