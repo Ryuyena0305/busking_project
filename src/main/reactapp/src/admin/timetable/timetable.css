@@ -234,21 +234,42 @@ tbody > tr > td > .link > button{
 .hContent{
     width: 80%;
     margin: 0 auto;
-    margin-top: 25px;
-    
 }
-
-.hContent, .hSubContent{
-    text-align: center;
-}
-
 .hSubContent{
+    border: 1px solid darkgray;
+    padding: 30px;
+}
+.hSubContent:last-child{
+    margin-top: 50px;
+}
+
+.barChart{
+    margin: 0 auto;
+}
+.hscFlex{
     display: flex;
     justify-content: space-between;
 }
 
-.hBox1, .hBox2, .hBox3, .hBox4{
-    border: 1px solid #eeeeee;
-    height: 250px;
+.hBtn1, .hBtn2{
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
 }
+.hBtn1{
+    background-color: #ff914d ;
+}
+
+.hBtn1:hover{
+    background-color: #fc8941 ;
+}
+.hBtn2{
+    background-color: #004aad ;
+}
+.hBtn2:hover{
+    background-color: #023f8f ;
+}
+
+
 
