@@ -196,14 +196,15 @@ tbody > tr > td{
 .css-1c5o7vy-MuiPagination-ul{
     justify-content: center;
 }
-.page{
+/* .page{
     margin-top: 15px;
     justify-content: center;
     position: sticky;
     z-index: 1000;
     top: 90%;
     left: 50%;
-}
+} */
+
 tbody > tr > td > .link > button{
     background-color: #ff914d;
     color: #ffff;
@@ -213,17 +214,17 @@ tbody > tr > td > .link > button{
     cursor: pointer;
 }
 
-.prints {
+.prints{
     margin-top: 5px;
-    margin-left: 10px;
     height: 40px;
-    background-color: #ff914d;
+    background-color: #004aad;
     color: #ffff;
     border: none;
     border-radius: 5px;
-    padding: 8px;
+    padding: 13px;
     cursor: pointer;
-
+    position: fixed;
+    right: 80px;
 }
 
 
