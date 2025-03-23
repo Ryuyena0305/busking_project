@@ -19,8 +19,9 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@mui/icons-material": "^6.4.7",
     "@mui/joy": "^5.0.0-beta.51",
-    "@mui/material": "^6.4.7",
+    "@mui/material": "^6.4.8",
     "@mui/styled-engine-sc": "^6.4.6",
+    "@mui/x-charts": "^7.28.0",
     "@mui/x-date-pickers": "^7.27.3",
     "@reduxjs/toolkit": "^2.6.1",
     "axios": "^1.8.3",
@@ -31,7 +32,7 @@
     "react-js-pagination": "^3.0.3",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.3.0",
-    "styled-components": "^6.1.15"
+    "styled-components": "^6.1.16"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
