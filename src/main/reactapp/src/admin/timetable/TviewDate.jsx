@@ -1,7 +1,7 @@
 import * as React from 'react';
 import axios from 'axios';
 import './timetable.css';
-import {MyTable, Page} from './TviewBus.jsx'
+
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
