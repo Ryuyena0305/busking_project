@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './timetable/timetable.css';
-import {Page} from './timetable/TviewBus'
 export default function Read(props) {
   useEffect(() => {
     onRead();
@@ -51,7 +50,7 @@ export default function Read(props) {
             })}
           </tbody>
         </table>
-        <Page />
+        
         </div>
       </div>
     </>
