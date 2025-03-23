@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/timetable")
@@ -15,6 +16,13 @@ import java.util.List;
 @RequiredArgsConstructor // final 기준으로 자동으로 생성자 만들기 / @Autowired 안 써도 됨
 public class TimeTableController {
     private final TimeTableService timeTableService;
+
+    // 차트 일자별 스케줄 건수 가져오기
+    @GetMapping("getdatechart")
+    public Map<String, Integer> getDateChart() {
+        System.out.println("TimeTableController.getDateChart");
+        return timeTableService.getDateChart();
+    }
 
 
     // 버스정보 가져오기

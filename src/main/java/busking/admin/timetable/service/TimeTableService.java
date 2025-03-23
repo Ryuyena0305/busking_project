@@ -6,9 +6,11 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Indexed;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +18,10 @@ public class TimeTableService {
     private final TimeTableMapper timeTableMapper;
 
 
+    // 차트 일자별 스케줄 건수 가져오기
+    public Map<String, Integer> getDateChart(){
+        return timeTableMapper.getDateChart();
+    }
 
     // 버스 정보 가져오기
     public List<TimeTableDto> getBusInfo(){
