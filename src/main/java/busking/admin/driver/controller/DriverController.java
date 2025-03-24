@@ -2,6 +2,7 @@ package busking.admin.driver.controller;
 
 import busking.admin.driver.model.dto.DriverDto;
 import busking.admin.driver.service.DriverService;
+import com.github.pagehelper.PageInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,10 +26,13 @@ public class DriverController {
 
     // 버스기사 조회
     @GetMapping
-    public List<DriverDto> findAll(){
+    public PageInfo<DriverDto> findAll(
+            @RequestParam(defaultValue = "1", name = "page") int pageNum,
+            @RequestParam(defaultValue = "10") int pageSize
+    ){
         System.out.println("DriverController.findAll");
-        System.out.println();
-        return driverService.findAll();
+        System.out.println("pageNum = " + pageNum + ", pageSize = " + pageSize);
+        return driverService.findAll(pageNum, pageSize);
     }
 
 
