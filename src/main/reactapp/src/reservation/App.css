@@ -134,6 +134,29 @@ a{color: black; text-decoration: none;}
 .css-13cnpq9-MuiPickersLayout-root{
   background-color: none !important;
 }
+.css-13cnpq9-MuiPickersLayout-root .MuiPickersLayout-toolbar{
+  background-color: none !important;
+}
+.css-10qtiir-MuiPickersToolbar-content{/*선택날짜 센터정렬*/
+  justify-content: center !important;
+}
+.css-6mw38q-MuiTypography-root{
+  display: none !important;
+}
+.css-14yom7c-MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon{
+  display: none !important;
+}
+ 
+.css-74d805-MuiButtonBase-root-MuiButton-root{ /*버튼 */
+  margin-top: 10px !important;
+  width: 300px !important;
+  background-color: #004aad !important;
+  margin: 0px auto !important;
+
+}
+.css-5wchs2-MuiDateCalendar-root{ /*달력 부분*/
+padding: 0px !important;
+}
 
 
 /* 기존 코드
