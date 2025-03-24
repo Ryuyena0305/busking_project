@@ -46,6 +46,11 @@ export default function Tview(props){
         setLocid(selectedLocid);
     }
 
+    // GetDriverData에서 전달받은 Did
+    const paramDid = (selectedDid) => {
+        setDid(selectedDid);
+    }
+
     // 수정
     const handleUpdate = async () => {
         try {
@@ -113,8 +118,6 @@ export default function Tview(props){
                                 setTimes={setTimes}
                                 // props라는 이름으로 묶어서 하나의 객체로 만들어서 매개변수 보내기
                             />
-                            
-
                             <GetLocData findLocid={paramLocid} className='getLocData' value={times.locid} defaultLocid={ times.locid }
                                 name="locid"
                                 times={times}
