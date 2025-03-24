@@ -29,7 +29,9 @@ export default function Main(){
                     <button>English</button>
                     <button>中國語</button>
                     <button>日本語</button>
+                    
                 </div>
+                <button onclick="sendNotification()">알림 보내기</button>
             </div>
         )}
     </div></>)

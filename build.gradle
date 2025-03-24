@@ -58,6 +58,9 @@ dependencies {
     // DB 연결
     implementation 'mysql:mysql-connector-java:8.0.33'
 
+    // 웹소켓 의존성 설치
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
     /* poi */
     //poi 라이브러리를 사용해서 엑셀 파일을 조작
 // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml/5.2.3
