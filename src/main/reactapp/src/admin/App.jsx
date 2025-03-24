@@ -11,6 +11,12 @@ import SideBar from './SideBar.jsx';
 import AppBar2 from './AppBar2.jsx';
 import BusInfoSeat from './BusInfoSeat.jsx';
 
+/* driver 버스기사 관리 */
+import Dcreate from './driver/Dcreate.jsx';
+import Dread from './driver/Dread.jsx';
+import Dview from './driver/Dview.jsx';
+
+
 /* timetable 스케줄 관리 */
 import Tcreate from './timetable/Tcreate.jsx';
 import Tview from './timetable/Tview.jsx';
@@ -29,6 +35,8 @@ import './app.css'; // ./ : 현재 파일과 같은 경로 뜻
 import { useEffect, useState } from 'react';
 import Login from './Login.jsx';
 import axios from 'axios';
+
+
 
 
 
@@ -63,6 +71,12 @@ export default function App( props ){ // 컴포넌트
                     <Route path="/bus/view" element={<BusView />} /> 
                     <Route path="/typeread" element={<TypeRead />} />
                     <Route path="/businfoseat" element={<BusInfoSeat/>}/>
+
+                    {/* driver 버스기사 관리 */}
+                    <Route path="/dcreate" element={<Dcreate/>} />
+                    <Route path="/dread" element={<Dread/>} />
+                    <Route path="/dview" element={<Dview/>} />
+
                     
                     {/* timetable 스케줄 관리 */}
                     <Route path="/tcreate" element={<Tcreate/>} />
