@@ -54,9 +54,12 @@ dependencies {
 
     // 페이징처리
     // pagehelper 라이브러리
-    implementation 'com.github.pagehelper:pagehelper:5.3.2'
+    //implementation 'com.github.pagehelper:pagehelper:5.3.2'
     // DB 연결
-    implementation 'mysql:mysql-connector-java:8.0.33'
+    //implementation 'mysql:mysql-connector-java:8.0.33'
+
+    implementation 'com.github.pagehelper:pagehelper-spring-boot-starter:2.0.5'
+    implementation 'com.github.pagehelper:pagehelper-spring-boot-starter:1.4.6'
 
 
 }
