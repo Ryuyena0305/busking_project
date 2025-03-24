@@ -157,6 +157,11 @@ a{color: black; text-decoration: none;}
 .css-5wchs2-MuiDateCalendar-root{ /*달력 부분*/
 padding: 0px !important;
 }
+.emaildiv, .css-18jb465-MuiPickersLayout-contentWrapper,
+.MuiPickersLayout-toolbar, .css-18jb465-MuiPickersLayout-contentWrapper{
+  background-color: #f1f1f1 !important;
+
+}
 
 
 /* 기존 코드

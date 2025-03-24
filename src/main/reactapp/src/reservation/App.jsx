@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapPin, faHouse } from "@fortawesome/free-solid-svg-icons";
 import { Route, Routes, Link, useLocation } from 'react-router-dom';
-import StartDate from './StartDate.jsx';   
-import AutoStartDate from './AutoStartDate.jsx';
+import { useState,useEffect } from "react";
+import StartDate from './StartDate.jsx';
+import AutoStrartDate from './AutoStartDate.jsx';
 import Dest from './Dest.jsx';
 import Main from './Main.jsx';
 import Time from "./Time.jsx";
@@ -11,7 +11,6 @@ import Person from "./Person.jsx";
 import ResvSeat from "./resvseat.jsx";
 import Phone from "./Phone.jsx";
 import Resfin from "./Resfin.jsx";
-import { useState, useEffect } from'react';
 import './App.css';
 import './Res.css';
 
@@ -87,14 +86,14 @@ export default function App(props) {
             </div>
             <Routes>
                 <Route path="/" element={<Main />} />
-                <Route path="/AutoStartDate" element={<AutoStartDate />} />
                 <Route path="/StartDate/*" element={<StartDate />} />
                 <Route path="/dest" element={<Dest />} />
-                <Route path="/time" element={<Time />} /> 
-                <Route path="/person" element={<Person />} />  
+                <Route path="/time" element={<Time />} />
+                <Route path="/person" element={<Person />} />
                 <Route path="/resvSeat" element={<ResvSeat />} />
                 <Route path="/phone" element={<Phone />} />
                 <Route path="/resfin" element={<Resfin />} />
+                <Route path="/autostartdate" element={<AutoStrartDate />} />
             </Routes>
         </div>
     );
