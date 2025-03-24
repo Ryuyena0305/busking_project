@@ -46,10 +46,9 @@ export default function TviewBus(){
     // 페이지 변경 시 호출되는 함수
     const handlePageChange = (event, newPage) => {
         setPage(newPage);  // 새로운 페이지 번호로 업데이트
-        console.log("New page selected:", newPage);
-
+        //console.log("New page selected:", newPage);
     }
-    console.log("getViewLists.pages", getViewLists.pages);
+    //console.log("getViewLists.pages", getViewLists.pages);
 
 
 
