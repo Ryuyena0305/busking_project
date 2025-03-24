@@ -46,13 +46,13 @@ export default function AutoStartDate(props) {
                 <StaticDatePicker
                     // minDate={dayjs()} 
                     value={selectedDate}
-                    onChange={(newDate) => setSelectedDate(newDate)}  
-                    shouldDisableDate={(date) => !isDateAvailable(date)} 
-                    renderInput={(params) => <input {...params} />}  
+                    onChange={(newDate) => setSelectedDate(newDate)}
+                    shouldDisableDate={(date) => !isDateAvailable(date)}
+                    renderInput={(params) => <input {...params} />}
                 />
             </LocalizationProvider>
             
-            <Button 
+            <Button
                 variant="contained"
                 color="primary"
                 onClick={handleDate}
