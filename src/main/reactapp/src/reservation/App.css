@@ -158,10 +158,47 @@ a{color: black; text-decoration: none;}
 padding: 0px !important;
 }
 .emaildiv, .css-18jb465-MuiPickersLayout-contentWrapper,
-.MuiPickersLayout-toolbar, .css-18jb465-MuiPickersLayout-contentWrapper{
+.MuiPickersLayout-toolbar{
   background-color: #f1f1f1 !important;
 
 }
+.css-18jb465-MuiPickersLayout-contentWrapper{
+  
+}
+.MuiPickersLayout-toolbar{
+
+}
+.css-5wchs2-MuiDateCalendar-root, .css-1n1xn3x-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition
+,
+.css-1pv2de5-MuiDayCalendar-weekContainer, .css-1rl1vrc-MuiDayCalendar-header{
+  width: 500px !important;
+  display: flex !important;
+  justify-content: space-around !important;
+  margin-bottom: 10px !important;
+  
+}
+.css-4k4mmf-MuiButtonBase-root-MuiPickersDay-root,.css-17f9e7e-MuiTypography-root-MuiDayCalendar-weekDayLabel{
+  font-size: 20px !important ;/*표기되는 날짜*/
+}
+.css-74d805-MuiButtonBase-root-MuiButton-root{/*버튼 위치*/
+  display: flex !important;
+}
+.css-qct7wd-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected){/*표기되는 날짜*/
+  font-size: 20px !important ;
+}
+.css-qct7wd-MuiButtonBase-root-MuiPickersDay-root.Mui-selected{/*선택된 날짜 */
+  font-size: 20px !important ;
+}
+.css-18jb465-MuiPickersLayout-contentWrapper {
+height: 600px !important;
+}
+.css-q5we01-MuiDayCalendar-root,
+.css-1n1xn3x-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition{
+  height: 400px !important;
+}
+.css-4wda5y-MuiDayCalendar-monthContainer{
+width: 700px !important;
+} 
 
 
 /* 기존 코드
