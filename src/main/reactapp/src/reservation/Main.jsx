@@ -14,13 +14,13 @@ export default function Main(){
     
     return(<>             
     <div className="content">
-        {location.pathname !== '/StartDate' && location.pathname !== '/AutoRes' && (
+        {location.pathname !== '/StartDate' && location.pathname !== '/AutoStartDate' && (
             <div className='realcontent'>
                 <div className='mainbtn'>
                     <Link to="/StartDate">
                         <button className='nomal'>일반예매</button>
                     </Link>
-                    <Link to="/AutoRes">
+                    <Link to="/AutoStartDate">
                         <button className='auto'>자동예매</button>
                     </Link>
                 </div>
