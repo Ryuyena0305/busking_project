@@ -14,13 +14,13 @@ export default function Main(){
     
     return(<>             
     <div className="content">
-        {location.pathname !== '/StartDate' && location.pathname !== '/AutoStartDate' && (
+        {location.pathname !== '/StartDate' && location.pathname !== '/AutoRes' && (
             <div className='realcontent'>
                 <div className='mainbtn'>
                     <Link to="/StartDate">
                         <button className='nomal'>일반예매</button>
                     </Link>
-                    <Link to="/AutoStartDate">
+                    <Link to="/AutoRes">
                         <button className='auto'>자동예매</button>
                     </Link>
                 </div>
@@ -29,9 +29,8 @@ export default function Main(){
                     <button>English</button>
                     <button>中國語</button>
                     <button>日本語</button>
-                    
                 </div>
-                <button onclick="sendNotification()">알림 보내기</button>
+                
             </div>
         )}
     </div></>)
