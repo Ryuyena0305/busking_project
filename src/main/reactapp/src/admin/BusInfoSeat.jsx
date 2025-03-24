@@ -10,7 +10,7 @@ export default function BusInfoSeat() {
     const biid = searchParams.get('biid');
     const [seats, setSeats] = useState([]);
     const [binum, setBinum] = useState();
-    const [isSeat, setIsSeat] = useState(false);  // New state to track if seats exist
+    const [isSeat, setIsSeat] = useState(false); 
     const navigate = useNavigate();
 
     useEffect(() => {

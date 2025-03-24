@@ -68,7 +68,7 @@ public class ResController {
 
                 File file = new File(filePath);
                 Resource resource = new UrlResource(file.toURI());
-                
+
                 emailService.sendMessage(resDto.getPhone(), qrCodeImage );
             }
             return result;

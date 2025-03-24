@@ -50,10 +50,10 @@ export default function Tview(props){
     const handleUpdate = async () => {
         try {
                 const response = await axios.put(`http://localhost:8080/timetable/view`, times); 
-                //console.log(response.data);
+                console.log(response.data);
                 if (response.data == true) {
                     alert('스케줄 수정 성공');
-                    navigate("/");
+                    navigate("/home");
                 }else{
                     alert('스케줄 수정 실패')
                 }
@@ -67,6 +67,11 @@ export default function Tview(props){
     const onValueChange = ( e ) => {
         setTimes( { ...times , [ e.target.name ] : e.target.value } )
     }
+    // 컴포넌트는 onChange={onValueChange} 실행 x
+        // times={times}
+        // setTimes={setTimes}
+    // state 를 넘겨서
+    // 자식 컴포넌트(Timetalble.jsx에서 수정해야함)
 
     
     // 삭제
@@ -75,7 +80,7 @@ export default function Tview(props){
             const deleteResponse = await axios.delete(`http://localhost:8080/timetable/view?timeid=${timeid}`);
             if (deleteResponse.data == true) {
                 alert('삭제 성공');
-                navigate("/");  
+                navigate("/home");  
             }else{
                 alert('삭제 실패');
             }
@@ -85,7 +90,7 @@ export default function Tview(props){
     };
 
 
-
+    console.log(times);
 
     return(<>
         <div id="container">
@@ -102,15 +107,18 @@ export default function Tview(props){
                                 onChange={onValueChange}
                             />
 
-                            <GetBusData findBiid={paramBiid} className='getBusData' value={times.biid} 차량초기번호={ times.biid }
+                            <GetBusData findBiid={paramBiid} className='getBusData' value={times.biid} defaultBiid={ times.biid }
                                 name="biid"
-                                onChange={onValueChange}
+                                times={times}
+                                setTimes={setTimes}
+                                // props라는 이름으로 묶어서 하나의 객체로 만들어서 매개변수 보내기
                             />
-                            {/* 수정시 넘길 땐 biid로 넘겨야 하는 거 아닌가요 value는 한개인데 어쩌죠 */}
+                            
 
-                            <GetLocData findLocid={paramLocid} className='getLocData' value={times.locid} findDest={ times.dest }
+                            <GetLocData findLocid={paramLocid} className='getLocData' value={times.locid} defaultLocid={ times.locid }
                                 name="locid"
-                                onChange={onValueChange}
+                                times={times}
+                                setTimes={setTimes}
                             />
                     </>)}           
                         <hr />

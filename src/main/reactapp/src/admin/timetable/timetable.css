@@ -225,3 +225,29 @@ tbody > tr > td > .link > button{
     cursor: pointer;
 
 }
+
+
+
+
+/* 관리자 홈 화면 */
+.hContent{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 25px;
+    
+}
+
+.hContent, .hSubContent{
+    text-align: center;
+}
+
+.hSubContent{
+    display: flex;
+    justify-content: space-between;
+}
+
+.hBox1, .hBox2, .hBox3, .hBox4{
+    border: 1px solid #eeeeee;
+    height: 250px;
+}
+

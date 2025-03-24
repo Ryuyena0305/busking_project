@@ -15,7 +15,7 @@ export default function Read(props) {
   return (
     <>
       <div id="container">
-        <h1>BUS Infomation</h1>
+        <h1>버스 정보</h1>
         <div className='pickContent'>
         <table>
           <thead>

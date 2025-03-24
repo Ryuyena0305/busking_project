@@ -46,7 +46,7 @@ export default function Login() {
             const result = response.data;
             if (result) {
                 alert("로그인 성공");
-                location.href = '/';
+                location.href = '/home';
             } else {
                 alert("로그인 실패: 비밀번호를 확인하세요.");
             }
