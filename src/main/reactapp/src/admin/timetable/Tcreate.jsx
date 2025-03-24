@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 import dayjs from 'dayjs';
 
-import GetBusData, { GetLocData } from '../components/Timetable';
+import GetBusData, { GetDriverData, GetLocData } from '../components/Timetable';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -96,6 +96,7 @@ export default function Tcreate(props){
                 <input type="time" min={minTime} className='subCont' value={starttime} onChange={(e) => setStarttime(e.target.value)}/>
 
                 <GetBusData findBiid={paramBiid} />
+                <GetDriverData findDid={paramDid}/>
                 <GetLocData findLocid={paramLocid}/>
 
                 <hr/>

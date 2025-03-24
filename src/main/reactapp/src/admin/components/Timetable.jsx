@@ -121,20 +121,20 @@ export function GetLocData(props){
 }
 
 
-// select에서 사용할 운전기사 정보 가져오기
+// select에서 사용할 버스기사 정보 가져오기
 export function GetDriverData(props){
     const [did, setDid] = useState('');
     const [selectDrivers, setselectDrivers] = useState([]);
 
-    //console.log( props );
+    console.log( props );
     
     // 상세조회시 기본값 설정
     let defaultDid = "defaultDid" in props ? props.defaultDid : '' ;
-    //console.log( defaultLocid );
+    
 
     const getDriver = async () => {
         try{
-            const response = await axios.get(`http://localhost:8080/driver`)
+            const response = await axios.get(`http://localhost:8080/driver/getdriver`)
             //console.log(response.data);
             setselectDrivers(response.data);
             console.log(setselectDrivers);
@@ -147,7 +147,7 @@ export function GetDriverData(props){
         getDriver();
     }, [])
 
-    // did가 변경될 때마다 locid를 GetBusData에 전달
+    // did가 변경될 때마다 did를 GetBusData에 전달
     useEffect(() => {
         if (did) {
                 props.findDid(did);
@@ -157,19 +157,19 @@ export function GetDriverData(props){
 
     const driverUpdate = (e) =>{
         setDid(e.target.value)
-        "setTimes" in props && props.setTimes( { ...props.times , "locid"  : e.target.value } )
+        "setTimes" in props && props.setTimes( { ...props.times , "did"  : e.target.value } )
     }
 
 
 
     return(<>
-        <div className='viewFind'>터미널 정보</div>
-            <select className='subCont' value={ locid == '' ? defaultLocid : locid  } onChange={locUpdate}>
+        <div className='viewFind'>버스기사 정보</div>
+            <select className='subCont' value={ did == '' ? defaultDid : did  } onChange={driverUpdate}>
                 <option value="0">선택</option>
             {
-                selectLocs.map((selectLoc, index) => {
+                selectDrivers.map((selectDriver, index) => {
                     return(
-                            <option key={index} value={`${selectLoc.locid}`}>{selectLoc.dest}</option>
+                            <option key={index} value={`${selectDriver.did}`}>{selectDriver.dname}</option>
                     )
                 })
             }

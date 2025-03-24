@@ -4,7 +4,7 @@ import './timetable.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import GetBusData, { GetLocData } from '../components/Timetable';
+import GetBusData, { GetDriverData, GetLocData } from '../components/Timetable';
 
 
 export default function Tview(props){
@@ -13,7 +13,7 @@ export default function Tview(props){
     const timeid = searchParams.get('timeid');
 
     const navigate = useNavigate(); 
-    const [times, setTimes] = useState({starttime : '', starttime : '', biid : '', locid : ''});
+    const [times, setTimes] = useState({starttime : '', starttime : '', biid : '', locid : '', did : '', dname : ''});
     const [starttime, setStarttime] = useState('');
     const [startdate, setStartdate] = useState('');
     const [biid, setBiid] = useState('');
@@ -22,6 +22,7 @@ export default function Tview(props){
     useEffect(() => {
         onView();
     }, [timeid]);  
+    console.log(times);
 
 
     // 상세 조회
@@ -118,6 +119,13 @@ export default function Tview(props){
                                 setTimes={setTimes}
                                 // props라는 이름으로 묶어서 하나의 객체로 만들어서 매개변수 보내기
                             />
+
+                            <GetDriverData findDid={paramDid} className='getDriverData' value={times.did} defaultDid={ times.did }
+                                name="did"
+                                times={times}
+                                setTimes={setTimes}
+                            />
+
                             <GetLocData findLocid={paramLocid} className='getLocData' value={times.locid} defaultLocid={ times.locid }
                                 name="locid"
                                 times={times}
