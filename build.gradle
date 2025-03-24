@@ -58,7 +58,8 @@ dependencies {
     // DB 연결
     implementation 'mysql:mysql-connector-java:8.0.33'
 
-
+    // 웹소켓 의존성 설치
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
 }
 
 tasks.named('test') {
