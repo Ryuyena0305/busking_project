@@ -23,7 +23,7 @@ export default function Home( props ){
                         xAxis={[{ scaleType: 'band', data: ['날짜1', '날짜2', '날짜3', '날짜4', '날짜5', '날짜6', '날짜7'] }]}
                         series={[{ data: [4, 3, 5] }, { data: [1, 6, 3] }, { data: [2, 5, 6] }]}
                         width={700}
-                        height={300}
+                        height={250}
                     />
                 </div>
 
@@ -41,9 +41,12 @@ export default function Home( props ){
                         xAxis={[{ scaleType: 'band', data: ['일반', '우등', '프리미엄'] }]}
                         series={[{ data: [4, 3, 5] }, { data: [1, 6, 3] }, { data: [2, 5, 6] }]}
                         width={700}
-                        height={300}
+                        height={250}
                     />
                 </div>
+            </div>
+            <div>
+                관리자 호출
             </div>
         </div>
     </>)
