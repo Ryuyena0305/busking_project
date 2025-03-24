@@ -10,6 +10,7 @@ import Person from "./Person.jsx";
 import ResvSeat from "./resvseat.jsx";
 import Phone from "./Phone.jsx";
 import Resfin from "./Resfin.jsx";
+import { useState, useEffect } from'react';
 import './App.css';
 import './Res.css';
 
