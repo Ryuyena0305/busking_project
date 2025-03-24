@@ -47,7 +47,6 @@ export default function Read(props) {
           <thead>
             <tr>
               <th>번호</th>
-              <th>버스기사</th>
               <th>버스차량번호</th>
               <th>버스등급</th>
               <th>좌석</th>
@@ -59,7 +58,6 @@ export default function Read(props) {
               return (
                 <tr className='bodyTr' key={index}>
                   <td>{bus.biid}</td>
-                  <td>{bus.driver}</td>
                   <td>{bus.binum}</td>
                   <td>{bus.btname}</td>
                   <td>

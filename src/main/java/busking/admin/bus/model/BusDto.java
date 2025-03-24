@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 public class BusDto {
     private int biid;
-    private String driver;
+    //private String driver;
     private String binum;
     private int btid;
     private String btname;
