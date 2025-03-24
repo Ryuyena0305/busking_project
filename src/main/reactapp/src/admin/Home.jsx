@@ -5,32 +5,25 @@ import "./timetable/timetable.css";
 import { BarChart } from "@mui/x-charts/BarChart";
 
 export default function Home(props) {
-    const [notifications, setNotifications] = useState([]); // 알림 목록
-    const [status, setStatus] = useState("연결 중..."); // WebSocket 상태
+    const [notifications, setNotifications] = useState([]); // useState로 상태 관리
 
     useEffect(() => {
-        const socket = new WebSocket("ws://localhost:8080/ws/notify");
+        const adminSocket = new WebSocket("ws://localhost:8080/ws/notify");
 
-        socket.onopen = () => {
-            console.log("관리자 WebSocket 연결됨");
-            setStatus("서버 연결됨 ✅");
+        adminSocket.onopen = () => {
+            console.log("✅ 관리자 WebSocket 연결됨");
         };
 
-        socket.onmessage = (event) => {
-            setNotifications((prevNotifications) => [
-                ...prevNotifications,
-                "🔔 " + event.data,
-            ]);
+        adminSocket.onmessage = (event) => {
+            console.log("📩 WebSocket 메시지 수신:", event.data);
+            setNotifications((prev) => [...prev, "🔔 " + event.data]); // 상태 업데이트
         };
 
-        socket.onerror = (error) => {
-            console.log("관리자 WebSocket 오류:", error);
-            setStatus("연결 오류 ❌");
+        adminSocket.onerror = (error) => {
+            console.log("❌ 관리자 WebSocket 오류:", error);
         };
 
-        return () => {
-            socket.close();
-        };
+        return () => adminSocket.close(); // 컴포넌트 언마운트 시 WebSocket 닫기
     }, []);
 
     return (
@@ -82,16 +75,13 @@ export default function Home(props) {
 
                     {/* 관리자 알림 시스템 */}
                     <h2>관리자 알림 시스템</h2>
-                    <p className="status-text">{status}</p>
-                    <div id="notifications">
-                        {notifications.length > 0 ? (
-                            notifications.map((msg, index) => (
-                                <p key={index} className="notification">{msg}</p>
-                            ))
-                        ) : (
-                            <p className="notification">알림이 없습니다.</p>
-                        )}
-                    </div>
+            <div id="notifications">
+                {notifications.length === 0 ? (
+                    <p>알림이 없습니다.</p>
+                ) : (
+                    notifications.map((msg, index) => <p key={index}>{msg}</p>)
+                )}
+            </div>
                 </div>
             </div>
         </>
