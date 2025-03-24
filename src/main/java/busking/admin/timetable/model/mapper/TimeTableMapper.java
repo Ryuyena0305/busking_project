@@ -24,11 +24,11 @@ public interface TimeTableMapper {
 
 
     // 스케줄 등록
-    @Insert("insert into timetable (starttime,startdate,biid,locid) values(#{starttime},#{startdate},#{biid},#{locid})")
+    @Insert("insert into timetable (starttime,startdate,biid,locid) values(#{starttime},#{startdate},#{biid},#{locid}, #{did})")
     public boolean create(TimeTableDto timeTableDto);
 
     // 스케줄 상세 조회(겸용)
-    @Select("select time.timeid, time.startdate, time.starttime, info.binum, d.dname, loc.dest, info.biid, loc.locid\n" +
+    @Select("select time.timeid, time.startdate, time.starttime, info.binum, d.dname, loc.dest, info.biid, loc.locid, d.did\n" +
             "from timetable time\n" +
             "join businfo info on time.biid = info.biid\n" +
             "join location loc on time.locid = loc.locid\n" +
@@ -37,7 +37,7 @@ public interface TimeTableMapper {
     public TimeTableDto view(String timeid);
 
     // 스케줄 수정
-    @Update("update timetable set starttime = #{starttime}, startdate = #{startdate}, biid = #{biid}, locid = #{locid} where timeid = #{timeid}")
+    @Update("update timetable set starttime = #{starttime}, startdate = #{startdate}, biid = #{biid}, locid = #{locid}, did = #{did} where timeid = #{timeid}")
     public boolean update(TimeTableDto timeTableDto);
 
     // 스케줄 삭제
@@ -45,7 +45,7 @@ public interface TimeTableMapper {
     public boolean delete(String timeid);
 
     // (도착지별)스케줄 조회
-    @Select("select time.timeid, time.startdate, time.starttime, info.binum, d.dname, loc.dest, info.biid, loc.locid\n" +
+    @Select("select time.timeid, time.startdate, time.starttime, info.binum, d.dname, loc.dest, info.biid, loc.locid, d.did\n" +
             "from timetable time\n" +
             "join businfo info on time.biid = info.biid\n" +
             "join location loc on time.locid = loc.locid\n" +
@@ -54,7 +54,7 @@ public interface TimeTableMapper {
     public List<TimeTableDto> locView(int locid);
 
     // (버스별)스케줄 조회
-    @Select("select time.timeid, time.startdate, time.starttime, info.binum, d.dname, loc.dest, info.biid, loc.locid\n" +
+    @Select("select time.timeid, time.startdate, time.starttime, info.binum, d.dname, loc.dest, info.biid, loc.locid, d.did\n" +
             "from timetable time\n" +
             "join businfo info on time.biid = info.biid\n" +
             "join location loc on time.locid = loc.locid\n" +
@@ -63,7 +63,7 @@ public interface TimeTableMapper {
     public List<TimeTableDto> busView(int biid);
 
     // (일자별)스케줄 조회
-    @Select("select time.timeid, time.startdate, time.starttime, info.binum, d.dname, loc.dest, info.biid, loc.locid\n" +
+    @Select("select time.timeid, time.startdate, time.starttime, info.binum, d.dname, loc.dest, info.biid, loc.locid, d.did\n" +
             "from timetable time\n" +
             "join businfo info on time.biid = info.biid\n" +
             "join location loc on time.locid = loc.locid\n" +

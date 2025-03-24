@@ -2,6 +2,7 @@ package busking.admin.driver.controller;
 
 import busking.admin.driver.model.dto.DriverDto;
 import busking.admin.driver.service.DriverService;
+import busking.admin.timetable.model.dto.TimeTableDto;
 import com.github.pagehelper.PageInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DriverController {
     private final DriverService driverService;
+
+    // 버스기사 정보 가져오기
+    @GetMapping("/getdriver")
+    public List<DriverDto> getDriverInfo() {
+        System.out.println("DriverController.getDriverInfo");
+        return driverService.getDriverInfo();
+    }
 
     // 버스기사 등록
     @PostMapping

@@ -17,6 +17,11 @@ import java.util.List;
 public class DriverService {
     private final DriverMapper driverMapper;
 
+    // 버스기사 정보 가져오기
+    public List<DriverDto> getDriverInfo() {
+        return driverMapper.getDriverInfo();
+    }
+
     // 버스기사 등록
     public boolean create(@RequestBody DriverDto driverDto){
         return driverMapper.create(driverDto);

@@ -10,6 +10,10 @@ import java.util.List;
 @Mapper
 public interface DriverMapper {
 
+    // 버스기사 정보 가져오기
+    @Select("select did, dname from driver order by dname")
+    public List<DriverDto> getDriverInfo();
+
     // 버스기사 등록
     @Insert("insert into driver (dname, ddate, dphone) values(#{dname}, #{ddate}, #{dphone})")
     public boolean create(@RequestBody DriverDto driverDto);
