@@ -73,7 +73,7 @@ export default function TviewBus(){
                                         <td>{getViewList.startdate}</td>
                                         <td>{getViewList.starttime}</td>
                                         <td>{getViewList.binum}</td>
-                                        <td>{getViewList.driver}</td>
+                                        <td>{getViewList.dname}</td>
                                         <td>{getViewList.dest}</td>
                                         <td><Link to={`/tview?timeid=${getViewList.timeid}`} className='link'><button type='button'>상세조회</button></Link></td>
                                     </tr>
