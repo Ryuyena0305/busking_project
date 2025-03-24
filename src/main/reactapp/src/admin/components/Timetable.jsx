@@ -22,11 +22,11 @@ export default function GetBusData( props ){
 
     //console.log(selectBuss);
     
-    console.log( props )
+    //console.log( props )
 
     
     let defaultBiid = "defaultBiid" in props ? props.defaultBiid : '' ;
-    console.log( defaultBiid );
+    //console.log( defaultBiid );
 
     const getBus = async () => {
         try{
@@ -79,10 +79,11 @@ export function GetLocData(props){
     const [selectLocs, setSelectLocs] = useState([]);
 
     const findLocid = props.findLocid;
-    console.log( props );
+    //console.log( props );
+    
     
     let defaultLocid = "defaultLocid" in props ? props.defaultLocid : '' ;
-    console.log( defaultLocid );
+    //console.log( defaultLocid );
 
     const getLoc = async () => {
         try{

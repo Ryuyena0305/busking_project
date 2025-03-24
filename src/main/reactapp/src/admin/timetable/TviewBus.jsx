@@ -2,43 +2,30 @@ import * as React from 'react';
 import axios from 'axios';
 import './timetable.css';
 import { Link } from 'react-router-dom';
-
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import GetBusData from '../components/Timetable';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-
-
-export function MyTable(props){
-    return(<>
-
-    </>)
-}
-
-
-export function Page(props){
-    return(<>
-        <Stack spacing={2} className='page'>
-            <Pagination count={10} shape="rounded" />
-        </Stack> 
-    </>)
-}
-
+import GetBusData from '../components/Timetable';
+import PaginationComponent from '../components/Pagination';
 
 
 
 export default function TviewBus(){
     const [biid, setBiid] = useState('');
-    const [getViewLists, setViewLists] = useState({ })
+    const [getViewLists, setViewLists] = useState({ list: [], total: 0, pages: 1 })
+
+    const [page, setPage] = useState(1); // 페이지 기본값
+    const pageSize = 10; // 한페이지에 표시할 개수
 
     
     const onViewBus = async () => {
         try{
-            const response = await axios.get(`http://localhost:8080/timetable/view/bus?biid=${biid}`);
-            setViewLists(response.data);
+            const response = await axios.get(`http://localhost:8080/timetable/view/bus?biid=${biid}&page=${page}&pageSize=${pageSize}`);
+            
+            const {list, total} = response.data
             console.log(response.data);
+            const totalPages = Math.ceil(total / pageSize) // 전체 페이지수 구하기
+            setViewLists({list, total, pages : totalPages});
         }catch(error){
             console.log(error);
         }
@@ -49,13 +36,20 @@ export default function TviewBus(){
         if (biid) {
             onViewBus();  
         }
-    }, [biid]);
+    }, [biid, page]);
 
     // GetBusData에서 전달받은 biid
     const paramBiid = (selectedBiid) => {
         setBiid(selectedBiid);
     }
 
+    // 페이지 변경 시 호출되는 함수
+    const handlePageChange = (event, newPage) => {
+        setPage(newPage);  // 새로운 페이지 번호로 업데이트
+        console.log("New page selected:", newPage);
+
+    }
+    console.log("getViewLists.pages", getViewLists.pages);
 
 
 
@@ -88,6 +82,9 @@ export default function TviewBus(){
                             }
                         </tbody>
                     </table>       
+                    <PaginationComponent
+                        count={getViewLists.pages || 1} page={page} onChange={handlePageChange}
+                    />
 
                 </div>
             </div>
