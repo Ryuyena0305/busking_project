@@ -54,6 +54,7 @@ export default function Resvlog(props) {
 
                     </tbody>
                 </table>
+                
 
             </div>
         </div>

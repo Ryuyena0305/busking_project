@@ -83,7 +83,7 @@ public class TimeTableController {
     @GetMapping("/view/loc")
     public PageInfo<TimeTableDto> locView(
             @RequestParam int locid,
-            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "1", name = "page") int pageNum,
             @RequestParam(defaultValue = "10") int pageSize
     ){
         System.out.println("TimeTableController.locView");
@@ -96,7 +96,7 @@ public class TimeTableController {
     @GetMapping("/view/bus")
     public PageInfo<TimeTableDto> busView(
             @RequestParam int biid,
-            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "1", name = "page") int pageNum,
             @RequestParam(defaultValue = "10") int pageSize
     ){
         System.out.println("TimeTableController.busView");
@@ -109,7 +109,7 @@ public class TimeTableController {
     @GetMapping("/view/date")
     public PageInfo<TimeTableDto> dateView(
             @RequestParam String startdate,
-            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "1", name = "page") int pageNum,
             @RequestParam(defaultValue = "10") int pageSize
     ){
         System.out.println("TimeTableController.dateView");

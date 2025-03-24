@@ -1,24 +1,30 @@
 import * as React from 'react';
 import axios from 'axios';
 import './timetable.css';
-//import { Page} from './Timetable.jsx'
 import { GetLocData } from '../components/Timetable';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import PaginationComponent from '../components/Pagination';
+
 
 
 export default function TviewLoc(){
     const [locid, setLocid] = useState('');
-    const [getViewLists, setViewLists] = useState({})
+    const [getViewLists, setViewLists] = useState({list: [], total: 0, pages: 1})
 
+    const [page, setPage] = useState(1); // 페이지 기본값
+    const pageSize = 10; // 한페이지에 표시할 개수
 
     const onViewLoc = async () => {
         try{
-            const response = await axios.get(`http://localhost:8080/timetable/view/loc?locid=${locid}`);
-            setViewLists(response.data);
-            console.log(setViewLists);
+            const response = await axios.get(`http://localhost:8080/timetable/view/loc?locid=${locid}&page=${page}&pageSize=${pageSize}`);
+            
+            const {list, total} = response.data
+            console.log(response.data);
+            const totalPages = Math.ceil(total / pageSize) // 전체 페이지수 구하기
+            setViewLists({list, total, pages : totalPages});
         }catch(error){
             console.log(error);
         }
@@ -29,11 +35,17 @@ export default function TviewLoc(){
         if (locid) {
             onViewLoc();  
         }
-    }, [locid]);
+    }, [locid, page]);
 
     // GetBusData에서 전달받은 locid
     const paramLocid = (selectedLocid) => {
         setLocid(selectedLocid);
+    }
+
+    // 페이지 변경 시 호출되는 함수
+    const handlePageChange = (event, newPage) => {
+        setPage(newPage);  // 새로운 페이지 번호로 업데이트
+        //console.log("New page selected:", newPage);
     }
 
 
@@ -68,8 +80,9 @@ export default function TviewLoc(){
                             }
                         </tbody>
                     </table>
-        
-
+                    <PaginationComponent
+                        count={getViewLists.pages || 1} page={page} onChange={handlePageChange}
+                    />
                 </div>
             </div>
     

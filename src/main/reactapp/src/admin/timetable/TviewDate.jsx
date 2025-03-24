@@ -6,11 +6,17 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import PaginationComponent from '../components/Pagination';
+
 
 export default function TviewDate(props){
     const defaultDay = new Date().toISOString().split("T")[0];
     const [startDate, setStartDate] = useState([defaultDay]);
-    const [getViewLists, setViewLists] = useState({})
+    const [getViewLists, setViewLists] = useState({list: [], total: 0, pages: 1})
+
+    const [page, setPage] = useState(1); // 페이지 기본값
+    const pageSize = 10; // 한페이지에 표시할 개수
+
     //const [excelLists, setExcelLists] = useState([]);
 
     const onExcelDate = async () =>{
@@ -48,9 +54,12 @@ export default function TviewDate(props){
     const onViewDate = async () => {
         if(!startDate) return;
         try{
-            const response = await axios.get(`http://localhost:8080/timetable/view/date?startdate=${startDate}`);
-            setViewLists(response.data);
-            //console.log(setViewLists);
+            const response = await axios.get(`http://localhost:8080/timetable/view/date?startdate=${startDate}&page=${page}&pageSize=${pageSize}`);
+
+            const {list, total} = response.data
+            console.log(response.data);
+            const totalPages = Math.ceil(total / pageSize) // 전체 페이지수 구하기
+            setViewLists({list, total, pages : totalPages});
         }catch(error){
             console.log(error);
         }
@@ -58,7 +67,7 @@ export default function TviewDate(props){
 
     useEffect(() => {
         onViewDate();
-    },[startDate]);
+    },[startDate, page]);
 
 
     // 선택한 날짜가 달라지면 set에 저장
@@ -66,6 +75,14 @@ export default function TviewDate(props){
         const pickDate = e.target.value;
         setStartDate(pickDate);
     }
+
+
+    // 페이지 변경 시 호출되는 함수
+    const handlePageChange = (event, newPage) => {
+        setPage(newPage);  // 새로운 페이지 번호로 업데이트
+        //console.log("New page selected:", newPage);
+    }
+
 
     return(<>
         <div id="container"> 
@@ -99,11 +116,11 @@ export default function TviewDate(props){
                         }
                     </tbody>
                 </table>
-    
-
+                <PaginationComponent
+                    count={getViewLists.pages || 1} page={page} onChange={handlePageChange}
+                />
             </div>
         </div>
-
-</>)
+    </>)
 
 }
