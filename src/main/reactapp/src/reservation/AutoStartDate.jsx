@@ -44,7 +44,7 @@ export default function AutoStartDate(props) {
             <div className='emaildiv'>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <StaticDatePicker
-                    // minDate={dayjs()} 
+                    minDate={dayjs()} 
                     value={selectedDate}
                     onChange={(newDate) => setSelectedDate(newDate)}
                     shouldDisableDate={(date) => !isDateAvailable(date)}
