@@ -13,6 +13,8 @@ import Phone from "./Phone.jsx";
 import Resfin from "./Resfin.jsx";
 import './App.css';
 import './Res.css';
+import '../admin/App.jsx'; 
+import AdminLogin from'../admin/Login.jsx'
 
 export default function App(props) {
     const location = useLocation();
@@ -65,7 +67,7 @@ export default function App(props) {
             <div className='tit'>[ 버스 승차권 발매기 ]</div>
             <div className='subTit'>
                 <div className='left'>
-                    <Link to="/">
+                    <Link to="/admin/login">
                         <FontAwesomeIcon icon={faMapPin} className="admin" />
                     </Link>
                     <div>&nbsp;&nbsp;인천</div>
@@ -94,6 +96,7 @@ export default function App(props) {
                 <Route path="/phone" element={<Phone />} />
                 <Route path="/resfin" element={<Resfin />} />
                 <Route path="/autostartdate" element={<AutoStrartDate />} />
+                <Route path="/admin/Login" element={<AdminLogin />} />
             </Routes>
         </div>
     );
