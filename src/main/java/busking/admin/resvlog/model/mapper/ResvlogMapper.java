@@ -50,13 +50,13 @@ public interface ResvlogMapper {
             "    t.startdate, \n" +
             "    t.starttime,\n" +
             "    l.dest,  -- location 테이블에서 dest 조회\n" +
-            "    b.bsnum\n" +
-            "    -- GROUP_CONCAT(b.bsnum ORDER BY b.bsnum) AS bsnum  -- 여러 좌석을 쉼표로 연결\n" +
+            "    GROUP_CONCAT(b.bsnum ORDER BY b.bsnum) AS bsnum  -- 여러 좌석을 쉼표로 연결\n" +
             "FROM resv r\n" +
             "JOIN timetable t ON r.timeid = t.timeid\n" +
             "JOIN resvdetail rd ON r.resvid = rd.resvid\n" +
             "JOIN busseat b ON rd.bsid = b.bsid\n" +
             "JOIN location l ON t.locid = l.locid  -- location 테이블을 조인하여 dest 가져오기\n" +
-            "GROUP BY b.bsnum, r.resvid, r.email, r.total, t.startdate, t.starttime, l.dest;")
+            "GROUP BY r.resvid, r.email, r.total, t.startdate, t.starttime, l.dest\n" +
+            "ORDER BY r.resvid DESC")
     public List<ResvlogDto> findAll();
 }

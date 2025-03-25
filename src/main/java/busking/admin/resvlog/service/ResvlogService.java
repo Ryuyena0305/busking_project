@@ -8,15 +8,16 @@ import busking.admin.timetable.model.dto.TimeTableDto;
 import busking.user.model.dto.ResDto;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ResvlogService {
-    @Autowired
-    private ResvlogMapper resvlogMapper;
+    private final ResvlogMapper resvlogMapper;
 
     // 예매내역 전체 조회
     public PageInfo<ResvlogDto> findAll(int pageNum, int pageSize){

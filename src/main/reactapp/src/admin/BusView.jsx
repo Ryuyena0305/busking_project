@@ -38,8 +38,6 @@ export default function BusView(props) {
         <div id="container">
           <h1>BUS 상세정보</h1>
           <div className="vContent">
-          <div className='subTit'>버스기사 </div> 
-          <input type="text" className='subCont' value={buses.driver} disabled/>
           <div className='subTit'>버스차량번호 </div> 
           <input type="text" className='subCont' value={buses.binum} disabled/>
           <div className='subTit'>버스등급 </div> 

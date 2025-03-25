@@ -26,6 +26,11 @@ export default function SideBar(props) {
     setOpen2(!open2);
   };
 
+  const [open3, setOpen3] = useState(false);
+  const handleClick3 = () => {
+    setOpen3(!open3);
+  };
+
   return (
     <>
       {/* 사이드바 전체 구역 */}
@@ -55,13 +60,38 @@ export default function SideBar(props) {
           </List>
         </Collapse>
 
-        {/* 드롭다운 메뉴 : 복사시 open 상태 새로 만들어야한다. */}
+
+
         <ListItemButton onClick={handleClick2}>
-          <ListItemText primary="스케줄 관리" />
+          <ListItemText primary="버스기사 관리" />
           {open2 ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
-        {/* 드롭다운의 하위메뉴 */}
+
         <Collapse in={open2} timeout="auto" unmountOnExit>
+          {/* 하위메뉴 1개 */}
+          <List component="div" disablePadding className="test">
+            <ListItemButton component={Link} to="/dcreate" sx={{ pl: 4 }}>
+              <ListItemText primary="버스기사 등록" className="test2" />
+            </ListItemButton>
+          </List>
+
+          <List component="div" disablePadding className="test">
+            <ListItemButton component={Link} to="/dread" sx={{ pl: 4 }}>
+              <ListItemText primary="버스기사 조회" className="test2" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+
+
+
+
+        {/* 드롭다운 메뉴 : 복사시 open 상태 새로 만들어야한다. */}
+        <ListItemButton onClick={handleClick3}>
+          <ListItemText primary="스케줄 관리" />
+          {open3 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        {/* 드롭다운의 하위메뉴 */}
+        <Collapse in={open3} timeout="auto" unmountOnExit>
           {/* 하위메뉴 1개 */}
           <List component="div" disablePadding className="test">
             <ListItemButton component={Link} to="/tcreate" sx={{ pl: 4 }}>

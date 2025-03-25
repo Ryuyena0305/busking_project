@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 import dayjs from 'dayjs';
 
-import GetBusData, { GetLocData } from '../components/Timetable';
+import GetBusData, { GetDriverData, GetLocData } from '../components/Timetable';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -34,6 +34,7 @@ export default function Tcreate(props){
     const [startdate, setStartdate] = useState(defaultDate);
     const [biid, setBiid] = useState('');
     const [locid, setLocid] = useState('');
+    const [did, setDid] = useState('');
 
     // 지난 날짜, 지난 시간(수정 필요) 선택 불가
     const today = dayjs().format("YYYY-MM-DD");
@@ -50,7 +51,8 @@ export default function Tcreate(props){
             starttime : starttime,
             startdate : startdate,
             biid : biid,
-            locid : locid
+            locid : locid,
+            did : did
         }
         try{
             const response = await axios.post(`http://localhost:8080/timetable`, timeTableDto)
@@ -72,9 +74,14 @@ export default function Tcreate(props){
         setBiid(selectedBiid);
     }
 
-    // GetBusData에서 전달받은 locid
+    // GetLocData에서 전달받은 locid
     const paramLocid = (selectedLocid) => {
         setLocid(selectedLocid);
+    }
+
+    // GetDriverData에서 전달받은 Did
+    const paramDid = (selectedDid) => {
+        setDid(selectedDid);
     }
     
 
@@ -82,17 +89,18 @@ export default function Tcreate(props){
         <div id="container"> 
             <h1> 스케줄 등록 </h1>
             <div className='vContent'>
-                    <div className='subTit'>출발일자</div>
-                    <input type="date" min={today} className='subCont' value={startdate} onChange={(e) => setStartdate(e.target.value)}/>
+                <div className='subTit'>출발일자</div>
+                <input type="date" min={today} className='subCont' value={startdate} onChange={(e) => setStartdate(e.target.value)}/>
 
-                    <div className='subTit'>출발시간</div>
-                    <input type="time" min={minTime} className='subCont' value={starttime} onChange={(e) => setStarttime(e.target.value)}/>
+                <div className='subTit'>출발시간</div>
+                <input type="time" min={minTime} className='subCont' value={starttime} onChange={(e) => setStarttime(e.target.value)}/>
 
-                    <GetBusData findBiid={paramBiid} />
-                    <GetLocData findLocid={paramLocid}/>
+                <GetBusData findBiid={paramBiid} />
+                <GetDriverData findDid={paramDid}/>
+                <GetLocData findLocid={paramLocid}/>
 
-                    <hr/>
-                    <button type='button' onClick={handleCreate} className='createBtn'>등록</button>
+                <hr/>
+                <button type='button' onClick={handleCreate} className='createBtn'>등록</button>
             </div>
         </div> 
     </>)

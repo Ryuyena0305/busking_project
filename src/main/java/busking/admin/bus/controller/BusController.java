@@ -2,6 +2,7 @@ package busking.admin.bus.controller;
 
 import busking.admin.bus.model.BusDto;
 import busking.admin.bus.service.BusService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,13 @@ public class BusController {
     }
 
     @GetMapping("")
-    public List<BusDto> onRead(){
-        return busService.onRead();
+    public PageInfo<BusDto> onRead(
+            @RequestParam(defaultValue = "1", name = "page") int pageNum,
+            @RequestParam(defaultValue = "10") int pageSize
+    ){
+        System.out.println("BusController.onRead");
+        System.out.println("pageNum = " + pageNum + ", pageSize = " + pageSize);
+        return busService.onRead(pageNum, pageSize);
     }
     @GetMapping("/view")
     public BusDto onView(@RequestParam int biid){

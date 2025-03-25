@@ -17,4 +17,6 @@ public class TimeTableDto {
     private String binum;
     private String driver;
     private String dest;
+    private int did;
+    private String dname;
 }
