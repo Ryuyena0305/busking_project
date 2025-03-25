@@ -20,7 +20,7 @@ export default function Main(){
                     <Link to="/StartDate">
                         <button className='nomal'>일반예매</button>
                     </Link>
-                    <Link to="/AutoRes">
+                    <Link to="/autostartdate">
                         <button className='auto'>자동예매</button>
                     </Link>
                 </div>
