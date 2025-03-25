@@ -14,15 +14,14 @@ export default function Tview(props){
 
     const navigate = useNavigate(); 
     const [times, setTimes] = useState({starttime : '', starttime : '', biid : '', locid : '', did : '', dname : ''});
-    const [starttime, setStarttime] = useState('');
-    const [startdate, setStartdate] = useState('');
     const [biid, setBiid] = useState('');
     const [locid, setLocid] = useState('');
+    const [did, setDid] = useState('');
 
     useEffect(() => {
         onView();
     }, [timeid]);  
-    console.log(times);
+    // console.log(times);
 
 
     // 상세 조회
@@ -58,10 +57,10 @@ export default function Tview(props){
                 const response = await axios.put(`http://localhost:8080/timetable/view`, times); 
                 console.log(response.data);
                 if (response.data == true) {
-                    alert('스케줄 수정 성공');
+                    alert('스케줄 수정이 완료되었습니다.');
                     navigate("/home");
                 }else{
-                    alert('스케줄 수정 실패')
+                    alert('스케줄 수정을 실패했습니다.')
                 }
             }catch(error) {
                 console.log(error);
@@ -85,10 +84,10 @@ export default function Tview(props){
         try { 
             const deleteResponse = await axios.delete(`http://localhost:8080/timetable/view?timeid=${timeid}`);
             if (deleteResponse.data == true) {
-                alert('삭제 성공');
+                alert('스케줄 삭제가 완료되었습니다.');
                 navigate("/home");  
             }else{
-                alert('삭제 실패');
+                alert('스케줄 삭제를 실패했습니다.');
             }
         } catch (error) {
             console.log(error);
@@ -96,7 +95,7 @@ export default function Tview(props){
     };
 
 
-    console.log(times);
+    //console.log(times);
 
     return(<>
         <div id="container">
