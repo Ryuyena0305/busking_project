@@ -1,6 +1,7 @@
 package busking.admin.driver.model.dto;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Setter
 @Getter
@@ -14,4 +15,6 @@ public class DriverDto {
     private String ddate;
     private String dphone;
     private String dprofile;
+
+    private MultipartFile dimg;
 }

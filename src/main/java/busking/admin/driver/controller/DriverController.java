@@ -25,10 +25,11 @@ public class DriverController {
 
     // 버스기사 등록
     @PostMapping
-    public boolean create(@RequestBody DriverDto driverDto){
+    public boolean create(DriverDto driverDto){
         System.out.println("DriverController.create");
         System.out.println("driverDto = " + driverDto);
-        return driverService.create(driverDto);
+        boolean result = driverService.create(driverDto);
+        return result;
     }
 
 

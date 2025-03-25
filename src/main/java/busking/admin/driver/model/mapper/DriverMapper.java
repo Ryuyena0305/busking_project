@@ -15,8 +15,8 @@ public interface DriverMapper {
     public List<DriverDto> getDriverInfo();
 
     // 버스기사 등록
-    @Insert("insert into driver (dname, ddate, dphone) values(#{dname}, #{ddate}, #{dphone})")
-    public boolean create(@RequestBody DriverDto driverDto);
+    @Insert("insert into driver (dname, ddate, dphone, dprofile) values(#{dname}, #{ddate}, #{dphone}, #{dprofile})")
+    public boolean create(DriverDto driverDto);
 
 
     // 버스기사 조회
