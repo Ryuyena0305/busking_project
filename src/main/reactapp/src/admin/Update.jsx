@@ -37,16 +37,7 @@ export default function Update(props) {
       <div id="container">
         <h1>버스 수정</h1>
         <form className='vContent createBox'>
-        <div className='subTit'>버스기사 {' '}</div>
-            <input
-              className='subCont'
-              type="text"
-              name="driver"
-              value={busForm.driver}
-              onChange={onValueChange}
-            />
-          {' '}
-          <br />
+
           <div className='subTit'>
             버스차량번호 {' '} </div>
             <input

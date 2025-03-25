@@ -16,7 +16,7 @@ export default function AppBar2( props ){
         const response =  await axios.get('http://localhost:8080/busking/admin/logout', {withCredentials: true} )
         if( response ){
             // navigate('/');
-            location.href = '/' 
+            location.href = '/login' 
         }
     }
     
