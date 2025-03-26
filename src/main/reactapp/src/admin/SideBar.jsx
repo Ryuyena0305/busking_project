@@ -40,7 +40,7 @@ export default function SideBar(props) {
         aria-labelledby="nested-list-subheader"
       >
         {/* 드롭다운 메뉴 */}
-        <ListItemButton onClick={handleClick1} component={Link} to="/read">
+        <ListItemButton onClick={handleClick1}>
           <ListItemText primary="버스관리" />
           {open1 ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
@@ -50,6 +50,12 @@ export default function SideBar(props) {
           <List component="div" disablePadding className="test">
             <ListItemButton component={Link} to="/create" sx={{ pl: 4 }}>
               <ListItemText primary="버스 등록" className="test2" />
+            </ListItemButton>
+          </List>
+
+          <List component="div" disablePadding className="test">
+            <ListItemButton component={Link} to="/read" sx={{ pl: 4 }}>
+              <ListItemText primary="버스 조회" className="test2" />
             </ListItemButton>
           </List>
 

@@ -56,7 +56,8 @@ a {
   height: 100vh;
 }
 #wrap .MuiListItemText-root > .MuiTypography-root {
-  font-size: 25px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 #wrap .MuiToolbar-root > .MuiTypography-root > a {
