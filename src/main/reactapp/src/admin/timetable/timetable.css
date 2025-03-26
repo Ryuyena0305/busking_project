@@ -33,14 +33,6 @@ h1{
     font-weight: bold;
 }
 
-/* .viewTit{
-    font-size: 25px;
-    font-weight: bold;
-    margin: 0px 20px;
-    padding-top:15px;
-    
-} */
-
 .subCont{
     width: 340px;
     height: 40px;
@@ -50,24 +42,18 @@ h1{
     border-radius: 5px;
     font-size: 16px;
 }
+
 .timeSubCont{
     margin-bottom: 30px;
 }
-/* .viewSelect{
-    width: 270px;
-    font-size: 17px;
-    padding: 10px;
-    border: 1px solid #d4d4d4;
-    border-radius: 7px;
-} */
 
 hr{
     border: 1px solid #d4d4d4;
     width: 70%;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
-.vContent > button{
+.adCreateBtn, .vUpdateBtn, .vDeleteBtn{
     background-color: #ff914d;
     width: 50%;
     height: 50px;
@@ -91,7 +77,7 @@ hr{
     height: 730px;
 }
 
-.vContent > .vDeleteBtn{
+.vDeleteBtn{
     background-color: #004aad;
     margin-top: 10px;
 }
@@ -120,8 +106,8 @@ hr{
 .createBox{
     padding-top: 150px;
 }
-.createBtn{
-    margin-top: 40px;
+.adCreateBtn{
+    margin-top: 20px;
     background-color: #ff914d;
     font-size: 20px;
 }
@@ -228,6 +214,31 @@ tbody > tr > td > .link > button{
     position: fixed;
     right: 80px;
 }
+
+
+/* 버스기사 */
+.profile{
+    border: none;
+    padding: 0px;
+}
+.bcreateBtn{
+    margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

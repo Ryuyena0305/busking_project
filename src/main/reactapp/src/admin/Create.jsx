@@ -92,7 +92,7 @@ export default function Create(props) {
           </div>
           <br />
           <hr />
-          <button type="button" onClick={onCreate} className='createBtn'>
+          <button type="button" onClick={onCreate} className='adCreateBtn'>
             등록
           </button>
         </form>

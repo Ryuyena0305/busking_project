@@ -132,7 +132,7 @@ export default function Tview(props){
                             />
                     </>)}           
                         <hr />
-                        <button onClick={handleUpdate} type='button'>수정</button> <br />
+                        <button onClick={handleUpdate} type='button' className='vUpdateBtn'>수정</button> <br />
                         <button onClick={handleDelete} type='button' className='vDeleteBtn'>삭제</button>
                     
                 </div>

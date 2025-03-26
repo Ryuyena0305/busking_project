@@ -63,7 +63,7 @@ export default function TcreateExcel(props) {
 
 
                 <hr />
-                <button type='button' className='createBtn'>등록</button>
+                <button type='button' className='adCreateBtn'>등록</button>
             </div>
         </div>
 

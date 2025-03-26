@@ -100,7 +100,7 @@ export default function Tcreate(props){
                 <GetLocData findLocid={paramLocid}/>
 
                 <hr/>
-                <button type='button' onClick={handleCreate} className='createBtn'>등록</button>
+                <button type='button' onClick={handleCreate} className='adCreateBtn'>등록</button>
             </div>
         </div> 
     </>)

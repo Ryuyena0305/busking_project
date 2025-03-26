@@ -44,23 +44,23 @@ export default function Dcreate(props){
     return(<>
         <div id='container'>
             <h1>버스기사 등록</h1>
-            <div className='dcreate'>
+            <div className='vContent'>
                 <form>
-                    <div className='dcTit'>이름</div>
-                    <input type="text" className='dcInput' name='dname' value={driverInfo.dname} onChange={onInputChange}/>
+                    <div className='subTit'>이름</div>
+                    <input type="text" className='subCont' name='dname' value={driverInfo.dname} onChange={onInputChange}/>
 
-                    <div className='dcTit'>생년월일</div>
-                    <input type="text" className='dcInput' name='ddate' value={driverInfo.ddate} onChange={onInputChange}/>
+                    <div className='subTit'>생년월일</div>
+                    <input type="text" className='subCont' name='ddate' value={driverInfo.ddate} onChange={onInputChange}/>
 
-                    <div className='dcTit'>연락처</div>
-                    <input type="text" className='dcInput' name='dphone' value={driverInfo.dphone} onChange={onInputChange}/>
+                    <div className='subTit'>연락처</div>
+                    <input type="text" className='subCont' name='dphone' value={driverInfo.dphone} onChange={onInputChange}/>
 
-                    <div className='dcTit'>프로필</div>
-                    <input type="file" className='dcInput' accept="image/*" onChange={onFileChange}/>
+                    <div className='subTit'>프로필</div>
+                    <input type="file" className='subCont profile' accept="image/*" onChange={onFileChange}/>
                     
                     <hr/>
                     
-                    <button type='button' className='createBtn' onClick={onCreate}>등록</button>
+                    <button type='button' className='adCreateBtn' onClick={onCreate}>등록</button>
                 </form>
             </div>
         </div>
