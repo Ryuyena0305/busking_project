@@ -28,7 +28,6 @@ export default function AutoPhone() {
             person: person,
         };
         
-
         try {
             const response = await axios.post('http://localhost:8080/resv', data, {
                 headers: {
@@ -60,7 +59,6 @@ export default function AutoPhone() {
             <div className="date-header">
                 <h2>이메일 입력해주세요</h2>
             </div>
-
             {/* 이메일 입력 부분 */}
             <TextField
                 label="이메일을 입력하세요"
@@ -106,7 +104,7 @@ export default function AutoPhone() {
                             </Button>
                         </Grid>
                     ))}
-
+                    
                     {/* 특수문자 버튼 */}
                     {['@', '.'].map((value) => (
                         <Grid item xs={2} key={value}>
@@ -137,7 +135,6 @@ export default function AutoPhone() {
             <Button className='emailButton' onClick={onRes} fullWidth>
                 다음
             </Button>
-            
         </div>
         </>
     );

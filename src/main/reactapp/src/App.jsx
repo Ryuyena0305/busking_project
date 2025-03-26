@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-      <button
+      <button className="mode"
         style={{ position: 'fixed', bottom: '10px', right: '10px' }}
         onClick={() => setIsAdmin(!isAdmin)}>
         {isAdmin ? "일반 사용자 모드" : "관리자 모드"}

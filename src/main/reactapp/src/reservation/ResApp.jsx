@@ -4,6 +4,10 @@ import { Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useState,useEffect } from "react";
 import StartDate from './StartDate.jsx';
 import AutoStrartDate from './AutoStartDate.jsx';
+import AutoDest from "./AutoDest.jsx";
+import AutoTime from "./AutoTime.jsx";
+import AutoPerson from "./AutoPerson.jsx";
+import AutoPhone from "./AutoPhone.jsx";
 import Dest from './Dest.jsx';
 import Main from './Main.jsx';
 import Time from "./Time.jsx";
@@ -94,6 +98,10 @@ export default function ResApp(props) {
                 <Route path="/phone" element={<Phone />} />
                 <Route path="/resfin" element={<Resfin />} />
                 <Route path="/autostartdate" element={<AutoStrartDate />} />
+                <Route path="/autodest" element={<AutoDest />} />
+                <Route path="/autotime" element={<AutoTime />} />
+                <Route path="/autoperson" element={<AutoPerson />} />
+                <Route path="/autophone" element={<AutoPhone />} />
             </Routes>
         </div>
     );
