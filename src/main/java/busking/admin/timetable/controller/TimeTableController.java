@@ -18,7 +18,7 @@ public class TimeTableController {
     private final TimeTableService timeTableService;
 
     // 차트 일자별 스케줄 건수 가져오기
-    @GetMapping("getdatechart")
+    @GetMapping("/getdatechart")
     public Map<String, Integer> getDateChart() {
         System.out.println("TimeTableController.getDateChart");
         return timeTableService.getDateChart();
@@ -26,14 +26,14 @@ public class TimeTableController {
 
 
     // 버스정보 가져오기
-    @GetMapping("getbus")
+    @GetMapping("/getbus")
     public List<TimeTableDto> getBusInfo() {
         System.out.println("TimeTableController.getBusInfo");
         return timeTableService.getBusInfo();
     }
 
     // 터미널 정보 가져오기
-    @GetMapping("getloc")
+    @GetMapping("/getloc")
     public List<TimeTableDto> getLoc() {
         System.out.println("TimeTableController.getTerminalInfo");
         return timeTableService.getLoc();
