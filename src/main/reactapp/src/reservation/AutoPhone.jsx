@@ -12,21 +12,27 @@ export default function AutoPhone() {
     const startdate = params.get('startdate');
     const dest = params.get('dest');
     const starttime = params.get('starttime');
-    const personparams = params.get('personparams');
     useEffect(() => {
-        if (personparams) {
-            setPerson(personparams); 
+        const personParam = params.get('person');
+        if (personParam) {
+            setPerson(personParam); 
         }
-    }, [personparams]);
+    }, [params]);
 
     const onRes = async () => {
+    const bsnum = [];
+    for (let i = 0; i < person; i++) {
+        bsnum.push( 0 );
+    }
         const data = {
             phone: email,
             startdate: startdate,
             dest: dest,
             starttime: starttime,
             person: person,
+            bsnum: bsnum, 
         };
+        console.log(data);
         
         try {
             const response = await axios.post('http://localhost:8080/resv', data, {
