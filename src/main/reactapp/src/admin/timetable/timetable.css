@@ -231,6 +231,13 @@ tbody > tr > td > .link > .viewBtnSeat{
 .viewBtnSeat{
     background-color: #004aad !important;
 }
+.profileBox > img{
+    width: 20%;
+    height: 20%;
+    border-radius: 30px;
+    /* border: 5px solid #d4d4d4; */
+}
+
 
 
 
