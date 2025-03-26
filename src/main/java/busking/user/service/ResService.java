@@ -99,8 +99,8 @@ public class ResService {
             resMapper.Res(resDto);
 
             int resvid = resDto.getResvid();
-            for (Object bsnum : resDto.getBsnum()) {
-                resMapper.ResDetail((int)bsnum, resvid, resDto.getStartdate(), resDto.getStarttime(), resDto.getDest());
+            for (int bsnum : resDto.getBsnum()) {
+                resMapper.ResDetail(bsnum, resvid, resDto.getStartdate(), resDto.getStarttime(), resDto.getDest());
             }
 
             System.out.println(resDto);
