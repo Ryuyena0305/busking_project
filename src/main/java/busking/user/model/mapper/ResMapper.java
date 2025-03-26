@@ -21,7 +21,7 @@ public interface ResMapper {
             "JOIN location l ON t.locid = l.locid " +
             "WHERE t.startdate = #{startdate} " +
             "AND l.dest = #{dest}")
-    List<Map<Object,Object>> getStartTime(@Param("startdate") String startdate, @Param("dest") String dest);
+    List<Map<Object, Object>> getStartTime(@Param("startdate") String startdate, @Param("dest") String dest);
 
     @Select("SELECT * \n" +
             "FROM resvdetail AS rd\n" +
@@ -48,7 +48,8 @@ public interface ResMapper {
 
 
     @Insert("INSERT INTO resv (email, rprice, total , timeid) VALUES (#{phone}, #{rprice}, #{total}, #{timeid})")
-    @Options(useGeneratedKeys = true, keyProperty = "resvid")  // resDto 객체의 resvid 필드로 생성된 키를 자동 매핑
+    @Options(useGeneratedKeys = true, keyProperty = "resvid")
+        // resDto 객체의 resvid 필드로 생성된 키를 자동 매핑
     int Res(ResDto resDto);
 
     // 6. 예약 상세 정보 삽입 (bsid, resvid -> insert into resvdetail)
@@ -122,8 +123,10 @@ public interface ResMapper {
             "WHERE t.startdate = #{startdate}\n" +
             "AND l.dest = #{dest}\n" +
             "AND t.starttime = #{starttime}\n" +
-            "AND (r.timeid = #{timeid} OR r.timeid IS NULL) " +
-            "AND rd.bsid IS NULL")
+            "AND (r.timeid = #{timeid} OR r.timeid IS NULL) \n" +
+            "AND rd.bsid IS NULL\n" +
+            "AND b.bsstate = 1")
+        // Add condition to ensure bsstate is 1 (available)
     List<Integer> getAvailableSeats(@Param("startdate") String startdate,
                                     @Param("starttime") String starttime,
                                     @Param("dest") String dest,

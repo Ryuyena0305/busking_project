@@ -5,10 +5,7 @@ import org.springframework.stereotype.Service;
 import busking.user.model.dto.ResDto;
 import busking.user.model.mapper.ResMapper;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class ResService {
@@ -79,7 +76,7 @@ public class ResService {
 
             int total = resDto.getTotal();
 
-            if (resDto.getBsnum() == null || resDto.getBsnum().isEmpty()) {
+            if ( resDto.getBsnum().isEmpty() || resDto.getBsnum().get(0) == 0 ) {
                 // 좌석 번호를 자동으로 선택하기 위한 로직 추가
                 List<Integer> availableSeats = resMapper.getAvailableSeats(resDto.getStartdate(), resDto.getStarttime(), resDto.getDest(), resDto.getTimeid()); // 가능한 좌석 목록을 가져옴
 
@@ -88,16 +85,21 @@ public class ResService {
                 }
 
                 // 좌석 번호 리스트에서 하나를 랜덤으로 선택
-                Random random = new Random();
-                int randomIndex = random.nextInt(availableSeats.size());  // 랜덤으로 인덱스를 선택
-                int selectedSeat = availableSeats.get(randomIndex);  // 선택된 인덱스에 해당하는 좌석 번호
-                resDto.setBsnum(Collections.singletonList(selectedSeat));  // 랜덤으로 선택한 좌석
+                List<Integer> list = new ArrayList<>();
+                for (int i = 0; i < resDto.getBsnum().size(); i++) {
+                    Random random = new Random();
+                    int randomIndex = random.nextInt(availableSeats.size());  // 랜덤으로 인덱스를 선택
+                    int selectedSeat = availableSeats.get(randomIndex);  // 선택된 인덱스에 해당하는 좌석 번호
+                    list.add(selectedSeat);  // 선택한 ��석을 리스트에 추가
+                }
+                resDto.setBsnum(list);  // 랜덤으로 선택한 좌석
+                System.out.println(resDto.getBsnum());
             }
 
             resMapper.Res(resDto);
 
             int resvid = resDto.getResvid();
-            for (Integer bsnum : resDto.getBsnum()) {
+            for (int bsnum : resDto.getBsnum()) {
                 resMapper.ResDetail(bsnum, resvid, resDto.getStartdate(), resDto.getStarttime(), resDto.getDest());
             }
 
