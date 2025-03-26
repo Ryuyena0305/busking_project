@@ -17,7 +17,7 @@ public class DriverController {
     private final DriverService driverService;
 
     // 버스기사별 스케줄 로그
-    @GetMapping("/gettimelog")
+    @GetMapping("/timelog")
     public PageInfo<TimeTableDto> getTimeLog(
             @RequestParam int did,
             @RequestParam(defaultValue = "1", name = "page") int pageNum,

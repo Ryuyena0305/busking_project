@@ -13,7 +13,19 @@ import java.util.List;
 public interface DriverMapper {
 
     // 버스기사별 스케줄 로그
-    @Select("select * from timetable where did = #{did}")
+    @Select("SELECT\n" +
+            "    t.timeid,\n" +
+            "    t.startdate,\n" +
+            "    t.starttime,\n" +
+            "    b.binum,    \n" +
+            "    l.dest,      \n" +
+            "    d.dname      \n" +
+            "FROM timetable t\n" +
+            "JOIN businfo b ON t.biid = b.biid\n" +
+            "JOIN location l ON t.locid = l.locid\n" +
+            "JOIN driver d ON t.did = d.did\n" +
+            "where d.did = #{did}\n" +
+            "ORDER BY t.startdate ASC")
     public List<TimeTableDto> getTimeLog(int did);
 
 
