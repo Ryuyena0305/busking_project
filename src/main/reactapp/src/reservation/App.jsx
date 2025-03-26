@@ -82,7 +82,7 @@ export default function App(props) {
                 <button onClick={sendNotification} className="notify-btn">
                     관리자 호출
                 </button>
-                <p className="status-text">{status}</p>
+                
             </div>
             <Routes>
                 <Route path="/" element={<Main />} />
