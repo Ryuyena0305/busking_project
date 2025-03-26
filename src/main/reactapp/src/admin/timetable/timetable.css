@@ -162,6 +162,10 @@ thead{
 thead > tr > th:first-child{
     width: 10%;
 }
+thead > tr > th:nth-child(2){
+    width: 12%;
+}
+
 thead > tr > th{
     width: 15%;
     height: 50px;
@@ -193,7 +197,7 @@ tbody > tr > td{
     left: 50%;
 }
 
-tbody > tr > td > .link > button{
+tbody > tr > td > .link > .viewBtn{
     background-color: #ff914d;
     color: #ffff;
     border: none;

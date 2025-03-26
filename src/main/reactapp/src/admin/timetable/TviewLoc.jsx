@@ -74,7 +74,7 @@ export default function TviewLoc(){
                                         <td>{getViewList.binum}</td>
                                         <td>{getViewList.dname}</td>
                                         <td>{getViewList.dest}</td>
-                                        <td><Link to={`/tview?timeid=${getViewList.timeid}`} className='link'><button type='button'>상세조회</button></Link></td>
+                                        <td><Link to={`/tview?timeid=${getViewList.timeid}`} className='link'><button type='button' className='viewBtn'>상세조회</button></Link></td>
                                     </tr>
                                 ))
                             }

@@ -56,7 +56,7 @@ export default function Dread(props){
                                         <td>{driver.dname}</td>
                                         <td>{driver.ddate}</td>
                                         <td>{driver.dphone}</td>
-                                        <td><Link to={`/dview?did=${driver.did}`} className='link'><button type='button'>상세조회</button></Link></td>
+                                        <td><Link to={`/dview?did=${driver.did}`} className='link'><button type='button' className='viewBtn'>상세조회</button></Link></td>
                                     </tr>
                                 )
                             })
