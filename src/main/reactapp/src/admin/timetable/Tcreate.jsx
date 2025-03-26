@@ -88,7 +88,7 @@ export default function Tcreate(props){
     return(<> 
         <div id="container"> 
             <h1> 스케줄 등록 </h1>
-            <div className='vContent'>
+            <div className='adTcreate'>
                 <div className='subTit'>출발일자</div>
                 <input type="date" min={today} className='subCont' value={startdate} onChange={(e) => setStartdate(e.target.value)}/>
 

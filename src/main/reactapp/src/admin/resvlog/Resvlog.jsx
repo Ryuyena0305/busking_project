@@ -42,37 +42,39 @@ export default function Resvlog(props) {
         <div id="container">
             <h1>예매로그</h1>
             <div className='pickContent'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th style={{width : '6%'}}>번호</th>
-                            <th>출발일자</th>
-                            <th>출발시간</th>
-                            <th>터미널</th>
-                            <th>좌석번호</th>
-                            <th>금액</th>
-                            <th style={{width : '17%'}}>이메일</th>
-                            <th>탑승상태</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            {
-                                logs.list && logs.list.map( (log, index)=> (
-                                    <tr  className='bodyTr' key={index}>
-                                        <td>{log.resvid}</td>
-                                        <td>{log.startdate}</td>
-                                        <td>{log.starttime}</td>
-                                        <td>{log.dest}</td>
-                                        <td>{log.bsnum}</td>
-                                        <td>{log.total}</td>
-                                        <td>{log.email}</td>
-                                        <td>{log.bsstate ? "미탑승" : "탑승완료"}</td>
-                                    </tr>
-                                ))
-                            }
+                <div className='tableBox2'>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style={{width : '6%'}}>번호</th>
+                                <th>출발일자</th>
+                                <th>출발시간</th>
+                                <th>터미널</th>
+                                <th>좌석번호</th>
+                                <th>금액</th>
+                                <th style={{width : '17%'}}>이메일</th>
+                                <th>상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                {
+                                    logs.list && logs.list.map( (log, index)=> (
+                                        <tr  className='bodyTr' key={index}>
+                                            <td>{log.resvid}</td>
+                                            <td>{log.startdate}</td>
+                                            <td>{log.starttime}</td>
+                                            <td>{log.dest}</td>
+                                            <td>{log.bsnum}</td>
+                                            <td>{log.total}</td>
+                                            <td>{log.email}</td>
+                                            <td>{log.bsstate ? "미탑승" : "탑승완료"}</td>
+                                        </tr>
+                                    ))
+                                }
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
                 <PaginationComponent
                     count={logs.pages || 1} page={page} onChange={handlePageChange}
                 />

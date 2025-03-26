@@ -77,7 +77,7 @@ export default function Dview(props){
     return(<>
         <div id='container'>
             <h1>버스기사 상세 조회</h1>
-            <div className='vContent'>
+            <div className='adDview'>
                 {drivers && (<>
                     <div className='profileBox'>
                         <img src={"http://localhost:8080/upload/" + (drivers.dprofile == null ? "default.jpg" : drivers.dprofile)} />
@@ -94,8 +94,10 @@ export default function Dview(props){
                     <input type="text" className='subCont' name='dphone' value={drivers.dphone} onChange={onValueChange}/>
 
                     <hr />
-                    <button type='button' onClick={handleUpdate} className='vUpdateBtn'>수정</button> <br />
-                    <button type='button' onClick={handleDelete} className='vDeleteBtn'>삭제</button> <br />
+                    <div className='adDviewBtnBox'>
+                        <button type='button' onClick={handleUpdate} className='dvUpdateBtn'>수정</button> <br />
+                        <button type='button' onClick={handleDelete} className='dvDeleteBtn'>삭제</button> <br />
+                    </div>
                     <button type='button' onClick={() => handleViewLog(searchDid)} className='viewLogBtn'>스케줄 조회</button>
                 </>)}
             </div>

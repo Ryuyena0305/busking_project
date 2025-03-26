@@ -20,7 +20,7 @@ function App() {
       <button className="mode"
         style={{ position: 'fixed', bottom: '10px', right: '10px' }}
         onClick={() => setIsAdmin(!isAdmin)}>
-        {isAdmin ? "일반 사용자 모드" : "관리자 모드"}
+        {isAdmin ? "사용자" : "관리자"}
       </button>
       {isAdmin ? <AdminApp /> : <ResApp />}
     </>

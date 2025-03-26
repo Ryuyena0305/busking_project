@@ -30,58 +30,71 @@ export default function Home(props) {
         <>
             <div id="container">
                 <div className="hContent">
-                    <div className="hSubContent">
-                        <div className="hscFlex">
-                            <h3>일자별 스케줄 건수</h3>
+                    <div className="hMainCont">
+                        <div className="hTopCont">
+                            <h3>우수 버스기사 👑</h3>
+                            <div className="driverRank">
+                                <div className="2nd ranker">
+                                    <img alt="" />
+                                    <div>ㅇㅇㅇ 기사</div>
+                                    <div>ㅇㅇ건</div>
+                                </div>
+
+                                <div className="1st ranker">
+                                    <img alt="" />
+                                    <div>ㅇㅇㅇ 기사</div>
+                                    <div>ㅇㅇ건</div>
+                                </div>
+
+                                <div className="3rd ranker">
+                                    <img alt="" />
+                                    <div>ㅇㅇㅇ 기사</div>
+                                    <div>ㅇㅇ건</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className="hBottomCont">
+                            
+                            <h3>금주 스케줄 건수 📅</h3>
                             <Link to={"/tcreate"} className="hLink">
                                 <button type="button" className="hBtn1">
                                     스케줄 등록 <br />바로가기
                                 </button>
                             </Link>
-                        </div>
+                            
 
-                        <BarChart
-                            className="barChart"
-                            xAxis={[
-                                {
-                                    scaleType: "band",
-                                    data: ["날짜1", "날짜2", "날짜3", "날짜4", "날짜5", "날짜6", "날짜7"],
-                                },
-                            ]}
-                            series={[{ data: [4, 3, 5] }, { data: [1, 6, 3] }, { data: [2, 5, 6] }]}
-                            width={700}
-                            height={300}
-                        />
+                            <BarChart
+                                className="barChart"
+                                xAxis={[
+                                    {
+                                        scaleType: "band",
+                                        data: ["날짜1", "날짜2", "날짜3", "날짜4", "날짜5", "날짜6", "날짜7"],
+                                    },
+                                ]}
+                                series={[{ data: [4, 3, 10] }]}
+                                width={700}
+                                height={300}
+                            />
+                        </div>
                     </div>
 
-                    <div className="hSubContent">
-                        <div className="hscFlex">
-                            <h3>버스 등급별 스케줄 건수</h3>
-                            <Link to={"/tcreate"} className="hLink">
-                                <button type="button" className="hBtn2">
-                                    스케줄 등록 <br />바로가기
-                                </button>
-                            </Link>
-                        </div>
 
-                        <BarChart
-                            className="barChart"
-                            xAxis={[{ scaleType: "band", data: ["일반", "우등", "프리미엄"] }]}
-                            series={[{ data: [4, 3, 5] }, { data: [1, 6, 3] }, { data: [2, 5, 6] }]}
-                            width={700}
-                            height={300}
-                        />
+                    
+                    <div id="notifications">
+                        <div className="notiTit">
+                            <h3>알림</h3>
+                        </div>
+                        {/* 둘 중 하나로 바꿔주면 감사 */}
+                        <div className="notiCont">🔔 01월01일 09시00분 - 키오스크 호출</div>
+                        <div className="notiCont">🔔 01.01 09:00 - 키오스크 호출</div>
+                        {notifications.length === 0 ? (
+                            <div className="notiCont">알림이 없습니다.</div>
+                        ) : (
+                            notifications.map((msg, index) => <div className="notiCont" key={index}>{msg}</div>)
+                        )}
                     </div>
 
-                    {/* 관리자 알림 시스템 */}
-                    <h2>관리자 알림 시스템</h2>
-            <div id="notifications">
-                {notifications.length === 0 ? (
-                    <p>알림이 없습니다.</p>
-                ) : (
-                    notifications.map((msg, index) => <p key={index}>{msg}</p>)
-                )}
-            </div>
                 </div>
             </div>
         </>

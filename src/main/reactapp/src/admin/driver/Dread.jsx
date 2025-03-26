@@ -41,28 +41,30 @@ export default function Dread(props){
         <div id='container'>
             <h1>버스기사 조회</h1>
             <div className='pickContent'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>번호</th><th>이름</th><th>생년월일</th><th>연락처</th><th>비고</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            drivers.list && drivers.list.map( (driver, index) => {
-                                return(
-                                    <tr className='bodyTr' key={index}>
-                                        <td>{driver.did}</td>
-                                        <td>{driver.dname}</td>
-                                        <td>{driver.ddate}</td>
-                                        <td>{driver.dphone}</td>
-                                        <td><Link to={`/dview?did=${driver.did}`} className='link'><button type='button' className='viewBtn'>상세조회</button></Link></td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
+                <div className='tableBox2'>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>번호</th><th>이름</th><th>생년월일</th><th>연락처</th><th>비고</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                drivers.list && drivers.list.map( (driver, index) => {
+                                    return(
+                                        <tr className='bodyTr' key={index}>
+                                            <td>{driver.did}</td>
+                                            <td>{driver.dname}</td>
+                                            <td>{driver.ddate}</td>
+                                            <td>{driver.dphone}</td>
+                                            <td><Link to={`/dview?did=${driver.did}`} className='link'><button type='button' className='viewBtn'>상세조회</button></Link></td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
                 <PaginationComponent
                     count={drivers.pages || 1} page={page} onChange={handlePageChange}
                 />

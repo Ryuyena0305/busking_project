@@ -43,6 +43,8 @@ export default function Create(props) {
             />
           {' '}
           <br />
+          <br />
+          <br />
           <div className='subTit'>
             버스등급 </div> 
           <div className='radioBox'>
@@ -81,6 +83,7 @@ export default function Create(props) {
             프리미엄
             </div>
           </div>
+          <br />
           <br />
           <hr />
           <button type="button" onClick={onCreate} className='adCreateBtn'>

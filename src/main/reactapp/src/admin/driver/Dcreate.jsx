@@ -45,7 +45,7 @@ export default function Dcreate(props){
         <div id='container'>
             <h1>버스기사 등록</h1>
             <div className='vContent'>
-                <form>
+                <form><br />
                     <div className='subTit'>이름</div>
                     <input type="text" className='subCont' name='dname' value={driverInfo.dname} onChange={onInputChange}/>
 

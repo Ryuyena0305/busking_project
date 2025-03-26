@@ -42,43 +42,57 @@ export default function DviewLog(props){
         //console.log("New page selected:", newPage);
     }
 
+    // 
+    //const driver = timeLogs.list?.[0].dname
+    console.log(timeLogs.list);
+
+    console.log("searchDid:", searchDid);
+    console.log("timeLogs.list:", timeLogs.list);
+    console.log("존재하는 did 목록:", timeLogs.list.map(timeLog => timeLog.did));
+    const driverName = timeLogs.list[0]?.dname || "기사 없음";
+
 
 
     return(<>
         <div id='container'>
             {/* {
-                timeLogs.list && timeLogs.list.map( (timeLog) => {
+                timeLogs.list && timeLogs.list?.find( (timeLog) => {
                     return(
-                        <h1>버스기사별 스케줄 조회 | {timeLog.dname} 기사</h1>
+                        <h1>버스기사별 스케줄 조회 | {timeLog[0].list.dname} 기사</h1>
                     )
                 })
-            }
-             */}
-             <h1>버스기사별 스케줄 조회 | {timeLogs.list.dname} 기사</h1>
+            } */}
+            <h1>[ {driverName} 기사 ] 스케줄 조회</h1>
             <div className='pickContent'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>번호</th><th>출발일자</th><th>출발시간</th><th>차량정보</th><th>도착지</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            timeLogs.list && timeLogs.list.map( (timeLog, index) => {
-                                return(
-                                    <tr className='bodyTr' key={index}>
-                                    <td>{timeLog.timeid}</td>
-                                    <td>{timeLog.startdate}</td>
-                                    <td>{timeLog.starttime}</td>
-                                    <td>{timeLog.binum}</td>
-                                    <td>{timeLog.dest}</td>
-                                </tr>
-                                )
-                            })
-                        }
+                <div className='tableBox2'>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style={{width : '10%'}}>번호</th>
+                                <th style={{width : '22.5%'}}>출발일자</th>
+                                <th style={{width : '22.5%'}}>출발시간</th>
+                                <th style={{width : '22.5%'}}>차량정보</th>
+                                <th style={{width : '22.5%'}}>도착지</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                timeLogs.list && timeLogs.list.map( (timeLog, index) => {
+                                    return(
+                                        <tr className='bodyTr' key={index}>
+                                        <td>{timeLog.timeid}</td>
+                                        <td>{timeLog.startdate}</td>
+                                        <td>{timeLog.starttime}</td>
+                                        <td>{timeLog.binum}</td>
+                                        <td>{timeLog.dest}</td>
+                                    </tr>
+                                    )
+                                })
+                            }
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
                 <PaginationComponent
                     count={timeLogs.pages || 1} page={page} onChange={handlePageChange}
                 />

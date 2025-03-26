@@ -100,7 +100,7 @@ export default function Tview(props){
     return(<>
         <div id="container">
                 <h1>스케줄 상세 조회</h1>
-                <div className="vContent">
+                <div className="adTview">
                     {times && (<>
                             <div className='subTit'>출발일자</div>
                             <input type="date" name='startdate' className='subCont timeSubCont' value={times.startdate}
@@ -132,8 +132,10 @@ export default function Tview(props){
                             />
                     </>)}           
                         <hr />
-                        <button onClick={handleUpdate} type='button' className='vUpdateBtn'>수정</button> <br />
-                        <button onClick={handleDelete} type='button' className='vDeleteBtn'>삭제</button>
+                        <div className='adTviewBtnBox'>
+                            <button onClick={handleUpdate} type='button' className='tvUpdateBtn'>수정</button> <br />
+                            <button onClick={handleDelete} type='button' className='tvDeleteBtn'>삭제</button>
+                        </div>
                     
                 </div>
         </div>

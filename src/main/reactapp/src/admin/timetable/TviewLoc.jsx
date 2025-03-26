@@ -58,28 +58,30 @@ export default function TviewLoc(){
                     <div className='viewTop'>
                     <GetLocData findLocid={paramLocid}  className='getLocData'/>
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>번호</th><th>출발일자</th><th>출발시간</th><th>차량정보</th><th>운전기사</th><th>도착지</th><th>비고</th>
-                            </tr>
-                        </thead>
-                        <tbody> 
-                            {
-                                getViewLists.list && getViewLists.list.map((getViewList, index) => (
-                                    <tr className='bodyTr' key={index}>
-                                        <td>{getViewList.timeid}</td>
-                                        <td>{getViewList.startdate}</td>
-                                        <td>{getViewList.starttime}</td>
-                                        <td>{getViewList.binum}</td>
-                                        <td>{getViewList.dname}</td>
-                                        <td>{getViewList.dest}</td>
-                                        <td><Link to={`/tview?timeid=${getViewList.timeid}`} className='link'><button type='button' className='viewBtn'>상세조회</button></Link></td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
-                    </table>
+                    <div className='tableBox'>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>번호</th><th>출발일자</th><th>출발시간</th><th>차량정보</th><th>운전기사</th><th>도착지</th><th>비고</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                {
+                                    getViewLists.list && getViewLists.list.map((getViewList, index) => (
+                                        <tr className='bodyTr' key={index}>
+                                            <td>{getViewList.timeid}</td>
+                                            <td>{getViewList.startdate}</td>
+                                            <td>{getViewList.starttime}</td>
+                                            <td>{getViewList.binum}</td>
+                                            <td>{getViewList.dname}</td>
+                                            <td>{getViewList.dest}</td>
+                                            <td><Link to={`/tview?timeid=${getViewList.timeid}`} className='link'><button type='button' className='viewBtn'>상세조회</button></Link></td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                     <PaginationComponent
                         count={getViewLists.pages || 1} page={page} onChange={handlePageChange}
                     />

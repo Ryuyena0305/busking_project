@@ -62,7 +62,7 @@ export default function Login() {
     return (
         <div className="content2">
             <form className="loginBox" onSubmit={(e) => e.preventDefault()}>
-                <h2 className="title"> Admin </h2>
+                <h2 className="title"> 관리자 로그인 </h2>
                 <div className="pwd">비밀번호</div>
                 <input
                     type={showPassword ? "text" : "password"}
