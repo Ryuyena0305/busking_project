@@ -43,8 +43,8 @@ export default function BusView(props) {
           <div className='subTit'>버스등급 </div> 
           <input type="text" className='subCont' value={buses.btname} disabled/> <br />
           <hr />
-          <button onClick={() => handleEditClick(buses.biid)}>수정</button> <br />
-          <button onClick={onDelete}>삭제</button>
+          <button onClick={() => handleEditClick(buses.biid)} className='vUpdateBtn'>수정</button> <br />
+          <button onClick={onDelete} className='vDeleteBtn'>삭제</button>
           </div>
         </div>
       )}

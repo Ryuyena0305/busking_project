@@ -135,10 +135,9 @@ hr{
     margin-bottom: 30px;
 }
 .viewFind{
-    margin: 0px 20px;
+    margin: 10px 20px;
     font-size: 20px;
     font-weight: bold;
-    padding-top: 10px;
 }
 
 .pickTit{
@@ -197,7 +196,8 @@ tbody > tr > td{
     left: 50%;
 }
 
-tbody > tr > td > .link > .viewBtn{
+tbody > tr > td > .link > .viewBtn,
+tbody > tr > td > .link > .viewBtnSeat{
     background-color: #ff914d;
     color: #ffff;
     border: none;
@@ -227,6 +227,15 @@ tbody > tr > td > .link > .viewBtn{
 }
 .bcreateBtn{
     margin-top: 30px;
+}
+.viewBtnSeat{
+    background-color: #004aad !important;
+}
+.profileBox > img{
+    width: 20%;
+    height: 20%;
+    border-radius: 30px;
+    /* border: 5px solid #d4d4d4; */
 }
 
 

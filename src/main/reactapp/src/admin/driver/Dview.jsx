@@ -73,23 +73,25 @@ export default function Dview(props){
     return(<>
         <div id='container'>
             <h1>버스기사 상세 조회</h1>
-            <div className='dview'>
+            <div className='vContent'>
                 {drivers && (<>
                     <div className='profileBox'>
-                        <img src={`/build/resources/main/static/upload`} value={drivers.dprofile}/>
+                        <img src="/src/img/default.jpg" />
+                        {/* <img src={`/build/resources/main/static/upload`} value={drivers.dprofile}/> */}
                     </div>
 
-                    <div className='dvTit'>이름</div>
-                    <input type="text" className='dvInput' name='dname' value={drivers.dname} onChange={onValueChange}/>
+                    <div className='subTit'>이름</div>
+                    <input type="text" className='subCont' name='dname' value={drivers.dname} onChange={onValueChange}/>
 
-                    <div className='dvTit'>생년월일</div>
-                    <input type="text" className='dvInput' name='ddate' value={drivers.ddate} onChange={onValueChange}/>
+                    <div className='subTit'>생년월일</div>
+                    <input type="text" className='subCont' name='ddate' value={drivers.ddate} onChange={onValueChange}/>
 
-                    <div className='dvTit'>연락처</div>
-                    <input type="text" className='dvInput' name='dphone' value={drivers.dphone} onChange={onValueChange}/>
+                    <div className='subTit'>연락처</div>
+                    <input type="text" className='subCont' name='dphone' value={drivers.dphone} onChange={onValueChange}/>
 
-                    <button type='button' onClick={handleUpdate}>수정</button>
-                    <button type='button' onClick={handleDelete}>삭제</button>
+                    <hr />
+                    <button type='button' onClick={handleUpdate} className='vUpdateBtn'>수정</button> <br />
+                    <button type='button' onClick={handleDelete} className='vDeleteBtn'>삭제</button>
                 </>)}
             </div>
         </div>
