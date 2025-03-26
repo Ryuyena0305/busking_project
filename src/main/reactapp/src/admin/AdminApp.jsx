@@ -15,6 +15,7 @@ import BusInfoSeat from './BusInfoSeat.jsx';
 import Dcreate from './driver/Dcreate.jsx';
 import Dread from './driver/Dread.jsx';
 import Dview from './driver/Dview.jsx';
+import DviewLog from './driver/DviewLog.jsx';
 
 
 /* timetable 스케줄 관리 */
@@ -73,6 +74,7 @@ export default function AdminApp( props ){ // 컴포넌트
                     <Route path="/dcreate" element={<Dcreate/>} />
                     <Route path="/dread" element={<Dread/>} />
                     <Route path="/dview" element={<Dview/>} />
+                    <Route path="/dviewlog" element={<DviewLog/>} />
 
                     
                     {/* timetable 스케줄 관리 */}

@@ -12,10 +12,9 @@ export default function Dview(props){
 
     const [ searchParams ] = useSearchParams();
     const searchDid = searchParams.get('did');
+    //console.log(typeof searchDid, searchDid);
 
     const [drivers, setDrivers] = useState({dname : '', ddate : '', dphone : '', dprofile : ''})
-
-    const [timeLogs, setTimeLogs] = useState({})
 
     const navigate = useNavigate(); 
 
@@ -69,13 +68,10 @@ export default function Dview(props){
         }
     }
 
-
-    // 스케줄 로그 조회
-
-
-
-
-
+    // 스케줄 로그 페이지 이동
+    const handleViewLog = (searchDid) => {
+        navigate(`/dviewlog?did=${searchDid}`)
+    }
 
 
     return(<>
@@ -99,7 +95,8 @@ export default function Dview(props){
 
                     <hr />
                     <button type='button' onClick={handleUpdate} className='vUpdateBtn'>수정</button> <br />
-                    <button type='button' onClick={handleDelete} className='vDeleteBtn'>삭제</button>
+                    <button type='button' onClick={handleDelete} className='vDeleteBtn'>삭제</button> <br />
+                    <button type='button' onClick={() => handleViewLog(searchDid)} className='viewLogBtn'>스케줄 조회</button>
                 </>)}
             </div>
         </div>

@@ -53,7 +53,7 @@ hr{
     margin: 10px auto;
 }
 
-.adCreateBtn, .vUpdateBtn, .vDeleteBtn{
+.adCreateBtn, .vUpdateBtn, .vDeleteBtn, .viewLogBtn{
     background-color: #ff914d;
     width: 50%;
     height: 50px;
@@ -79,6 +79,11 @@ hr{
 
 .vDeleteBtn{
     background-color: #004aad;
+    margin-top: 10px;
+}
+
+/* 버스기사별 스케줄 조회 */
+.viewLogBtn{
     margin-top: 10px;
 }
 
