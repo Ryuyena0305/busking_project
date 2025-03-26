@@ -62,12 +62,12 @@ export default function Read(props) {
                   <td>{bus.btname}</td>
                   <td>
                     <Link to={`/businfoseat?biid=${bus.biid}`} className='link'>
-                      <button>좌석보기</button>
+                      <button className='viewBtnSeat'>좌석보기</button>
                     </Link>
                   </td>
                   <td>
                     <Link to={`/bus/view?biid=${bus.biid}`} className='link'>
-                      <button>상세정보</button>
+                      <button className='viewBtn'>상세정보</button>
                     </Link>
                   </td>
                 </tr>

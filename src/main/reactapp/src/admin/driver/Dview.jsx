@@ -88,8 +88,8 @@ export default function Dview(props){
                     <div className='dvTit'>연락처</div>
                     <input type="text" className='dvInput' name='dphone' value={drivers.dphone} onChange={onValueChange}/>
 
-                    <button type='button' onClick={handleUpdate}>수정</button>
-                    <button type='button' onClick={handleDelete}>삭제</button>
+                    <button type='button' onClick={handleUpdate} >수정</button>
+                    <button type='button' onClick={handleDelete} >삭제</button>
                 </>)}
             </div>
         </div>
