@@ -24,7 +24,7 @@ public interface TimeTableMapper {
 
 
     // 스케줄 등록
-    @Insert("insert into timetable (starttime,startdate,biid,locid) values(#{starttime},#{startdate},#{biid},#{locid}, #{did})")
+    @Insert("insert into timetable (starttime,startdate,biid,locid,did) values(#{starttime},#{startdate},#{biid},#{locid}, #{did})")
     public boolean create(TimeTableDto timeTableDto);
 
     // 스케줄 상세 조회(겸용)
