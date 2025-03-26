@@ -15,6 +15,8 @@ export default function Dview(props){
 
     const [drivers, setDrivers] = useState({dname : '', ddate : '', dphone : '', dprofile : ''})
 
+    const [timeLogs, setTimeLogs] = useState({})
+
     const navigate = useNavigate(); 
 
     useEffect( () => {
@@ -65,8 +67,14 @@ export default function Dview(props){
         }catch(error){
             console.log(error);
         }
-
     }
+
+
+    // 스케줄 로그 조회
+
+
+
+
 
 
 
