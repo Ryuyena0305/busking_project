@@ -19,7 +19,8 @@ public interface DriverMapper {
             "    t.starttime,\n" +
             "    b.binum,    \n" +
             "    l.dest,      \n" +
-            "    d.dname      \n" +
+            "    d.dname,      \n" +
+            "    d.did      \n" +
             "FROM timetable t\n" +
             "JOIN businfo b ON t.biid = b.biid\n" +
             "JOIN location l ON t.locid = l.locid\n" +
