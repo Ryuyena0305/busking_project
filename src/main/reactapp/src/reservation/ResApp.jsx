@@ -57,7 +57,8 @@ export default function ResApp(props) {
     // 관리자 호출 알림 전송
     const sendNotification = () => {
         if (socket && socket.readyState === WebSocket.OPEN) {
-            socket.send("키오스크에서 관리자를 호출하였습니다.");
+            const message = `${time}에 키오스크에서 관리자를 호출하였습니다.`;
+            socket.send(message);
             console.log("알림 전송됨!");
         } else {
             console.log("WebSocket이 아직 연결되지 않았습니다.");

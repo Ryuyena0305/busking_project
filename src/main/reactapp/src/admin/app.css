@@ -84,11 +84,11 @@ a {
 }
 
 #wrap .logo {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   position: fixed; /* 고정 위치 설정 */
   bottom: 0px;
-  left: 40px; /* 화면 왼쪽에서 20px */
+  left: 65px; /* 화면 왼쪽에서 20px */
   z-index: 1000; /* 드롭다운보다 위에 위치하도록 z-index 설정 */
 }
 .logoutBtn{
