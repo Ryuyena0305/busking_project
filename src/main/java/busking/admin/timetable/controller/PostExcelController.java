@@ -14,13 +14,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 public class PostExcelController {
 
     @Autowired
@@ -62,10 +63,10 @@ public class PostExcelController {
             PostExcelDto data = new PostExcelDto();
 
             // 셀 데이터 읽기
-            data.setStartDate(getCellValue(row, 0));
-            data.setStartTime(getCellValue(row, 1));
-            data.setBinum(getCellValue(row, 2));
-            data.setDest(getCellValue(row, 3));
+            data.setStartDate(getCellValue(row, 0)); // 출발 날짜
+            data.setStartTime(getCellValue(row, 1)); // 출발 시간
+            data.setBinum(getCellValue(row, 2));    // 버스 번호
+            data.setDest(getCellValue(row, 3));     // 도착지
 
             dataList.add(data);
         }
@@ -80,15 +81,21 @@ public class PostExcelController {
     // 셀 값 읽기 (Null 체크 및 타입에 맞게 변환)
     private String getCellValue(Row row, int cellIndex) {
         if (row.getCell(cellIndex) != null) {
+            // 셀의 타입에 따라 적절한 값을 반환
             switch (row.getCell(cellIndex).getCellType()) {
                 case STRING:
                     return row.getCell(cellIndex).getStringCellValue();
                 case NUMERIC:
-                    return String.valueOf(row.getCell(cellIndex).getNumericCellValue());
+                    // 숫자 형식일 경우, 숫자 값을 반환
+                    if (org.apache.poi.ss.usermodel.DateUtil.isCellDateFormatted(row.getCell(cellIndex))) {
+                        return row.getCell(cellIndex).getDateCellValue().toString();  // 날짜일 경우 날짜 문자열 반환
+                    } else {
+                        return String.valueOf(row.getCell(cellIndex).getNumericCellValue());  // 숫자일 경우 숫자 값 반환
+                    }
                 case BOOLEAN:
                     return String.valueOf(row.getCell(cellIndex).getBooleanCellValue());
                 default:
-                    return "";
+                    return "";  // 기본적으로 빈 문자열 반환
             }
         }
         return "";  // 셀이 비어있는 경우 빈 문자열 반환
