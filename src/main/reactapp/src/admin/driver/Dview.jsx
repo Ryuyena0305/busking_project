@@ -76,7 +76,7 @@ export default function Dview(props){
             <div className='vContent'>
                 {drivers && (<>
                     <div className='profileBox'>
-                        <img src="/src/img/default.jpg" />
+                        <img src={"http://localhost:8080/upload/" + (drivers.dprofile == null ? "default.jpg" : drivers.dprofile)} />
                         {/* <img src={`/build/resources/main/static/upload`} value={drivers.dprofile}/> */}
                     </div>
 
