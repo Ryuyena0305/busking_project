@@ -3,6 +3,7 @@ package busking.admin.driver.service;
 import busking.admin.driver.model.dto.DriverDto;
 import busking.admin.driver.model.mapper.DriverMapper;
 import busking.admin.resvlog.model.dto.ResvlogDto;
+import busking.admin.timetable.model.dto.TimeTableDto;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,15 @@ public class DriverService {
     private final DriverMapper driverMapper;
 
     private final FileService fileService;
+
+    // 버스기사별 스케줄 로그
+    public PageInfo<TimeTableDto> getTimeLog(int did, int pageNum, int pageSize){
+        PageHelper.startPage(pageNum, pageSize); // 페이징 적용
+        List<TimeTableDto> schedules = driverMapper.getTimeLog(did); // MyBatis 호출
+        return new PageInfo<>(schedules); // 페이징 정보를 포함한 PageInfo 반환
+    }
+
+
     // 버스기사 정보 가져오기
     public List<DriverDto> getDriverInfo() {
         return driverMapper.getDriverInfo();

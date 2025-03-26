@@ -16,6 +16,19 @@ import java.util.List;
 public class DriverController {
     private final DriverService driverService;
 
+    // 버스기사별 스케줄 로그
+    @GetMapping("/gettimelog")
+    public PageInfo<TimeTableDto> getTimeLog(
+            @RequestParam int did,
+            @RequestParam(defaultValue = "1", name = "page") int pageNum,
+            @RequestParam(defaultValue = "10") int pageSize
+    ) {
+        System.out.println("DriverController.getTimeLog");
+        System.out.println("did = " + did + ", pageNum = " + pageNum + ", pageSize = " + pageSize);
+        return driverService.getTimeLog(did, pageNum, pageSize);
+    }
+
+
     // 버스기사 정보 가져오기
     @GetMapping("/getdriver")
     public List<DriverDto> getDriverInfo() {
