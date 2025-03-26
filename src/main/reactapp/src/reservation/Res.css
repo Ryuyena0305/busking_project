@@ -104,7 +104,7 @@
 }
 
 /* 버튼 스타일 (기본 버튼) */
-button {
+.decrement-button, .increment-button, .select-button, .notify-btn, .mode {
     background-color: #ffffff;
     border: 2px solid #004aad;
     color: #004aad;
@@ -114,8 +114,9 @@ button {
     transition: all 0.3s ease;
 }
 
+
 /* 버튼 hover 효과 */
-button:hover {
+.decrement-button :hover, .increment-button :hover, .select-button :hover, .notify-btn:hover, .mode:hover {
     background-color: #004aad;
     color: #ffffff;
 }
