@@ -17,14 +17,28 @@ import java.util.List;
 public class DriverService {
     private final DriverMapper driverMapper;
 
+    private final FileService fileService;
     // 버스기사 정보 가져오기
     public List<DriverDto> getDriverInfo() {
         return driverMapper.getDriverInfo();
     }
 
     // 버스기사 등록
-    public boolean create(@RequestBody DriverDto driverDto){
-        return driverMapper.create(driverDto);
+    public boolean create(DriverDto driverDto){
+        System.out.println("DriverService.create");
+        System.out.println("driverDto = " + driverDto);
+        try{
+            if (driverDto.getDimg() == null) { }
+            else {
+                String filename = fileService.upload(driverDto.getDimg());
+                driverDto.setDprofile(filename);
+            }
+            boolean result = driverMapper.create(driverDto);
+            System.out.println("result = " + result);
+            return result;
+        }catch (Exception e){
+            return false;
+        }
     }
 
 
