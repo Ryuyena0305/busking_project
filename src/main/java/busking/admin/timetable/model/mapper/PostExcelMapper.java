@@ -8,10 +8,11 @@ import org.apache.ibatis.annotations.Mapper;
 public interface PostExcelMapper {
 
     // 엑셀 데이터 삽입 메소드
-    @Insert("INSERT INTO timetable (startdate, starttime, biid, locid)" +
-            "SELECT  #{startDate}, #{startTime}, biid,  locid          " +
+    @Insert("INSERT INTO timetable (startdate, starttime, biid, locid, did)" +
+            "SELECT  #{startDate}, #{startTime}, biid,  locid , did         " +
             "FROM businfo b " +
             "JOIN location l ON l.dest = #{dest}   " +
+            "JOIN driver d ON d.dname = #{dname} " +
             "WHERE b.binum = #{binum}   ")
     void insertPostExcelData(PostExcelDto data);
 }
