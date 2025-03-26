@@ -53,7 +53,7 @@ export default function ResApp(props) {
     // 관리자 호출 알림 전송
     const sendNotification = () => {
         if (socket && socket.readyState === WebSocket.OPEN) {
-            socket.send("사용자가 호출하였습니다!");
+            socket.send("키오스크에서 관리자를 호출하였습니다.");
             console.log("알림 전송됨!");
         } else {
             console.log("WebSocket이 아직 연결되지 않았습니다.");
@@ -63,7 +63,7 @@ export default function ResApp(props) {
     return (
         <div className="container">
             <div className='tit'>[ 버스 승차권 발매기 ]</div>
-            <div className='subTit'>
+            <div className='subTits'>
                 <div className='left'>
                     <Link to="/">
                         <FontAwesomeIcon icon={faMapPin} className="admin" />
@@ -82,7 +82,6 @@ export default function ResApp(props) {
                 <button onClick={sendNotification} className="notify-btn">
                     관리자 호출
                 </button>
-                <p className="status-text">{status}</p>
             </div>
             <Routes>
                 <Route path="/" element={<Main />} />
