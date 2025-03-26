@@ -31,7 +31,7 @@ export default function AutoStartDate(props) {
     const handleDate = () => {
         if (selectedDate) {
             const formattedDate = dayjs(selectedDate).format('YYYY-MM-DD');
-            navigate(`/dest?startdate=${formattedDate}`);
+            navigate(`/autodest?startdate=${formattedDate}`);
         } else {
             alert('날짜를 선택해주세요!');
         }

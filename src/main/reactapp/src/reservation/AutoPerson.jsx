@@ -5,7 +5,9 @@ import axios from 'axios';
 
 export default function AutoPerson(props) {
     const [count, setCount] = useState(0);
+    const [biid, setBiid] = useState(0);
     const [startdate, setStartdate] = useState('');
+    const [starttime, setStarttime] = useState('');
     const [dest, setDest] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -15,14 +17,17 @@ export default function AutoPerson(props) {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                // 1. timeid에 해당하는 biid / startdate / dest / starttime 가져오기
                 const timeresponse = await axios.get(`http://localhost:8080/resv/timeinfo?timeid=${timeid}`);
-                
+
                 console.log(timeresponse.data);
-                
+
+                setBiid(timeresponse.data.biid);
                 setStartdate(timeresponse.data.startdate);
                 setDest(timeresponse.data.dest);
+                setStarttime(timeresponse.data.starttime);
             } catch (error) {
-                console.error('시간 정보 가져오기 실패:', error);
+                console.log(error);
             }
         };
 
@@ -43,9 +48,7 @@ export default function AutoPerson(props) {
 
     const handleSelect = () => {
         if (count >= 1) {
-            navigate(`/resvseat?timeid=${timeid}&person=${count}`);
-        } else {
-            alert('1명 이상을 선택하세요.');
+            navigate(`/autophone?timeid=${timeid}&person=${count}&startdate=${startdate}&dest=${dest}&starttime=${starttime}`);
         }
     };
 

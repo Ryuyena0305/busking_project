@@ -28,7 +28,7 @@ export default function AutoDest() {
     }, [startdate]);
 
     const handleDest = (dest) => {
-        navigate(`/time?startdate=${startdate}&dest=${encodeURIComponent(dest)}`);
+        navigate(`/autotime?startdate=${startdate}&dest=${encodeURIComponent(dest)}`);
     };
 
     return (

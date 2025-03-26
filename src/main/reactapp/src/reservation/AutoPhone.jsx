@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { TextField, Button, Grid, Box } from '@mui/material';
 
 export default function AutoPhone() {
     const [email, setEmail] = useState('');
+    const [person, setPerson] = useState(0);
     const navigate = useNavigate();
 
     const params = new URLSearchParams(window.location.search);
     const startdate = params.get('startdate');
     const dest = params.get('dest');
-    const starttime = params.get('time');
-    const bsnum = params.get('seats').split(',');
+    const starttime = params.get('starttime');
+    const personparams = params.get('personparams');
+    useEffect(() => {
+        if (personparams) {
+            setPerson(personparams); 
+        }
+    }, [personparams]);
 
     const onRes = async () => {
         const data = {
@@ -19,8 +25,9 @@ export default function AutoPhone() {
             startdate: startdate,
             dest: dest,
             starttime: starttime,
-            bsnum: bsnum
+            person: person,
         };
+        
 
         try {
             const response = await axios.post('http://localhost:8080/resv', data, {

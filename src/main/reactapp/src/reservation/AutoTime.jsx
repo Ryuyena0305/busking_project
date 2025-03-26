@@ -24,7 +24,7 @@ export default function AutoTime(props) {
     }, [startdate, dest]);
 
     const onTimeSelect = (timeid) => {
-        navigate(`/person?timeid=${timeid}`);
+        navigate(`/autoperson?timeid=${timeid}`);
     }
 
     return (
