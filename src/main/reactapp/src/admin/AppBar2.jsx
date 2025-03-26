@@ -17,7 +17,7 @@ export default function AppBar2( props ){
         if( response ){
             // navigate('/');
             sessionStorage.removeItem("isAdmin");
-            location.href = '/'
+            location.href = '/' 
         }
     }
     
