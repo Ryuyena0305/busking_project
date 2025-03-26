@@ -13,10 +13,11 @@ public class PostExcelService {
     @Autowired
     private PostExcelMapper postExcelMapper;
 
-    // 엑셀 데이터를 데이터베이스에 삽입
     public void insertExcelData(List<PostExcelDto> dataList) {
+        System.out.println("PostExcelService.insertExcelData");
+        System.out.println("dataList = " + dataList);
         for (PostExcelDto data : dataList) {
-            postExcelMapper.insertPostExcelData(data);  // 매퍼 호출하여 삽입
+            postExcelMapper.insertPostExcelData(data);
         }
     }
 }
