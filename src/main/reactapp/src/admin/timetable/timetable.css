@@ -299,3 +299,23 @@ tbody > tr > td > .link > .viewBtnSeat{
 
 
 
+
+
+/*Excel로 스케줄 등록*/
+input[type=file]::file-selector-button {
+    width: 150px;
+    height: 30px;
+    background: #D4D4D4;
+
+    border:none;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+      background: rgb(77,77,77);
+      color: #fff;
+    }
+    
+  }
+  input{
+    font-size: 15px;
+  }
