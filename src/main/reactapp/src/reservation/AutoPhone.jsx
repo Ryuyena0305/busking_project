@@ -6,6 +6,8 @@ import { TextField, Button, Grid, Box } from '@mui/material';
 export default function AutoPhone() {
     const [email, setEmail] = useState('');
     const [person, setPerson] = useState(0);
+    const [rprice, setRprice] = useState(0);
+    const [total, setTotal] = useState(0);
     const navigate = useNavigate();
 
     const params = new URLSearchParams(window.location.search);
@@ -40,7 +42,6 @@ export default function AutoPhone() {
                     'Content-Type': 'application/json',
                 }
             });
-
             const result = response.data;
             if (result > 0) {
                 alert('예매 성공');

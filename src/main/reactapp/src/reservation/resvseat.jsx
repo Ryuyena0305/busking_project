@@ -58,7 +58,7 @@ export default function ResvSeat() {
 
       const 예매석 = []
       for( let i = 0 ; i<seats.length ; i++ ){
-        예매석.push(seats[i].bsid - (parseInt(seats[i].bsid/55)*55))
+        예매석.push(seats[i].bsid - (biid-1)*55)
       }
 
       console.log( 예매석 );
@@ -176,12 +176,11 @@ export default function ResvSeat() {
       <div>
         <div  className="bus bus2">
           <u1>
-            <l1>인원수 X {person} ············· {formattedRprice}원</l1> <br /><br/>
+            <l1>인원수 X {person} ········ {formattedRprice}원</l1> <br /><br/>
             <li>&nbsp;&nbsp;&nbsp;</li>
             <hr></hr> 
-            <li>&nbsp;&nbsp;&nbsp;</li>
             <l1 className="totalPrice">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;총 가격 : {formattedTotal}원 </l1>
+            총 가격 : {formattedTotal}원 </l1>
             
           </u1>
         </div>

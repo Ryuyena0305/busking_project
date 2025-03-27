@@ -30,6 +30,16 @@ public interface ResMapper {
             "AND rd.bsid IS NOT NULL;")
     List<Map<String, Object>> getResvDetail(int timeid);
 
+    @Select("SELECT rd.bsid \n" +
+            "FROM resvdetail AS rd\n" +
+            "INNER JOIN resv AS r ON rd.resvid = r.resvid\n" +
+            "WHERE r.timeid = #{timeid}\n" +
+            "AND rd.bsid IS NOT NULL;")
+    List<Integer> getResvDetail2(int timeid);
+
+    @Select("SELECT bs.bsnum FROM busseat bs JOIN businfo bi ON bs.biid = bi.biid WHERE bs.biid =(select biid from timetable where timeid = #{timeid}) and bsstate = 0;")
+    public List<Integer> onGet(int timeid);
+
 //    @Select("SELECT DISTINCT b.bsnum " +
 //            "FROM busseat b " +
 //            "JOIN timetable t ON b.biid = t.biid " +
@@ -126,7 +136,6 @@ public interface ResMapper {
             "AND (r.timeid = #{timeid} OR r.timeid IS NULL) \n" +
             "AND rd.bsid IS NULL\n" +
             "AND b.bsstate = 1")
-        // Add condition to ensure bsstate is 1 (available)
     List<Integer> getAvailableSeats(@Param("startdate") String startdate,
                                     @Param("starttime") String starttime,
                                     @Param("dest") String dest,

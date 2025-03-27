@@ -76,23 +76,42 @@ public class ResService {
 
             int total = resDto.getTotal();
 
+            System.out.println(timeid);
             if ( resDto.getBsnum().isEmpty() || resDto.getBsnum().get(0) == 0 ) {
-                // 좌석 번호를 자동으로 선택하기 위한 로직 추가
-                List<Integer> availableSeats = resMapper.getAvailableSeats(resDto.getStartdate(), resDto.getStarttime(), resDto.getDest(), resDto.getTimeid()); // 가능한 좌석 목록을 가져옴
+                List<Integer> availableSeats = resMapper.getResvDetail2( timeid ); // 예약된 좌석 목록을 가져옴
+                List<Integer> availableSeats2 = resMapper.onGet(timeid);
 
-                if (availableSeats.isEmpty()) {
+                System.out.println( availableSeats );
+
+                if (availableSeats.size() == 55) {
                     throw new IllegalArgumentException("예약할 수 있는 좌석이 없습니다.");
                 }
+                int person = resDto.getBsnum().size();
+                Integer firstSeat = 1;
 
-                // 좌석 번호 리스트에서 하나를 랜덤으로 선택
-                List<Integer> list = new ArrayList<>();
-                for (int i = 0; i < resDto.getBsnum().size(); i++) {
-                    Random random = new Random();
-                    int randomIndex = random.nextInt(availableSeats.size());  // 랜덤으로 인덱스를 선택
-                    int selectedSeat = availableSeats.get(randomIndex);  // 선택된 인덱스에 해당하는 좌석 번호
-                    list.add(selectedSeat);  // 선택한 좌석을 리스트에 추가
+                for( int i = 1 ; i <=55 ;i++){
+                    if( !availableSeats.contains(i) && !availableSeats2.contains(i) ){
+                        firstSeat = i;
+                        break;
+                    }
                 }
-                resDto.setBsnum(list);  // 랜덤으로 선택한 좌석
+
+                System.out.println(firstSeat);
+
+
+                List<Integer> list = new ArrayList<>();
+                list.add(firstSeat);
+
+                int i = firstSeat;
+                while(true) {
+                    i++;
+                    if(  !availableSeats.contains(i) && !availableSeats2.contains(i) ){
+                     list.add(i);
+                        System.out.println(i);
+                    }
+                    if( list.size() == person ) break;
+                }
+                resDto.setBsnum(list);
                 System.out.println(resDto.getBsnum());
             }
 
