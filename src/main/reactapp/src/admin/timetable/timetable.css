@@ -278,6 +278,11 @@ tbody > tr > td > .link > .viewBtnSeat{
     display: flex;
     justify-content: space-between;
 }
+.hMainCont{
+    width: 75%;
+}
+
+
 
 /* 우수 기사 */
 .hTopCont{
@@ -285,10 +290,29 @@ tbody > tr > td > .link > .viewBtnSeat{
 }
 .driverRank{
     display: flex;
-    justify-content: space-between;
-    margin: 50px;
+    justify-content: space-around;
+    margin: 60px;
 }
-
+.ranker{
+    text-align: center;
+}
+.box1st > img{
+    width: 140px;
+    height: 140px;
+    min-width: 140px;
+    max-width: 140px;
+    border-radius: 20px;
+}
+.box2nd > img, .box3rd > img{
+    width: 110px;
+    height: 110px;
+    min-width: 110px;
+    max-width: 110px;
+    border-radius: 20px;
+}
+.tit2nd, .tit3rd{
+    margin-top: 30px;
+}
 
 
 /* 알림 */

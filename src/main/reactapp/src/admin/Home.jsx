@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import TviewDate from "./timetable/TviewDate";
 import "./timetable/timetable.css";
 import { BarChart } from "@mui/x-charts/BarChart";
+import axios from "axios";
 
 export default function Home(props) {
     const [notifications, setNotifications] = useState([]); // useState로 상태 관리
@@ -26,6 +27,29 @@ export default function Home(props) {
         return () => adminSocket.close(); // 컴포넌트 언마운트 시 WebSocket 닫기
     }, []);
 
+
+    // 우수 버스기사 조회
+
+    const [bestDrivers, setBestDrivers] = useState([]);
+
+    const onBestDriver = async () => {
+        try{
+            const response = await axios.get(`http://localhost:8080/home/bestdriver`)
+            setBestDrivers(response.data);
+            console.log(response.data);
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        onBestDriver();
+    }, []);  
+
+    
+
+
+
     return (
         <>
             <div id="container">
@@ -34,22 +58,31 @@ export default function Home(props) {
                         <div className="hTopCont">
                             <h3>우수 버스기사 👑</h3>
                             <div className="driverRank">
-                                <div className="2nd ranker">
-                                    <img alt="" />
-                                    <div>ㅇㅇㅇ 기사</div>
-                                    <div>ㅇㅇ건</div>
+                                <div className="box2nd ranker">
+                                    <div className="tit2nd">2등</div>
+                                    <img src={"http://localhost:8080/upload/" + 
+                                        (bestDrivers.find(driver => driver.rankno === 2)?.dprofile || "default.jpg")
+                                    }/>
+                                    <div>{bestDrivers.find(driver => driver.rankno === 2)?.dname || '없음'} 기사</div>
+                                    <div>{bestDrivers.find(driver => driver.rankno === 2)?.timecount || '0'} 건</div>
                                 </div>
 
-                                <div className="1st ranker">
-                                    <img alt="" />
-                                    <div>ㅇㅇㅇ 기사</div>
-                                    <div>ㅇㅇ건</div>
+                                <div className="box1st ranker">
+                                    <div className="tit1st">1등</div>
+                                    <img src={"http://localhost:8080/upload/" + 
+                                        (bestDrivers.find(driver => driver.rankno === 1)?.dprofile || "default.jpg")
+                                    }/>
+                                    <div>{bestDrivers.find(driver => driver.rankno === 1)?.dname || '없음'} 기사</div>
+                                    <div>{bestDrivers.find(driver => driver.rankno === 1)?.timecount || '0'} 건</div>
                                 </div>
 
-                                <div className="3rd ranker">
-                                    <img alt="" />
-                                    <div>ㅇㅇㅇ 기사</div>
-                                    <div>ㅇㅇ건</div>
+                                <div className="box3rd ranker">
+                                    <div className="tit3rd">3등</div>
+                                    <img src={"http://localhost:8080/upload/" + 
+                                        (bestDrivers.find(driver => driver.rankno === 3)?.dprofile || "default.jpg")
+                                    }/>
+                                    <div>{bestDrivers.find(driver => driver.rankno === 3)?.dname || '없음'} 기사</div>
+                                    <div>{bestDrivers.find(driver => driver.rankno === 3)?.timecount || '0'} 건</div>
                                 </div>
                             </div>
                         </div>
@@ -85,9 +118,6 @@ export default function Home(props) {
                         <div className="notiTit">
                             <h3>알림</h3>
                         </div>
-                        {/* 둘 중 하나로 바꿔주면 감사 */}
-                        <div className="notiCont">🔔 01월01일 09시00분 - 키오스크 호출</div>
-                        <div className="notiCont">🔔 01.01 09:00 - 키오스크 호출</div>
                         {notifications.length === 0 ? (
                             <div className="notiCont">알림이 없습니다.</div>
                         ) : (
