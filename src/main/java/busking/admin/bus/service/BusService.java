@@ -7,6 +7,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,8 +15,8 @@ import java.util.List;
 public class BusService {
     @Autowired
     private BusMapper busMapper;
-
-    public boolean onCreate(BusDto busDto){
+    @Transactional(rollbackFor = Exception.class)
+    public boolean onCreate(BusDto busDto) throws Exception{
         return busMapper.onCreate(busDto);
     }
     public PageInfo<BusDto> onRead(int pageNum, int pageSize){
@@ -26,10 +27,12 @@ public class BusService {
     public BusDto onView(int biid){
         return busMapper.onView(biid);
     }
-    public boolean onUpdate(BusDto busDto){
+    @Transactional(rollbackFor = Exception.class)
+    public boolean onUpdate(BusDto busDto) throws Exception{
         return busMapper.onUpdate(busDto);
     }
-    public boolean onDelete(int biid){
+    @Transactional(rollbackFor = Exception.class)
+    public boolean onDelete(int biid) throws Exception{
         return busMapper.onDelete(biid);
     }
 }

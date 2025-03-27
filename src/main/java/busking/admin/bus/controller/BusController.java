@@ -17,7 +17,11 @@ public class BusController {
 
     @PostMapping("")
     public boolean onCreate(@RequestBody BusDto busDto){
-        return busService.onCreate(busDto);
+        try {
+            return busService.onCreate(busDto);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @GetMapping("")
@@ -35,10 +39,18 @@ public class BusController {
     }
     @PutMapping("")
     public boolean onUpdate(@RequestBody BusDto busDto){
-        return busService.onUpdate(busDto);
+        try {
+            return busService.onUpdate(busDto);
+        } catch (Exception e) {
+            return false;
+        }
     }
     @DeleteMapping("")
     public boolean onDelete(@RequestParam int biid){
-        return busService.onDelete(biid);
+        try {
+            return busService.onDelete(biid);
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

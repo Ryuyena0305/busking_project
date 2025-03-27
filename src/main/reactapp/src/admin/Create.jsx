@@ -19,10 +19,10 @@ export default function Create(props) {
       busForm
     );
     if (response.data === true) {
-      alert('등록 성공');
+      alert('버스 등록이 완료되었습니다.');
       navigate('/read');
     } else {
-      alert('등록 실패');
+      alert('버스 등록을 실패했습니다.');
     }
   };
 
