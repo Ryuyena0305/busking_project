@@ -14,7 +14,6 @@ import java.util.Map;
 @RequestMapping("/timetable")
 @CrossOrigin("http://localhost:5173")
 @RequiredArgsConstructor
-
 public class TimeTableController {
     private final TimeTableService timeTableService;
 
@@ -46,7 +45,12 @@ public class TimeTableController {
     public boolean create(@RequestBody TimeTableDto timeTableDto){
         System.out.println("TimeTableController.create");
         System.out.println("timeTableDto = " + timeTableDto);
-        return timeTableService.create(timeTableDto);
+        try{
+            return timeTableService.create(timeTableDto);
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
     }
 
 
@@ -65,7 +69,12 @@ public class TimeTableController {
     public boolean update(@RequestBody TimeTableDto timeTableDto){
         System.out.println("TimeTableController.update");
         System.out.println("timeTableDto = " + timeTableDto);
-        return timeTableService.update(timeTableDto);
+        try{
+            return timeTableService.update(timeTableDto);
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
     }
 
 
@@ -75,7 +84,12 @@ public class TimeTableController {
     public boolean delete(@RequestParam String timeid){
         System.out.println("TimeTableController.delete");
         System.out.println("timeid = " + timeid);
-        return timeTableService.delete(timeid);
+        try {
+            return timeTableService.delete(timeid);
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
     }
 
 
