@@ -41,8 +41,13 @@ public class DriverController {
     public boolean create(DriverDto driverDto){
         System.out.println("DriverController.create");
         System.out.println("driverDto = " + driverDto);
-        boolean result = driverService.create(driverDto);
-        return result;
+        try {
+            boolean result = driverService.create(driverDto);
+            return result;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
     }
 
 
@@ -72,7 +77,12 @@ public class DriverController {
     public boolean update(@RequestBody DriverDto driverDto){
         System.out.println("DriverController.update");
         System.out.println("driverDto = " + driverDto);
-        return driverService.update(driverDto);
+        try{
+            return driverService.update(driverDto);
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
     }
 
 
@@ -82,6 +92,11 @@ public class DriverController {
     public boolean delete(@RequestParam int did){
         System.out.println("DriverController.delete");
         System.out.println("did = " + did);
-        return driverService.delete(did);
+        try{
+            return driverService.delete(did);
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
     }
 }

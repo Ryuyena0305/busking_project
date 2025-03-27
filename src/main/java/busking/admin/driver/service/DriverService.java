@@ -8,6 +8,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(rollbackFor = Exception.class)
 public class DriverService {
     private final DriverMapper driverMapper;
 
@@ -34,7 +36,7 @@ public class DriverService {
     }
 
     // 버스기사 등록
-    public boolean create(DriverDto driverDto){
+    public boolean create(DriverDto driverDto) throws Exception{
         System.out.println("DriverService.create");
         System.out.println("driverDto = " + driverDto);
         try{
@@ -47,6 +49,7 @@ public class DriverService {
             System.out.println("result = " + result);
             return result;
         }catch (Exception e){
+            System.out.println(e);
             return false;
         }
     }
@@ -66,13 +69,13 @@ public class DriverService {
 
 
     // 버스기사 수정
-    public boolean update(@RequestBody DriverDto driverDto){
+    public boolean update(@RequestBody DriverDto driverDto) throws Exception{
         return driverMapper.update(driverDto);
     }
 
 
     // 버스기사 삭제
-    public boolean delete(@RequestParam int did){
+    public boolean delete(@RequestParam int did) throws Exception{
         return driverMapper.delete(did);
     }
 }
