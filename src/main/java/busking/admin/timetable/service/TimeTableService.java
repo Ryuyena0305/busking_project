@@ -8,20 +8,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Indexed;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(rollbackFor = Exception.class)
 public class TimeTableService {
     private final TimeTableMapper timeTableMapper;
 
-
-    // 차트 일자별 스케줄 건수 가져오기
-    public Map<String, Integer> getDateChart(){
-        return timeTableMapper.getDateChart();
-    }
 
     // 버스 정보 가져오기
     public List<TimeTableDto> getBusInfo(){
@@ -34,7 +31,7 @@ public class TimeTableService {
     }
 
     // 스케줄 등록
-    public boolean create(TimeTableDto timeTableDto){
+    public boolean create(TimeTableDto timeTableDto) throws Exception{
         return timeTableMapper.create(timeTableDto);
     }
 
@@ -44,12 +41,12 @@ public class TimeTableService {
     }
 
     // 스케줄 수정
-    public boolean update(TimeTableDto timeTableDto){
+    public boolean update(TimeTableDto timeTableDto) throws Exception{
         return timeTableMapper.update(timeTableDto);
     }
 
     // 스케줄 삭제
-    public boolean delete(String timeid){
+    public boolean delete(String timeid) throws Exception{
         return timeTableMapper.delete(timeid);
     }
 
