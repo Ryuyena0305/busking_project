@@ -89,7 +89,7 @@ export default function Update(props) {
           </div>
           <br />
           <hr />
-          <button type="button" onClick={onUpdate} className='createBtn'>
+          <button type="button" onClick={onUpdate} className='adCreateBtn'>
             수정
           </button>
         </form>
