@@ -90,7 +90,7 @@ public class ResService {
                     Random random = new Random();
                     int randomIndex = random.nextInt(availableSeats.size());  // 랜덤으로 인덱스를 선택
                     int selectedSeat = availableSeats.get(randomIndex);  // 선택된 인덱스에 해당하는 좌석 번호
-                    list.add(selectedSeat);  // 선택한 ��석을 리스트에 추가
+                    list.add(selectedSeat);  // 선택한 좌석을 리스트에 추가
                 }
                 resDto.setBsnum(list);  // 랜덤으로 선택한 좌석
                 System.out.println(resDto.getBsnum());
