@@ -27,4 +27,8 @@ public class TimeTableDto {
     private int rankno;
     private String dprofile;
 
+    // 최근 7일 스케줄 건수 차트
+    private String date;
+    private int count;
+
 }
