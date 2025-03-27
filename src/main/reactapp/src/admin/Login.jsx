@@ -45,7 +45,7 @@ export default function Login() {
             );
             const result = response.data;
             if (result) {
-                alert("로그인 성공");
+                alert("관리자 로그인에 성공했습니다.");
 
                     sessionStorage.setItem("isAdmin", true);
       

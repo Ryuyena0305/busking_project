@@ -28,7 +28,7 @@ export default function AppBar2( props ){
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     <Link to={"/home"} >BUSKING</Link>
                 </Typography>
-                    <Button color="inherit"> <button type='button' onClick={ onLogout } className='logoutBtn'>로그아웃</button> </Button>
+                     <button type='button' onClick={ onLogout } className='logoutBtn'>로그아웃</button>
                 </Toolbar>
             </AppBar>
         </Box>

@@ -25,10 +25,10 @@ export default function BusView(props) {
       `http://localhost:8080/bus/businfo?biid=${biid}`
     );
     if (deleteResponse.data == true) {
-      alert('삭제 성공');
+      alert('버스 삭제를 성공했습니다.');
       navigate('/read');
     } else {
-      alert('삭제 실패');
+      alert('버스 삭제를 실패했습니다.');
     }
   };
 
