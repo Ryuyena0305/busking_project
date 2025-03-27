@@ -14,9 +14,17 @@ public class TimeTableDto {
     private String startdate;
     private int biid;
     private int locid;
+
+    // 버스기사
     private String binum;
     private String driver;
     private String dest;
     private int did;
     private String dname;
+
+    // 우수 버스기사
+    private int timecount;
+    private int rankno;
+    private String dprofile;
+
 }

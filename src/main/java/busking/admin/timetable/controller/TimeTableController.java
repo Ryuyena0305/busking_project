@@ -17,13 +17,6 @@ import java.util.Map;
 public class TimeTableController {
     private final TimeTableService timeTableService;
 
-    // 차트 일자별 스케줄 건수 가져오기
-    @GetMapping("/getdatechart")
-    public Map<String, Integer> getDateChart() {
-        System.out.println("TimeTableController.getDateChart");
-        return timeTableService.getDateChart();
-    }
-
 
     // 버스정보 가져오기
     @GetMapping("/getbus")

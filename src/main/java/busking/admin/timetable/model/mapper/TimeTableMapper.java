@@ -9,11 +9,6 @@ import java.util.Map;
 @Mapper
 public interface TimeTableMapper {
 
-    // 차트 일자별 스케줄 건수 가져오기
-    @Select("select count(*) from timetable")
-    public Map<String, Integer> getDateChart();
-
-
     // 버스 정보 가져오기
     @Select("select biid, binum from businfo order by binum")
     public List<TimeTableDto> getBusInfo();
