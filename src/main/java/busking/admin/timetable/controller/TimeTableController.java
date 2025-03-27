@@ -13,7 +13,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/timetable")
 @CrossOrigin("http://localhost:5173")
-@RequiredArgsConstructor // final 기준으로 자동으로 생성자 만들기 / @Autowired 안 써도 됨
+@RequiredArgsConstructor
+
 public class TimeTableController {
     private final TimeTableService timeTableService;
 
