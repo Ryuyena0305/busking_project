@@ -17,7 +17,7 @@ public class ExcelDto {
         private int biid;
         private int locid;
         private String binum;
-        private String driver;
+        private String dname;
         private String dest;
 
 
