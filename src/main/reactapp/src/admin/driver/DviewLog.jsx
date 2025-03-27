@@ -39,30 +39,15 @@ export default function DviewLog(props){
     // 페이지 변경 시 호출되는 함수
     const handlePageChange = (event, newPage) => {
         setPage(newPage);  // 새로운 페이지 번호로 업데이트
-        //console.log("New page selected:", newPage);
     }
-
-    // 
-    //const driver = timeLogs.list?.[0].dname
-    console.log(timeLogs.list);
-
-    console.log("searchDid:", searchDid);
-    console.log("timeLogs.list:", timeLogs.list);
-    console.log("존재하는 did 목록:", timeLogs.list.map(timeLog => timeLog.did));
-    const driverName = timeLogs.list[0]?.dname || "기사 없음";
+console.log(timeLogs);
+    
 
 
 
     return(<>
         <div id='container'>
-            {/* {
-                timeLogs.list && timeLogs.list?.find( (timeLog) => {
-                    return(
-                        <h1>버스기사별 스케줄 조회 | {timeLog[0].list.dname} 기사</h1>
-                    )
-                })
-            } */}
-            <h1>[ {driverName} 기사 ] 스케줄 조회</h1>
+            <h1>{timeLogs.list[0]?.dname ? timeLogs.list[0].dname + " 기사 스케줄 조회" : "스케줄이 존재하지 않습니다"}</h1>
             <div className='pickContent'>
                 <div className='tableBox2'>
                     <table>
