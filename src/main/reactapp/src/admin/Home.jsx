@@ -134,7 +134,7 @@ export default function Home(props) {
                                 ]}
                                 series={[{ data: counts }]}
                                 width={1000}
-                                height={400}
+                                height={380}
                             />
                         </div>
                     </div>
