@@ -101,18 +101,10 @@ img{
 .info1{
         margin: 0px auto;
         width: 120px;
+        
 }
 .infoname{
         display: flex;
         justify-content: center
 }
-.css-1enwr29-JoyButton-root {
-        border: none !important;
-        background-image: url('../img/seatimg.png') !important;
-        
-        background-size: 42px 42px !important; 
-        background-position: 0px 0px !important; 
-        background-size: cover !important;   
-      }
-      
-      
+

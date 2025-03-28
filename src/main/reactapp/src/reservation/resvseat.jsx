@@ -75,6 +75,7 @@ export default function ResvSeat() {
   };
 
   const onChoice = (bsnum) => {
+    console.log(bsnum);
     setSeatId((prevSeatId) => {
       if (prevSeatId.includes(bsnum)) {
         return prevSeatId.filter((id) => id !== bsnum);
@@ -129,6 +130,7 @@ export default function ResvSeat() {
   const formattedTotal = new Intl.NumberFormat().format(total);
   const formattedRprice = new Intl.NumberFormat().format(rprice);
 
+  console.log( seatId )
   return (<div>
     <div className="date-header">
       <h2>{startdate} &nbsp;&nbsp;|&nbsp;&nbsp; {starttime.split(":").slice(0, 2).join(":")} &nbsp;&nbsp;|&nbsp;&nbsp;{dest}</h2>
@@ -150,21 +152,39 @@ export default function ResvSeat() {
               <div key={y} className="seatrow" style={{ display: 'flex', justifyContent: 'space-evenly', marginBottom: '3px' }}>
                 {x && x.map((seat, y) => (
                   <div
-                    className="seatbtn"
+                  className={"statebtn " }
+
                     key={y}
                     style={{
                       visibility: seat.bsstate == 1 ? 'visible' : 'hidden',
-                      backgroundColor: seatId.includes(seat.bsnum) ? '#69a9f973' : '', // 선택된 좌석에 색을 추가
+                      backgroundColor: seatId.includes(seat.bsnum) ? '' : '', // 선택된 좌석에 색을 추가
                       borderRadius: '5px'
                     }}
                   >
                     {seat.bsstate != 1 || seats2.includes(seat.bsnum) ? (
-                      <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="soft" readonly disabled>X</Button>
+                      <Button
+                          sx={{
+                            backgroundImage: "url('/resvseat.png')"
+                          }}
+                        onClick={() => onChoice(seat.bsnum)}
+                        variant="soft"
+                        readonly
+                        disabled
+                      >
+                        X
+                      </Button>
                     ) : (
-                      <Button className="statebtn" onClick={() => onChoice(seat.bsnum)} variant="outlined">
-                        {seat.viewbsnum}
+                      <Button
+                      sx={{
+                        backgroundImage: seatId.includes(seat.bsnum) ? "url('/selectseat.png')" : "url('/seat.png')"
+                      }}
+                        onClick={() => onChoice(seat.bsnum)}
+                        variant="outlined"
+                      >
+                        {seat.viewbsnum }
                       </Button>
                     )}
+
 
                   </div>
                 ))}
@@ -193,22 +213,21 @@ export default function ResvSeat() {
             <div className="seatinfo">
               <div className="info1">
                 <div className="infoimg1">
-
+                  <button style={{ display: "flex", justifycontent: "center" }}></button>
                 </div>
-                <div className="infoname">선택가능<br/>&nbsp;&nbsp;&nbsp;좌석</div>
-                </div>
+                <div className="infoname">선택가능<br />&nbsp;&nbsp;&nbsp;좌석</div>
+              </div>
               <div className="info1">
                 <div className="infoimg2">
-
                 </div>
-                <div className="infoname">판매된<br/>&nbsp;&nbsp;좌석</div>
-                </div>
+                <div className="infoname">판매된<br />&nbsp;&nbsp;좌석</div>
+              </div>
               <div className="info1">
                 <div className="infoimg3">
-                  
+                  <button></button>
                 </div>
-                <div className="infoname">선택한<br/>&nbsp;&nbsp;좌석</div>
-                </div>
+                <div className="infoname">선택한<br />&nbsp;&nbsp;좌석</div>
+              </div>
             </div>
           </div>
         </div>
