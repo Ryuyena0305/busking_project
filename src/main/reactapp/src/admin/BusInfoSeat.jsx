@@ -81,7 +81,7 @@ export default function BusInfoSeat() {
                         ))}
                     </div>
                 </div>
-                <div className="bus2">
+                <div className="createBtn">
                     {isSeat ?
                         (<><Button className="nextPageBtn" onClick={() => onPage()}>좌석수정</Button></>) :
                         (<><Button className="createBtn" onClick={() => onCreate()}>좌석생성</Button></>)

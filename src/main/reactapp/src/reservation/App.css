@@ -203,6 +203,19 @@ width: 700px !important;
 } 
 
 
+
+
+/*person-select*/
+.person-select{
+  display: flex;
+}
+.person-button{
+  display: flex;
+  flex-direction: column;
+  gap : 50px;
+}
+
+
 /* 기존 코드
 .container {
     width: 50%;         

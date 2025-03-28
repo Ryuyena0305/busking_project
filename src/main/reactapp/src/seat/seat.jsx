@@ -68,7 +68,7 @@ export default function Seat() {
                         ))}
                     </div>
                 </div>
-                <div className="bus2">
+                <div >
             <Button className="nextPageBtn" onClick={()=>onPage()}>좌석수정</Button>:
             </div>
             </div>
