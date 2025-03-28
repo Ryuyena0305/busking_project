@@ -94,7 +94,7 @@ public class ExcelService {
         return excelMapper.justDown();
     }
 
-    @Scheduled(cron = "*/5 * * * * *")
+    @Scheduled(cron = "0 0 0 * * *")
     public void generatedateExcel() throws IOException {
         LocalDate currentDate = LocalDate.now();
 
