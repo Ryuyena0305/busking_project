@@ -29,7 +29,6 @@ export default function Home(props) {
 
 
     // 우수 버스기사 조회
-
     const [bestDrivers, setBestDrivers] = useState([]);
 
     const onBestDriver = async () => {
@@ -44,8 +43,35 @@ export default function Home(props) {
 
     useEffect(() => {
         onBestDriver();
+        onChartData();
     }, []);  
 
+
+
+    // 최근 7일 스케줄 건수 차트
+    const [chartData, setChartData] = useState([])
+
+    const onChartData = async () => {
+        try{
+            const response = await axios.get(`http://localhost:8080/home/datechart`)
+            setChartData(response.data);
+            console.log(response.data);
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+      // m월 d일
+    const formatDate = (dateStr) => {
+        const date = new Date(dateStr);
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        
+        return `${month}월 ${day}일`;
+    }
+
+    const dates = chartData.map(item => formatDate(item.date))
+    const counts = chartData.map(item => item.count)
     
 
 
@@ -56,58 +82,59 @@ export default function Home(props) {
                 <div className="hContent">
                     <div className="hMainCont">
                         <div className="hTopCont">
-                            <h3>우수 버스기사 👑</h3>
+                            <h2>지난달 우수 버스기사 👑</h2>
                             <div className="driverRank">
                                 <div className="box2nd ranker">
-                                    <div className="tit2nd">2등</div>
+                                    <h3 className="tit2nd">🥈</h3>
                                     <img src={"http://localhost:8080/upload/" + 
                                         (bestDrivers.find(driver => driver.rankno === 2)?.dprofile || "default.jpg")
                                     }/>
-                                    <div>{bestDrivers.find(driver => driver.rankno === 2)?.dname || '없음'} 기사</div>
+                                    <div>{bestDrivers.find(driver => driver.rankno === 2)?.dname || ''} 기사</div>
                                     <div>{bestDrivers.find(driver => driver.rankno === 2)?.timecount || '0'} 건</div>
                                 </div>
 
                                 <div className="box1st ranker">
-                                    <div className="tit1st">1등</div>
+                                    <h2 className="tit1st">🥇</h2>
                                     <img src={"http://localhost:8080/upload/" + 
                                         (bestDrivers.find(driver => driver.rankno === 1)?.dprofile || "default.jpg")
                                     }/>
-                                    <div>{bestDrivers.find(driver => driver.rankno === 1)?.dname || '없음'} 기사</div>
+                                    <div>{bestDrivers.find(driver => driver.rankno === 1)?.dname || ''} 기사</div>
                                     <div>{bestDrivers.find(driver => driver.rankno === 1)?.timecount || '0'} 건</div>
                                 </div>
 
                                 <div className="box3rd ranker">
-                                    <div className="tit3rd">3등</div>
+                                    <h3 className="tit3rd">🥉</h3>
                                     <img src={"http://localhost:8080/upload/" + 
                                         (bestDrivers.find(driver => driver.rankno === 3)?.dprofile || "default.jpg")
                                     }/>
-                                    <div>{bestDrivers.find(driver => driver.rankno === 3)?.dname || '없음'} 기사</div>
+                                    <div>{bestDrivers.find(driver => driver.rankno === 3)?.dname || ''} 기사</div>
                                     <div>{bestDrivers.find(driver => driver.rankno === 3)?.timecount || '0'} 건</div>
                                 </div>
                             </div>
                         </div>
                         
                         <div className="hBottomCont">
-                            
-                            <h3>금주 스케줄 건수 📅</h3>
-                            <Link to={"/tcreate"} className="hLink">
-                                <button type="button" className="hBtn1">
-                                    스케줄 등록 <br />바로가기
-                                </button>
-                            </Link>
+                            <div className="hbCount">(건)</div>
+                            <div className="timeTit">
+                                <h2>최근 7일 스케줄 현황 📅</h2>
+                                <Link to={"/tcreate"} className="hLink">
+                                    <button type="button" className="hBtn">
+                                        스케줄 등록 <br />바로가기
+                                    </button>
+                                </Link>
+                            </div>
                             
 
-                            <BarChart
-                                className="barChart"
+                            <BarChart className="barChart"
                                 xAxis={[
                                     {
                                         scaleType: "band",
-                                        data: ["날짜1", "날짜2", "날짜3", "날짜4", "날짜5", "날짜6", "날짜7"],
+                                        data: dates,
                                     },
                                 ]}
-                                series={[{ data: [4, 3, 10] }]}
-                                width={700}
-                                height={300}
+                                series={[{ data: counts }]}
+                                width={1000}
+                                height={400}
                             />
                         </div>
                     </div>

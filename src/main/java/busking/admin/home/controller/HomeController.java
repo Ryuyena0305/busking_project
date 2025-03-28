@@ -20,14 +20,15 @@ public class HomeController {
     // 지난달 우수 버스기사 조회
     @GetMapping("/bestdriver")
     public List<TimeTableDto> getBestDriver() {
+        System.out.println("HomeController.getBestDriver");
         return homeService.getBestDriver();
     }
 
 
     // 차트 일자별 스케줄 건수 가져오기
     @GetMapping("/datechart")
-    public Map<String, Integer> getDateChart() {
-        System.out.println("TimeTableController.getDateChart");
+    public List<TimeTableDto> getDateChart() {
+        System.out.println("HomeController.getDateChart");
         return homeService.getDateChart();
     }
 
