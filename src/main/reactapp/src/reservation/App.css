@@ -211,11 +211,17 @@ width: 700px !important;
 /*person-select*/
 .person-select{
   display: flex;
+  width: 300px !important;
+  margin: 0px auto !important;
+  justify-content: space-between !important;
 }
 .person-button{
   display: flex;
   flex-direction: column;
-  gap : 50px;
+  gap : 100px !important ;
+}
+.select-button{
+  width: 300px !important;
 }
 
 
