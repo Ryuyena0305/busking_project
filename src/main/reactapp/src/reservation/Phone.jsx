@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { TextField, Button, Grid, Box } from '@mui/material';
+import { TextField, Button, Grid, Box, CircularProgress, Backdrop } from '@mui/material';
 
 export default function Phone() {
     const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false);  
+    
     const navigate = useNavigate();
 
     const params = new URLSearchParams(window.location.search);
@@ -22,6 +24,8 @@ export default function Phone() {
             bsnum: bsnum
         };
 
+        setLoading(true);  
+
         try {
             const response = await axios.post('http://localhost:8080/resv', data, {
                 headers: {
@@ -30,6 +34,7 @@ export default function Phone() {
             });
 
             const result = response.data;
+            setLoading(false); 
             if (result > 0) {
                 alert('예매 성공');
                 navigate(`/resfin`);
@@ -37,6 +42,7 @@ export default function Phone() {
                 alert('예매 실패');
             }
         } catch (error) {
+            setLoading(false); 
             console.log(error);
             alert('예매 처리 중 오류가 발생했습니다.');
         }
@@ -130,7 +136,19 @@ export default function Phone() {
             <Button className='emailButton' onClick={onRes} fullWidth>
                 다음
             </Button>
-            
+
+            <Backdrop
+                    sx={{
+                        color: '#fff',
+                        zIndex: (theme) => theme.zIndex.drawer + 1,
+                        display: loading ? 'flex' : 'none',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                    open={loading}
+                >
+                    <CircularProgress color="inherit" size={60} />
+                </Backdrop>
         </div>
         </>
     );

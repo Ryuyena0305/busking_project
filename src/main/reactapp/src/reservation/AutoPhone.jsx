@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { TextField, Button, Grid, Box } from '@mui/material';
+import { TextField, Button, Grid, Box, CircularProgress, Backdrop } from '@mui/material';
 
 export default function AutoPhone() {
     const [email, setEmail] = useState('');
     const [person, setPerson] = useState(0);
     const [rprice, setRprice] = useState(0);
     const [total, setTotal] = useState(0);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const params = new URLSearchParams(window.location.search);
@@ -17,25 +18,27 @@ export default function AutoPhone() {
     useEffect(() => {
         const personParam = params.get('person');
         if (personParam) {
-            setPerson(personParam); 
+            setPerson(personParam);
         }
     }, [params]);
 
     const onRes = async () => {
-    const bsnum = [];
-    for (let i = 0; i < person; i++) {
-        bsnum.push( 0 );
-    }
+        const bsnum = [];
+        for (let i = 0; i < person; i++) {
+            bsnum.push(0);
+        }
         const data = {
             phone: email,
             startdate: startdate,
             dest: dest,
             starttime: starttime,
             person: person,
-            bsnum: bsnum, 
+            bsnum: bsnum,
         };
         console.log(data);
-        
+
+        setLoading(true);
+
         try {
             const response = await axios.post('http://localhost:8080/resv', data, {
                 headers: {
@@ -43,6 +46,7 @@ export default function AutoPhone() {
                 }
             });
             const result = response.data;
+            setLoading(false);
             if (result > 0) {
                 alert('예매 성공');
                 navigate(`/resfin`);
@@ -50,19 +54,22 @@ export default function AutoPhone() {
                 alert('예매 실패');
             }
         } catch (error) {
+            setLoading(false);
             console.log(error);
             alert('예매 처리 중 오류가 발생했습니다.');
         }
     };
+
     const handleButtonClick = (value) => {
         setEmail(email + value);
     };
+
     const handleBackspace = () => {
         setEmail(prevEmail => prevEmail.slice(0, -1));
     };
 
     return (
-        <><div >
+        <div>
             <div className="date-header">
                 <h2>이메일 입력해주세요</h2>
             </div>
@@ -75,74 +82,91 @@ export default function AutoPhone() {
                 fullWidth
             />
             <div className='keypad-container'>
-            {/* 키패드 부분 */}
-            <Box
-                sx={{
-                    position: 'fixed',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    backgroundColor: 'white',
-                    padding: 2,
-                    boxShadow: 2,
-                }}
-            >
-                <Grid container spacing={2} justifyContent="center">
-                    {/* 숫자와 알파벳 버튼 */}
-                    {['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map((value) => (
-                        <Grid item xs={2} key={value}>
+                {/* 키패드 부분 */}
+                <Box
+                    sx={{
+                        position: 'fixed',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        backgroundColor: 'white',
+                        padding: 2,
+                        boxShadow: 2,
+                    }}
+                >
+                    <Grid container spacing={2} justifyContent="center">
+                        {/* 숫자와 알파벳 버튼 */}
+                        {['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map((value) => (
+                            <Grid item xs={2} key={value}>
+                                <Button
+                                    variant="outlined"
+                                    fullWidth
+                                    onClick={() => handleButtonClick(value)}
+                                >
+                                    {value}
+                                </Button>
+                            </Grid>
+                        ))}
+                        {['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'].map((value) => (
+                            <Grid item xs={2} key={value}>
+                                <Button
+                                    variant="outlined"
+                                    fullWidth
+                                    onClick={() => handleButtonClick(value)}
+                                >
+                                    {value}
+                                </Button>
+                            </Grid>
+                        ))}
+                        {/* 특수문자 버튼 */}
+                        {['@', '.'].map((value) => (
+                            <Grid item xs={2} key={value}>
+                                <Button
+                                    variant="outlined"
+                                    fullWidth
+                                    onClick={() => handleButtonClick(value)}
+                                >
+                                    {value}
+                                </Button>
+                            </Grid>
+                        ))}
+                    </Grid>
+                    <Grid container spacing={1} style={{ marginTop: '10px' }}>
+                        <Grid item xs={12}>
                             <Button
                                 variant="outlined"
                                 fullWidth
-                                onClick={() => handleButtonClick(value)}
+                                onClick={handleBackspace}
                             >
-                                {value}
+                                ⬅️ 지우기
                             </Button>
                         </Grid>
-                    ))}
-                    {['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'].map((value) => (
-                        <Grid item xs={2} key={value}>
-                            <Button
-                                variant="outlined"
-                                fullWidth
-                                onClick={() => handleButtonClick(value)}
-                            >
-                                {value}
-                            </Button>
-                        </Grid>
-                    ))}
-                    
-                    {/* 특수문자 버튼 */}
-                    {['@', '.'].map((value) => (
-                        <Grid item xs={2} key={value}>
-                            <Button
-                                variant="outlined"
-                                fullWidth
-                                onClick={() => handleButtonClick(value)}
-                            >
-                                {value}
-                            </Button>
-                        </Grid>
-                    ))}
-                </Grid>
-                <Grid container spacing={1} style={{ marginTop: '10px' }}>
-                <Grid item xs={12}>
-                    <Button
-                        variant="outlined"
-                        fullWidth
-                        onClick={handleBackspace}
-                    >
-                        ⬅️ 지우기
-                    </Button>
-                </Grid>
-            </Grid>
-            </Box>
+                    </Grid>
+                </Box>
             </div>
+
             {/* 다음 버튼 */}
-            <Button className='emailButton' onClick={onRes} fullWidth>
+            <Button
+                className='emailButton'
+                onClick={onRes}
+                fullWidth
+                disabled={loading}
+            >
                 다음
             </Button>
+
+            <Backdrop
+                sx={{
+                    color: '#fff',
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                    display: loading ? 'flex' : 'none',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
+                open={loading}
+            >
+                <CircularProgress color="inherit" size={60} />
+            </Backdrop>
         </div>
-        </>
     );
 }

@@ -176,7 +176,7 @@ padding: 0px !important;
   width: 500px !important;
   display: flex !important;
   justify-content: space-around !important;
-  margin-bottom: 10px !important;
+
   
 }
 .css-4k4mmf-MuiButtonBase-root-MuiPickersDay-root,.css-17f9e7e-MuiTypography-root-MuiDayCalendar-weekDayLabel{
@@ -201,6 +201,9 @@ height: 600px !important;
 .css-4wda5y-MuiDayCalendar-monthContainer{
 width: 700px !important;
 } 
+.css-1sp0hsh-JoyButton-root{
+  width: 300px !important;
+}
 
 
 /* 기존 코드
