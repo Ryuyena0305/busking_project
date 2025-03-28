@@ -94,7 +94,7 @@ public class ExcelService {
         return excelMapper.justDown();
     }
 
-    @Scheduled(cron = "*/3 * * * * *")
+    @Scheduled(cron = "0 0 0 * * *")
     public void generatedateExcel() throws IOException {
         LocalDate currentDate = LocalDate.now();
 
@@ -102,8 +102,8 @@ public class ExcelService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         // 날짜를 문자열로 포맷팅
-        String formattedDate = currentDate.format(formatter);
-        String startdate = formattedDate;
+        String formaDate = currentDate.format(formatter);
+        String startdate = formaDate;
 
         // 엑셀 워크북 생성
         Workbook workbook = new HSSFWorkbook();
@@ -161,8 +161,10 @@ public class ExcelService {
         sheet.setColumnWidth(3, 4000);
         sheet.setColumnWidth(4, 5000);
 
+        String userName = System.getProperty("user.name");
+
         // 서버에 파일 저장
-        String filePath = "C:/your-path/" + startdate + "_bus_list.xls"; // 저장할 경로 설정
+        String filePath = "C:/Users/" + userName + "/Desktop/" + startdate + "_bus_list.xls"; // 저장할 경로 설정
         try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
             workbook.write(fileOut);
         }
