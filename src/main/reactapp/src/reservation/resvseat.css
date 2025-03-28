@@ -27,7 +27,7 @@ a{color: black; text-decoration: none;}
         margin-right: 6px;
 }
 
-.bus{
+.resvbus{
         width: 500px;
         margin: 0px auto;
         margin-top: 10px;
@@ -91,3 +91,8 @@ img{
       
         font-weight: bold;
 }
+/* .css-1enwr29-JoyButton-root {
+        border: none !important;
+        background-image: url(src/main/reactapp/src/img/seatimg.png) !important;
+      } */
+      

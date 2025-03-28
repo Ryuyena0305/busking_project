@@ -55,11 +55,17 @@ export default function Person(props) {
                 <h2>{startdate} &nbsp;&nbsp;|&nbsp;&nbsp; {dest}행</h2>
             </div>
             <div className="person-button">
-                <h1>인원수 선택</h1>
+                <div>
+                <h1 style={{ margin: "0 auto"}}>인원수 선택</h1>
+                </div>
+                <div className='person-select'>
                 <button className="decrement-button"  onClick={handleDecrement} disabled={count === 0}>-</button>
                 <div className="count-display">{count}</div>
                 <button className="increment-button" onClick={handleIncrement}>+</button>
-                <button className="select-button" onClick={handleSelect}>다음</button>
+                </div>
+                <div>
+                <button style={{ margin: "0 auto" ,width:"200px"}} className="select-button" onClick={handleSelect}>다음</button>
+                </div>
             </div>
         </>
     );

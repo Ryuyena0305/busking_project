@@ -138,7 +138,7 @@ export default function ResvSeat() {
       
       {/* 좌석 상단 */}
       <div className="busflex">
-      <div className="bus">
+      <div className="resvbus">
         <div className="buswidth">
           <img className="driverImg" src="../etc/driver.png" alt="driver" />
           <div>{dest}</div>
