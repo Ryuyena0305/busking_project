@@ -30,14 +30,14 @@ public interface ResMapper {
             "AND rd.bsid IS NOT NULL;")
     List<Map<String, Object>> getResvDetail(int timeid);
 
-    @Select("SELECT rd.bsid \n" +
-            "FROM resvdetail AS rd\n" +
-            "INNER JOIN resv AS r ON rd.resvid = r.resvid\n" +
-            "WHERE r.timeid = #{timeid}\n" +
-            "AND rd.bsid IS NOT NULL;")
+    @Select("SELECT bsnum\n" +
+            "            FROM resvdetail AS rd \n" +
+            "            INNER JOIN resv AS r inner JOIN busseat bus ON rd.resvid = r.resvid and rd.bsid = bus.bsid  \n" +
+            "            WHERE r.timeid = #{ timeid } \n" +
+            "            AND rd.bsid IS NOT NULL; ")
     List<Integer> getResvDetail2(int timeid);
 
-    @Select("SELECT bs.bsnum FROM busseat bs JOIN businfo bi ON bs.biid = bi.biid WHERE bs.biid =(select biid from timetable where timeid = #{timeid}) and bsstate = 0;")
+    @Select("SELECT bsnum FROM busseat bs JOIN businfo bi ON bs.biid = bi.biid WHERE bs.biid =(select biid from timetable where timeid = #{ timeid } ) and bsstate = 0;\n")
     public List<Integer> onGet(int timeid);
 
 //    @Select("SELECT DISTINCT b.bsnum " +
