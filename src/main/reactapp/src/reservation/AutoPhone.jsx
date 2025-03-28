@@ -100,7 +100,7 @@ export default function AutoPhone() {
                             <Grid container spacing={1} justifyContent="center">
                                 {[...'1234567890abcdefghijklmnopqrstuvwxyz@.'].map((value) => (
                                     <Grid item xs={2} key={value}>
-                                        <Button variant="outlined" fullWidth sx={{ fontSize: '1.5rem', padding: '15px' }}
+                                        <Button variant="outlined" fullWidth sx={{ fontSize: '1.5rem', padding: '6px' }}
                                             onClick={() => handleButtonClick(value)}>
                                             {value}
                                         </Button>
@@ -110,13 +110,13 @@ export default function AutoPhone() {
         
                             <Grid container spacing={2} style={{ marginTop: '10px' }}>
                                 <Grid item xs={6}>
-                                    <Button variant="contained" fullWidth sx={{ fontSize: '1.8rem', padding: '15px' }}
+                                    <Button variant="contained" fullWidth sx={{ fontSize: '1.8rem', padding: '6px' }}
                                         onClick={handleBackspace}>
                                         ⬅️ 지우기
                                     </Button>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <Button variant="contained" fullWidth sx={{ fontSize: '1.8rem', padding: '15px' }}
+                                    <Button variant="contained" fullWidth sx={{ fontSize: '1.8rem', padding: '6px' }}
                                         onClick={onRes} disabled={isLoading}>
                                         {isLoading ? "예매 중..." : "다음➡️"}
                                     </Button>
