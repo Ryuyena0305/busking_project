@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import busking.user.model.dto.ResDto;
 import busking.user.model.mapper.ResMapper;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -34,18 +37,23 @@ public class ResService {
 
     public int calculatePrice(String startdate, String dest, String starttime) {
         try {
-            // btprice와 locprice를 각각 매퍼에서 조회
             int btprice = resMapper.getBtprice(startdate, dest, starttime);
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate date = LocalDate.parse(startdate, formatter);
+
+            if (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                btprice += 2000;
+            }
+
             int locprice = resMapper.getLocprice(dest);
 
-            // rprice는 btprice + locprice로 계산
             int rprice = btprice + locprice;
 
-            // 계산된 rprice만 반환
             return rprice;
         } catch (Exception e) {
-            e.printStackTrace();  // 예외 로그 출력
-            return 0;  // 예외 발생 시 0을 반환
+            e.printStackTrace();
+            return 0;
         }
     }
 
@@ -77,11 +85,11 @@ public class ResService {
             int total = resDto.getTotal();
 
             System.out.println(timeid);
-            if ( resDto.getBsnum().isEmpty() || resDto.getBsnum().get(0) == 0 ) {
-                List<Integer> availableSeats = resMapper.getResvDetail2( timeid ); // 예약된 좌석 목록을 가져옴
+            if (resDto.getBsnum().isEmpty() || resDto.getBsnum().get(0) == 0) {
+                List<Integer> availableSeats = resMapper.getResvDetail2(timeid); // 예약된 좌석 목록을 가져옴
                 List<Integer> availableSeats2 = resMapper.onGet(timeid);
 
-                System.out.println( availableSeats );
+                System.out.println(availableSeats);
 
                 if (availableSeats.size() == 55) {
                     throw new IllegalArgumentException("예약할 수 있는 좌석이 없습니다.");
@@ -89,8 +97,9 @@ public class ResService {
                 int person = resDto.getBsnum().size();
                 Integer firstSeat = 1;
 
-                for( int i = 1 ; i <=55 ;i++){
-                    if( !availableSeats.contains(i) && !availableSeats2.contains(i) ){
+                // 첫 번째로 사용할 좌석을 찾기
+                for (int i = 1; i <= 55; i++) {
+                    if (!availableSeats.contains(i) && !availableSeats2.contains(i)) {
                         firstSeat = i;
                         break;
                     }
@@ -98,19 +107,19 @@ public class ResService {
 
                 System.out.println(firstSeat);
 
-
                 List<Integer> list = new ArrayList<>();
                 list.add(firstSeat);
 
                 int i = firstSeat;
-                while(true) {
+                while (list.size() < person) {
                     i++;
-                    if(  !availableSeats.contains(i) && !availableSeats2.contains(i) ){
-                     list.add(i);
+                    if (i > 55) break; // 좌석 번호가 55를 넘어가면 종료
+                    if (!availableSeats.contains(i) && !availableSeats2.contains(i)) {
+                        list.add(i);
                         System.out.println(i);
                     }
-                    if( list.size() == person ) break;
                 }
+
                 resDto.setBsnum(list);
                 System.out.println(resDto.getBsnum());
             }
@@ -129,6 +138,7 @@ public class ResService {
             return 0;
         }
     }
+
 
     public boolean getState(int resvid) {
         return resMapper.getState(resvid);
