@@ -8,7 +8,7 @@ export default function AutoPhone() {
     const [person, setPerson] = useState(0);
     const [rprice, setRprice] = useState(0);
     const [total, setTotal] = useState(0);
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);  
     const navigate = useNavigate();
 
     const params = new URLSearchParams(window.location.search);
@@ -18,12 +18,13 @@ export default function AutoPhone() {
     useEffect(() => {
         const personParam = params.get('person');
         if (personParam) {
-            setPerson(personParam);
+            setPerson(personParam); 
         }
     }, [params]);
 
     const onRes = async () => {
         const bsnum = [];
+        setIsLoading(true);
         for (let i = 0; i < person; i++) {
             bsnum.push(0);
         }
@@ -33,12 +34,10 @@ export default function AutoPhone() {
             dest: dest,
             starttime: starttime,
             person: person,
-            bsnum: bsnum,
+            bsnum: bsnum, 
         };
         console.log(data);
-
-        setLoading(true);
-
+        
         try {
             const response = await axios.post('http://localhost:8080/resv', data, {
                 headers: {
@@ -46,7 +45,6 @@ export default function AutoPhone() {
                 }
             });
             const result = response.data;
-            setLoading(false);
             if (result > 0) {
                 alert('예매 성공');
                 navigate(`/resfin`);
@@ -54,9 +52,10 @@ export default function AutoPhone() {
                 alert('예매 실패');
             }
         } catch (error) {
-            setLoading(false);
             console.log(error);
             alert('예매 처리 중 오류가 발생했습니다.');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -70,103 +69,61 @@ export default function AutoPhone() {
 
     return (
         <div>
-            <div className="date-header">
-                <h2>이메일 입력해주세요</h2>
-            </div>
-            {/* 이메일 입력 부분 */}
-            <TextField
-                label="이메일을 입력하세요"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                fullWidth
-            />
-            <div className='keypad-container'>
-                {/* 키패드 부분 */}
-                <Box
-                    sx={{
-                        position: 'fixed',
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        backgroundColor: 'white',
-                        padding: 2,
-                        boxShadow: 2,
-                    }}
-                >
-                    <Grid container spacing={2} justifyContent="center">
-                        {/* 숫자와 알파벳 버튼 */}
-                        {['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map((value) => (
-                            <Grid item xs={2} key={value}>
-                                <Button
-                                    variant="outlined"
-                                    fullWidth
-                                    onClick={() => handleButtonClick(value)}
-                                >
-                                    {value}
-                                </Button>
+                    <Backdrop open={isLoading} sx={{ color: '#fff', zIndex: 9999 }}>
+                        <div style={{
+                            backgroundColor: 'rgba(0, 0, 0, 0.7)', padding: '20px', borderRadius: '8px',
+                            color: '#fff', textAlign: 'center'
+                        }}>
+                            <CircularProgress style={{ color: '#fff' }} />
+                            <p>예매 진행 중...</p>
+                        </div>
+                    </Backdrop>
+        
+                    <div className="date-header">
+                        <h2>이메일 입력해주세요</h2>
+                    </div>
+        
+                    <TextField
+                        label="이메일을 입력하세요"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        fullWidth
+                        sx={{ fontSize: '2rem', padding: '15px', '& input': { fontSize: '2rem' } }}
+                    />
+        
+                    <div className='keypad-container'>
+                        <Box sx={{
+                            position: 'fixed', bottom: 0, left: 0, right: 0,
+                            backgroundColor: 'white', padding: 2, boxShadow: 2
+                        }}>
+                            <Grid container spacing={1} justifyContent="center">
+                                {[...'1234567890abcdefghijklmnopqrstuvwxyz@.'].map((value) => (
+                                    <Grid item xs={2} key={value}>
+                                        <Button variant="outlined" fullWidth sx={{ fontSize: '1.5rem', padding: '15px' }}
+                                            onClick={() => handleButtonClick(value)}>
+                                            {value}
+                                        </Button>
+                                    </Grid>
+                                ))}
                             </Grid>
-                        ))}
-                        {['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'].map((value) => (
-                            <Grid item xs={2} key={value}>
-                                <Button
-                                    variant="outlined"
-                                    fullWidth
-                                    onClick={() => handleButtonClick(value)}
-                                >
-                                    {value}
-                                </Button>
+        
+                            <Grid container spacing={2} style={{ marginTop: '10px' }}>
+                                <Grid item xs={6}>
+                                    <Button variant="contained" fullWidth sx={{ fontSize: '1.8rem', padding: '15px' }}
+                                        onClick={handleBackspace}>
+                                        ⬅️ 지우기
+                                    </Button>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <Button variant="contained" fullWidth sx={{ fontSize: '1.8rem', padding: '15px' }}
+                                        onClick={onRes} disabled={isLoading}>
+                                        {isLoading ? "예매 중..." : "다음➡️"}
+                                    </Button>
+                                </Grid>
                             </Grid>
-                        ))}
-                        {/* 특수문자 버튼 */}
-                        {['@', '.'].map((value) => (
-                            <Grid item xs={2} key={value}>
-                                <Button
-                                    variant="outlined"
-                                    fullWidth
-                                    onClick={() => handleButtonClick(value)}
-                                >
-                                    {value}
-                                </Button>
-                            </Grid>
-                        ))}
-                    </Grid>
-                    <Grid container spacing={1} style={{ marginTop: '10px' }}>
-                        <Grid item xs={12}>
-                            <Button
-                                variant="outlined"
-                                fullWidth
-                                onClick={handleBackspace}
-                            >
-                                ⬅️ 지우기
-                            </Button>
-                        </Grid>
-                    </Grid>
-                </Box>
-            </div>
-
-            {/* 다음 버튼 */}
-            <Button
-                className='emailButton'
-                onClick={onRes}
-                fullWidth
-                disabled={loading}
-            >
-                다음
-            </Button>
-
-            <Backdrop
-                sx={{
-                    color: '#fff',
-                    zIndex: (theme) => theme.zIndex.drawer + 1,
-                    display: loading ? 'flex' : 'none',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-                open={loading}
-            >
-                <CircularProgress color="inherit" size={60} />
-            </Backdrop>
-        </div>
+                        </Box>
+                    </div>
+                </div>
     );
 }
