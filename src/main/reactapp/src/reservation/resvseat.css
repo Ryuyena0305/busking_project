@@ -15,8 +15,17 @@ a{color: black; text-decoration: none;}
         width: 50px;
         height: 50px; 
         font-size: 18px; 
-        padding: 10px 20px; 
-        display : inline-block;
+        padding-left: 1px ; 
+
+  
+}
+.statebt{
+    
+        width: 50px;
+        height: 50px; 
+        font-size: 18px; 
+        padding-left: 4px ; 
+
   
 }
 .btncontain{
@@ -101,6 +110,7 @@ img{
 .info1{
         margin: 0px auto;
         width: 120px;
+        display: hidden;
         
 }
 .infoname{
@@ -108,3 +118,6 @@ img{
         justify-content: center
 }
 
+.css-ncczr9-JoyButton-root, .css-jnvbf8-JoyButton-root{
+        padding-bottom: 16px !important;
+}

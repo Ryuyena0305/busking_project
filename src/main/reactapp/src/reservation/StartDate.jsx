@@ -7,16 +7,21 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
+import 'dayjs/locale/ko'; // 한국어 로케일 추가
+import { koKR } from '@mui/x-date-pickers/locales';
+
+dayjs.locale('ko'); // dayjs의 기본 로케일을 한국어로 설정
+
 
 export default function StartDate(props) {
-    const [saveDates, setSaveDates] = useState([]);  
-    const [selectedDate, setSelectedDate] = useState(null); 
-    const navigate = useNavigate(); 
+    const [saveDates, setSaveDates] = useState([]);
+    const [selectedDate, setSelectedDate] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('http://localhost:8080/resv/date')
             .then(response => {
-                setSaveDates(response.data); 
+                setSaveDates(response.data);
             })
             .catch(error => {
                 console.log(error);
@@ -24,7 +29,7 @@ export default function StartDate(props) {
     }, []);
 
     const isDateAvailable = (date) => {
-        const formattedDate = dayjs(date).format('YYYY-MM-DD');  
+        const formattedDate = dayjs(date).format('YYYY-MM-DD');
         return saveDates.includes(formattedDate);
     };
 
@@ -37,28 +42,33 @@ export default function StartDate(props) {
         }
     };
 
-    return (<>
+    return (
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko" localeText={koKR.components.MuiLocalizationProvider.defaultProps.localeText}>
+
             <div className="date-header">
-            <h1>예매 페이지</h1>
+                <h1>예매 페이지</h1>
             </div>
-            <div className='emaildiv'>
-            <LocalizationProvider  dateAdapter={AdapterDayjs}>
+            <div className="emaildiv">
+
+
                 <StaticDatePicker
-                    minDate={dayjs()} 
+                    minDate={dayjs()}
                     value={selectedDate}
-                    onChange={(newDate) => setSelectedDate(newDate)}  
-                    shouldDisableDate={(date) => !isDateAvailable(date)} 
-                    renderInput={(params) => <input {...params} />}  
+                    onChange={(newDate) => setSelectedDate(newDate)}
+                    shouldDisableDate={(date) => !isDateAvailable(date)}
+                    format="YYYY-MM-DD" // 연-월-일 형식으로 변경
+                    renderInput={(params) => <input {...params} />}
                 />
-            </LocalizationProvider>
-            
-            <Button 
-                variant="contained" 
-                color="primary" 
-                onClick={handleDate}
-            >
-                다음
-            </Button>
-        </div>
-        </>);
+
+
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleDate}
+                >
+                    다음
+                </Button>
+            </div>
+        </LocalizationProvider>
+    );
 }

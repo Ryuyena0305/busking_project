@@ -18,7 +18,7 @@ export default function ResvSeat() {
   const [startdate, setStartdate] = useState('');
   const [dest, setDest] = useState('');
   const [starttime, setStarttime] = useState('');
-  const [time, setTime] = useState('');
+  //const [time, setTime] = useState('');
   const [biid, setBiid] = useState(0);
 
   const onGet = async () => {
@@ -143,7 +143,7 @@ export default function ResvSeat() {
         <div className="resvbus">
           <div className="buswidth">
             <img className="driverImg" src="../etc/driver.png" alt="driver" />
-            <div>{dest}</div>
+            <div></div>
             <img className="driverImg" src="../etc/ent.png" alt="entrance" />
           </div>
           {/* 좌석 버튼 */}
@@ -152,7 +152,7 @@ export default function ResvSeat() {
               <div key={y} className="seatrow" style={{ display: 'flex', justifyContent: 'space-evenly', marginBottom: '3px' }}>
                 {x && x.map((seat, y) => (
                   <div
-                  className={"statebtn " }
+                  className={"statebt " }
 
                     key={y}
                     style={{
@@ -164,7 +164,13 @@ export default function ResvSeat() {
                     {seat.bsstate != 1 || seats2.includes(seat.bsnum) ? (
                       <Button
                           sx={{
-                            backgroundImage: "url('/resvseat.png')"
+                            backgroundImage: "url('/resvseat.png')",
+                            width: "42px !important",
+                            height: "42px !important",
+                            border: "none !important",
+                            paddingBottom: "16px !important"
+                        
+
                           }}
                         onClick={() => onChoice(seat.bsnum)}
                         variant="soft"
@@ -176,7 +182,11 @@ export default function ResvSeat() {
                     ) : (
                       <Button
                       sx={{
-                        backgroundImage: seatId.includes(seat.bsnum) ? "url('/selectseat.png')" : "url('/seat.png')"
+                        backgroundImage: seatId.includes(seat.bsnum) ? "url('/selectseat.png')" : "url('/seat.png')",
+                        width: "42px !important",
+                        height: "42px !important",
+                        border: "none !important"
+                      
                       }}
                         onClick={() => onChoice(seat.bsnum)}
                         variant="outlined"
@@ -213,7 +223,7 @@ export default function ResvSeat() {
             <div className="seatinfo">
               <div className="info1">
                 <div className="infoimg1">
-                  <button style={{ display: "flex", justifycontent: "center" }}></button>
+                  
                 </div>
                 <div className="infoname">선택가능<br />&nbsp;&nbsp;&nbsp;좌석</div>
               </div>
@@ -224,7 +234,7 @@ export default function ResvSeat() {
               </div>
               <div className="info1">
                 <div className="infoimg3">
-                  <button></button>
+                 
                 </div>
                 <div className="infoname">선택한<br />&nbsp;&nbsp;좌석</div>
               </div>

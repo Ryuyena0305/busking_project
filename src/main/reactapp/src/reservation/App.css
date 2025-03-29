@@ -223,6 +223,44 @@ width: 700px !important;
 .select-button{
   width: 300px !important;
 }
+/*info*/
+.infoimg1{
+  margin-left: 25px;
+  margin-bottom:18px;
+  width: 42px;
+  height: 42px;
+  border: none !important;
+  background-image: url('../img/seat.png') !important;
+  
+  background-size: 42px 0px !important; 
+  background-position: 42px 0px !important; 
+  background-size: cover !important;   
+
+}
+.infoimg3{
+  margin-left: 25px;
+  margin-bottom:18px;
+  width: 42px;
+  height: 42px;
+  border: none !important;
+  background-image: url('../img/selectseat.png') !important;
+  
+
+
+}
+.infoimg2{
+  margin-left: 25px;
+  margin-bottom:18px;
+  width: 42px;
+  height: 42px;
+  border: none !important;
+  background-image: url('../img/resvseat.png') !important;
+
+}
+.statebtn{
+  display: block;
+}
+
 
 
 /* 기존 코드
