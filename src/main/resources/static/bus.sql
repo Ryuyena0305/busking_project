@@ -521,7 +521,7 @@ INSERT INTO timetable (biid, locid, did, starttime, startdate) VALUES
 (8, 7, 12, '18:10:00', '2025-03-30'),
 (9, 2, 15, '21:30:00', '2025-03-30'),
 
-(1, 4, 3, '14:25:00', '2025-03-31'),
+(1, 4, 3, '18:25:00', '2025-03-31'),
 (3,4,1,'18:30:00','2025-03-31'),
 (3,4,7,'19:20:00','2025-03-31'),
 (4,4,10,'21:00:00','2025-03-31'),
@@ -648,12 +648,14 @@ create table resv(
     rprice int unsigned not null,
     total int unsigned not null,
    timeid int unsigned not null,
+   state int default 0,
     constraint primary key (resvid),
    constraint foreign key (timeid) references timetable(timeid) ON DELETE CASCADE ON UPDATE CASCADE
 );
 insert into resv (email,rprice,total,timeid) values('bear@naver.com','10000','20000',1);
 insert into resv (email,rprice,total,timeid) values('asdf@naver.com','10000','20000',2);
 insert into resv (email,rprice,total,timeid) values('bbbb@naver.com','10000','20000',2);
+select * from resv;
 
 insert into resv (email, rprice, total, timeid) values
 ('user@example.com',47600,95200,343),
