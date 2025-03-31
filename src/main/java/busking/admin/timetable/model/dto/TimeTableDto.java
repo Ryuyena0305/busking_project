@@ -31,4 +31,5 @@ public class TimeTableDto {
     private String date;
     private int count;
 
+
 }

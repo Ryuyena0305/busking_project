@@ -67,7 +67,7 @@ export default function Resvlog(props) {
                                             <td>{log.bsnum}</td>
                                             <td>{log.total}</td>
                                             <td>{log.email}</td>
-                                            <td>{log.bsstate ? "미탑승" : "탑승완료"}</td>
+                                            <td>{log.state ? "탑승완료" : "미탑승"}</td>
                                         </tr>
                                     ))
                                 }

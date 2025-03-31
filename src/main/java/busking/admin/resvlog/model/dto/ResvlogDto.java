@@ -22,7 +22,7 @@ public class ResvlogDto {
     private String dest;
     private String bsnum;
 
-    private boolean bsstate;
+    private int state;
 
 
     // 좌석 번호를 리스트로 변환하여 반환

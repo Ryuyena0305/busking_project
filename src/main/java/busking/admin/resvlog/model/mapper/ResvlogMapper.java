@@ -50,14 +50,14 @@ public interface ResvlogMapper {
             "    t.startdate,\n" +
             "    t.starttime,\n" +
             "    l.dest,\n" +
-            "    b.bsstate,\n" +
+            "    r.state,\n" +
             "    GROUP_CONCAT(b.bsnum ORDER BY b.bsnum) AS bsnum \n" +
             "FROM resv r\n" +
             "JOIN timetable t ON r.timeid = t.timeid\n" +
             "JOIN resvdetail rd ON r.resvid = rd.resvid\n" +
             "JOIN busseat b ON rd.bsid = b.bsid\n" +
             "JOIN location l ON t.locid = l.locid\n" +
-            "GROUP BY r.resvid, r.email, r.total, t.startdate, t.starttime, l.dest,b.bsstate\n" +
+            "GROUP BY r.resvid, r.email, r.total, t.startdate, t.starttime, l.dest,r.state\n" +
             "ORDER BY r.resvid DESC")
     public List<ResvlogDto> findAll();
 }
