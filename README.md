@@ -1,4 +1,4 @@
-# Bus Reservation Kiosk
+# 🚍Bus Reservation Kiosk🚍
 미니 프로젝트로 사용한 서버 코드입니다. 
 SPRING과 REACT를 활용하여 "버스 예매 키오스크" 페이지를 구현하였습니다.
 
