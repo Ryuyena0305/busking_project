@@ -4,6 +4,7 @@ import busking.admin.home.service.HomeService;
 import busking.admin.timetable.model.dto.TimeTableDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +24,9 @@ public class HomeController {
         System.out.println("HomeController.getBestDriver");
         return homeService.getBestDriver();
     }
+
+    // 랭크 로그 DB에 저장하기
+//    @PostMapping("/bestdriver")
 
 
     // 차트 일자별 스케줄 건수 가져오기
