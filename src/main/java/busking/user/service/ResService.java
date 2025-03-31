@@ -81,64 +81,48 @@ public class ResService {
             resDto.setLocprice(locprice);
 
             resDto.setTotal(btprice, locprice);
-
             int total = resDto.getTotal();
 
             System.out.println(timeid);
+
             if (resDto.getBsnum().isEmpty() || resDto.getBsnum().get(0) == 0) {
-                List<Integer> availableSeats = resMapper.getResvDetail2(timeid); // 예약된 좌석 목록을 가져옴
-                List<Integer> availableSeats2 = resMapper.onGet(timeid);
+                Set<Integer> unavailableSeats = new HashSet<>();
+                unavailableSeats.addAll(resMapper.getResvDetail2(timeid));
+                unavailableSeats.addAll(resMapper.onGet(timeid));
 
-                System.out.println(availableSeats);
-
-                if (availableSeats.size() == 55) {
+                if (unavailableSeats.size() == 55) {
                     throw new IllegalArgumentException("예약할 수 있는 좌석이 없습니다.");
                 }
                 int person = resDto.getBsnum().size();
-                Integer firstSeat = 1;
-
-                // 첫 번째로 사용할 좌석을 찾기
+                List<Integer> list = new ArrayList<>();
                 for (int i = 1; i <= 55; i++) {
-                    if (!availableSeats.contains(i) && !availableSeats2.contains(i)) {
-                        firstSeat = i;
+                    if (!unavailableSeats.contains(i)) {
+                        list.add(i);
+                        unavailableSeats.add(i);
                         break;
                     }
                 }
-
-                System.out.println(firstSeat);
-
-                List<Integer> list = new ArrayList<>();
-                list.add(firstSeat);
-
-                int i = firstSeat;
-                while (list.size() < person) {
+                int i = list.get(0);
+                while (list.size() < person && i < 55) {
                     i++;
-                    if (i > 55) break; // 좌석 번호가 55를 넘어가면 종료
-                    if (!availableSeats.contains(i) && !availableSeats2.contains(i)) {
+                    if (!unavailableSeats.contains(i)) {
                         list.add(i);
-                        System.out.println(i);
+                        unavailableSeats.add(i);
                     }
                 }
-
                 resDto.setBsnum(list);
                 System.out.println(resDto.getBsnum());
             }
-
             resMapper.Res(resDto);
-
             int resvid = resDto.getResvid();
             for (int bsnum : resDto.getBsnum()) {
                 resMapper.ResDetail(bsnum, resvid, resDto.getStartdate(), resDto.getStarttime(), resDto.getDest());
             }
-
-            System.out.println(resDto);
             return resvid;
         } catch (Exception e) {
-            System.out.println(e);
             return 0;
         }
     }
-
 
     public boolean getState(int resvid) {
         return resMapper.getState(resvid);
