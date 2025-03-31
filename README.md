@@ -66,7 +66,6 @@ SPRING과 REACT를 활용하여 "버스 예매 키오스크" 페이지를 구현
 
 ## ⚙️ 기술 스택
 - **DataBase** : <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
-- **server** : Apache Tomcat
 - **기획서 작성** : Google Sheets
 - **일정 관리** : Jira
 
