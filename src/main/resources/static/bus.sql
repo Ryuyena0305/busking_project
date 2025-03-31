@@ -111,10 +111,12 @@ create table driver (
     dprofile VARCHAR(255) DEFAULT NULL,
     constraint primary key (did)
 );
+insert into driver (dname, ddate, dphone, dprofile)values
+('류예나', '2001-03-05', '010-3456-8687','ryuimg.png'),
+('이민수', '1999-01-01', '010-4874-4847','leeimg.jpg'),
+('장민우', '2000-08-17', '010-4464-6853', 'jjangimg.png');
+
 insert into driver (dname, ddate, dphone)values
-('류예나', '2001-03-05', '010-3456-8687'),
-('이민수', '1999-01-01', '010-4874-4847'),
-('장민우', '2000-08-17', '010-4464-6853'),
 ('전은서', '1998-09-02', '010-4857-0189'),
 ('김영수', '1965-02-14', '010-1234-5678'),
 ('박철민', '1968-07-21', '010-2345-6789'),
