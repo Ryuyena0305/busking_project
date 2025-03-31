@@ -204,7 +204,7 @@ export default function ResvSeat() {
 
         </div>
         <div>
-          <div className="bus bus2 bus3">
+          <div className="bus bus2 bus3 bus4">
             <u1>
               <l1>인원수 X {person} ········ {formattedRprice}원</l1> <br /><br />
               <li>&nbsp;&nbsp;&nbsp;</li>

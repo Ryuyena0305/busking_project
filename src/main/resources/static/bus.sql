@@ -111,11 +111,10 @@ create table driver (
     dprofile VARCHAR(255) DEFAULT NULL,
     constraint primary key (did)
 );
-insert into driver (dname, ddate, dphone, dprofile)values
-('류예나', '2001-03-05', '010-3456-8687','ryuimg.png'),
-('이민수', '1999-01-01', '010-4874-4847','leeimg.jpg'),
-('장민우', '2000-08-17', '010-4464-6853', 'jjangimg.png');
 insert into driver (dname, ddate, dphone)values
+('류예나', '2001-03-05', '010-3456-8687'),
+('이민수', '1999-01-01', '010-4874-4847'),
+('장민우', '2000-08-17', '010-4464-6853'),
 ('전은서', '1998-09-02', '010-4857-0189'),
 ('김영수', '1965-02-14', '010-1234-5678'),
 ('박철민', '1968-07-21', '010-2345-6789'),
@@ -520,11 +519,15 @@ INSERT INTO timetable (biid, locid, did, starttime, startdate) VALUES
 (8, 7, 12, '18:10:00', '2025-03-30'),
 (9, 2, 15, '21:30:00', '2025-03-30'),
 
-(1, 4, 3, '07:25:00', '2025-03-31'),
-(2, 6, 6, '08:50:00', '2025-03-31'),
-(7, 8, 9, '12:40:00', '2025-03-31'),
+(1, 4, 3, '14:25:00', '2025-03-31'),
+(3,4,1,'18:30:00','2025-03-31'),
+(3,4,7,'19:20:00','2025-03-31'),
+(4,4,10,'21:00:00','2025-03-31'),
+(2, 6, 6, '18:50:00', '2025-03-31'),
+(7, 8, 9, '18:40:00', '2025-03-31'),
 (7, 1, 12, '17:50:00', '2025-03-31'),
 (9, 3, 15, '22:20:00', '2025-03-31'),
+
 
 -- 4월 일정 추가
 (1, 3, 22, '07:00:00', '2025-04-01'),
@@ -651,6 +654,7 @@ insert into resv (email,rprice,total,timeid) values('asdf@naver.com','10000','20
 insert into resv (email,rprice,total,timeid) values('bbbb@naver.com','10000','20000',2);
 
 insert into resv (email, rprice, total, timeid) values
+('user@example.com',47600,95200,343),
 ('user1@example.com', 15000, 15000, 3),   -- 1개 좌석, 가격 15,000 (우등버스)
 ('user2@example.com', 30000, 60000, 4),   -- 2개 좌석, 가격 30,000 (우등버스)
 ('user3@example.com', 40000, 80000, 5),   -- 2개 좌석, 가격 40,000 (프리미엄버스)
@@ -828,6 +832,7 @@ insert into resvdetail (bsid,resvid) values(2,1);
 insert into resvdetail (bsid,resvid) values(3,2);
 
 insert into resvdetail (bsid, resvid) values
+
 (1, 3), (2, 3), (3, 3),  -- 예약 3 (우등버스) - 3개 좌석
 (4, 4), (5, 4);  -- 예약 4 (우등버스) - 2개 좌석
 INSERT INTO resvdetail (bsid, resvid) VALUES

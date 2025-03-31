@@ -97,11 +97,11 @@ img{
 }
 .totalPrice{
 
-      
         font-weight: bold;
 }
 .bus3{
         margin-top: 0px !important;
+    
 }
 .seatinfo{
         display: flex;
@@ -120,4 +120,7 @@ img{
 
 .css-ncczr9-JoyButton-root, .css-jnvbf8-JoyButton-root{
         padding-bottom: 16px !important;
+}
+li{
+        margin-left : 10px !important; 
 }
