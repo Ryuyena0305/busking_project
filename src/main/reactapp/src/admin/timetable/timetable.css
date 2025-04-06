@@ -288,6 +288,19 @@ tbody > tr > td > .link > .viewBtnSeat{
 .hTopCont{
     margin-bottom: 70px;
 }
+.hTopContFlex{
+    display: flex;
+    justify-content: space-between;
+}
+.hTopContFlex > button{
+    margin-right: 60px;
+    background-color: #004aad;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: #ffff;
+    font-weight: bold;
+}
 .driverRank{
     display: flex;
     justify-content: space-around;

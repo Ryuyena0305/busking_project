@@ -46,6 +46,33 @@ export default function Home(props) {
         onChartData();
     }, []);  
 
+    // 우수 버스기사 로그 파일 다운로드
+    const downloadRankLog = async () => {
+        try {
+                const response = await axios.get("http://localhost:8080/home/download/ranklog", {
+                    responseType: "blob"
+                });
+                console.log(response);
+        
+                
+                if (response.data.size === 0) {
+                        alert("랭킹 자료가 아직 없습니다.");
+                        return;
+                }
+            
+                const blob = new Blob([response.data], { type: "text/csv" });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "driver-rank-log.csv";
+                a.click();
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                alert("랭킹 자료가 아직 없습니다.");
+                console.error(error);
+            }
+    };
+
 
 
     // 최근 7일 스케줄 건수 차트
@@ -82,7 +109,11 @@ export default function Home(props) {
                 <div className="hContent">
                     <div className="hMainCont">
                         <div className="hTopCont">
-                            <h2>지난달 우수 버스기사 👑</h2>
+                            <div className="hTopContFlex">
+                                <h2>지난달 우수 버스기사 👑</h2>
+                                <button onClick={downloadRankLog}>CSV 다운로드</button>
+                            </div>
+                            
                             <div className="driverRank">
                                 <div className="box2nd ranker">
                                     <h3 className="tit2nd">🥈</h3>
