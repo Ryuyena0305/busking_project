@@ -9,5 +9,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RankDto {
+    private String dname;
+    private String dprofile;
+    private int timecount;
+    private int rankno;
 
 }
