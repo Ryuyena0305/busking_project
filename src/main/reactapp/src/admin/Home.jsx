@@ -55,12 +55,14 @@ export default function Home(props) {
                 console.log(response);
         
                 
-                if (response.data.size === 0) {
-                        alert("랭킹 자료가 아직 없습니다.");
-                        return;
+                const text = await response.data.text();
+
+                if (text === "랭킹 자료가 존재하지 않습니다.") {
+                    alert("랭킹 자료가 존재하지 않습니다.");
+                    return;
                 }
             
-                const blob = new Blob([response.data], { type: "text/csv" });
+                const blob = new Blob([text], { type: "text/csv" });
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement("a");
                 a.href = url;
@@ -68,7 +70,7 @@ export default function Home(props) {
                 a.click();
                 window.URL.revokeObjectURL(url);
             } catch (error) {
-                alert("랭킹 자료가 아직 없습니다.");
+                alert("다운로드 중 오류가 발생했습니다.");
                 console.error(error);
             }
     };
