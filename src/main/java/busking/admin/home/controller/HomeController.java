@@ -22,6 +22,7 @@ public class HomeController {
     public void testRankLog() throws Exception {
         homeService.logBestDriver();
         System.out.println("저장 테스트");
+        // 수동 데이터 넣기 위함
     }
 
 
@@ -41,19 +42,18 @@ public class HomeController {
     @GetMapping("/download/ranklog")
     public void  downloadCsv(HttpServletResponse response) throws Exception {
         Path filePath = Paths.get(System.getProperty("user.dir"),
-                "build", "resources", "main", "static", "logs", "driver-rank-log.csv");
-
+                "build", "resources", "main", "static",
+                                    "logs","driver-rank-log.csv");
         if (!Files.exists(filePath) || Files.size(filePath) == 0) {
             response.setContentType("text/plain;charset=UTF-8");
-            response.getWriter().write("NO_FILE");
+            response.getWriter().write("랭킹 자료가 존재하지 않습니다.");
             return;
         }
-
         response.setContentType("text/csv");
-        response.setHeader("Content-Disposition", "attachment; filename=driver-rank-log.csv");
+        response.setHeader("Content-Disposition",
+                "attachment; filename=driver-rank-log.csv");
         Files.copy(filePath, response.getOutputStream());
         response.getOutputStream().flush();
-
     }
 
 

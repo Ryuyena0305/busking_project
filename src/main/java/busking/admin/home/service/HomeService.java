@@ -27,20 +27,20 @@ public class HomeService {
         return homeMapper.getBestDriver();
     }
 
-    // 로깅처리
-//    @Scheduled(cron = "0 1 0 1 * *")
+    @Scheduled(cron = "0 1 0 1 * *")
     public void logBestDriver() throws Exception {
-        List<TimeTableDto> topDrivers = getBestDriver(); // 위 서비스 재사용
+        List<TimeTableDto> topDrivers = getBestDriver();
 
-        String baseDir = System.getProperty("user.dir"); // 현재 프로젝트 기준 경로
-        Path logFile = Paths.get(baseDir, "build", "resources", "main", "static", "logs", "driver-rank-log.csv");
+        String baseDir = System.getProperty("user.dir");
+        Path logFile = Paths.get(baseDir, "build", "resources", "main", "static",
+                                                        "logs", "driver-rank-log.csv");
 
         if (!Files.exists(logFile)) {
             Files.createDirectories(logFile.getParent());
             Files.createFile(logFile);
-            Files.write(logFile, "timestamp,rank,dname,timecount\n".getBytes(), StandardOpenOption.APPEND);
+            Files.write(logFile, "timestamp,rank,dname,timecount\n"
+                    .getBytes(), StandardOpenOption.APPEND);
         }
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
         String timestamp = LocalDate.now().minusMonths(1).format(formatter);
 
@@ -52,7 +52,6 @@ public class HomeService {
                     dto.getTimecount());
             Files.write(logFile, line.getBytes(), StandardOpenOption.APPEND);
         }
-
         System.out.println("=========== 매월 1일 : CSV 로그 저장 완료 ===========");
     }
 
