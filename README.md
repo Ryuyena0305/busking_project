@@ -6,6 +6,7 @@ SPRING과 REACT를 활용하여 "버스 예매 키오스크" 페이지를 구현
 # 🎥 프로젝트 시연영상
 
 [프로젝트 시연영상 링크](https://youtu.be/e5RxGTHe5YU)
+[프로젝트 PPT](https://www.canva.com/design/DAGhaqxYx-w/DFvGanab2X-BRhdwlZBNXw/view?utm_content=DAGhaqxYx-w&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h1447a14b10)
 
 
 ## 👨‍🏫 프로젝트 소개
@@ -91,5 +92,4 @@ SPRING과 REACT를 활용하여 "버스 예매 키오스크" 페이지를 구현
   
 ## ✒️ API
 - **API 명세서** :[설계 링크](https://docs.google.com/spreadsheets/d/1RW_41h6xYD6zknhlAMaRoWMZMum2rFkNr0inXzk1ppA/edit?pli=1&gid=0#gid=0)
-  
-- **Canva PPT** : [캔바 링크](https://www.canva.com/design/DAGhaqxYx-w/dalChxFWvSG_w0CFfknvow/edit)
+
